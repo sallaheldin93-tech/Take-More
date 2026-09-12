@@ -33,6 +33,6 @@ export async function notifyBooking(payload: {
 }) {
   const body = `Take More — Booking confirmed\n\nCode: ${payload.bookingCode}\nName: ${payload.customerName}\nService: ${payload.serviceName}\nDate: ${payload.dateLabel}\nTime: ${payload.timeLabel}\n\nWe look forward to speaking with you.`;
   const customer = await sendMessage(payload.customerPhone, body);
-  const owner = await sendMessage(process.env.WHATSAPP_OWNER_PHONE || "", `New booking ${payload.bookingCode}\n${payload.customerName} — ${payload.serviceName}\n${payload.dateLabel} at ${payload.timeLabel}\nPhone: ${payload.customerPhone}`);
+  const owner = await sendMessage(process.env.WHATSAPP_OWNER_PHONE || "+201153213270", `New booking ${payload.bookingCode}\n${payload.customerName} — ${payload.serviceName}\n${payload.dateLabel} at ${payload.timeLabel}\nPhone: ${payload.customerPhone}`);
   return { customerSent: customer.sent, ownerSent: owner.sent };
 }
