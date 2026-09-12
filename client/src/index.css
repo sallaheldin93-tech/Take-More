@@ -257,3 +257,8 @@ html[data-brand-mode="white"] .service-detail-navy { color: #071b3f; background:
   .service-card, .service-detail-card { transform: none; }
   .service-card:hover, .service-detail-card:hover { transform: translateY(-3px); }
 }
+
+/* White Mode uses the transparent navy-wordmark asset; no badge, border, or blue box. */
+html[data-brand-mode="white"] .topbar.dark-header .brand { padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
+html[data-brand-mode="white"] .topbar.dark-header .brand img { width: 169px; height: 47px; }
+@media (max-width: 650px) { html[data-brand-mode="white"] .topbar.dark-header .brand { padding: 0; background: transparent; } html[data-brand-mode="white"] .topbar.dark-header .brand img { width: 169px; height: 47px; } }
