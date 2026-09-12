@@ -1,6 +1,6 @@
 import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "wouter";
-import { CalendarDays, Check, ChevronDown, Clock3, Facebook, Instagram, Linkedin, Layers3, Menu, MessageCircle, Mail, MoveUpRight, Phone, ShieldCheck, Sparkles, X, Zap } from "lucide-react";
+import { CalendarDays, Check, ChevronDown, Clock3, Facebook, Instagram, Languages, Linkedin, Layers3, Menu, MessageCircle, Mail, Moon, MoveUpRight, Phone, ShieldCheck, Sparkles, Sun, X, Zap } from "lucide-react";
 import { toast } from "sonner";
 import { trpc } from "@/lib/trpc";
 import { Button } from "@/components/ui/button";
@@ -119,7 +119,10 @@ export default function Home() {
   const [bookingOpen, setBookingOpen] = useState(false);
   const [language, setLanguage] = useState<"en" | "ar">(() => {
     const requested = new URLSearchParams(window.location.search).get("lang");
-    return requested === "ar" || requested === "en" ? requested : (localStorage.getItem("take-more-language") as "en" | "ar") || "en";
+    if (requested === "ar" || requested === "en") return requested;
+    const saved = localStorage.getItem("take-more-language");
+    if (saved === "ar" || saved === "en") return saved;
+    return navigator.language.toLowerCase().startsWith("ar") ? "ar" : "en";
   });
   const [brandMode, setBrandMode] = useState<"blue" | "white">(() => (localStorage.getItem("take-more-mode") as "blue" | "white") || "blue");
   const content = homeCopy[language];
@@ -172,8 +175,8 @@ export default function Home() {
       </nav>
       <button className="mobile-menu" onClick={() => setMobileOpen(value => !value)} aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileOpen} aria-controls="home-mobile-nav">{mobileOpen ? <X size={23} /> : <Menu size={23} />}</button>
       <div className="header-actions">
-        <button className="language-switch" onClick={() => setLanguage(value => value === "en" ? "ar" : "en")} aria-label="Switch website language">{language === "en" ? "AR" : "EN"}</button>
-        <button className="mode-toggle" onClick={() => setBrandMode(value => value === "blue" ? "white" : "blue")} aria-label="Toggle blue and white mode">{brandMode === "blue" ? content.mode.white : content.mode.blue}</button>
+        <button className="language-switch" onClick={() => setLanguage(value => value === "en" ? "ar" : "en")} aria-label={language === "en" ? "عرض الموقع بالعربية" : "View website in English"}><Languages size={15} /><span>{language === "en" ? "العربية" : "EN"}</span></button>
+        <button className="mode-toggle" onClick={() => setBrandMode(value => value === "blue" ? "white" : "blue")} aria-label={brandMode === "blue" ? "Switch to white mode" : "Switch to blue mode"}>{brandMode === "blue" ? <Sun size={15} /> : <Moon size={15} />}<span>{brandMode === "blue" ? content.mode.white : content.mode.blue}</span></button>
         <button className="desktop-book" onClick={() => setBookingOpen(true)}>{content.nav.start} <MoveUpRight size={15} /></button>
       </div>
     </header>
