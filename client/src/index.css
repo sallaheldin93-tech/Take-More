@@ -310,3 +310,9 @@ html[data-brand-mode="white"] .service-card .card-link { color: #071b3f; backgro
   html[data-brand-mode="white"] .topbar.dark-header .main-nav.mobile-open button:hover, html[data-brand-mode="white"] .topbar.dark-header .main-nav.mobile-open a:hover { color: #00b9ed !important; background: #eefaff; }
   html[data-brand-mode="white"] .topbar.dark-header .main-nav.mobile-open .nav-book { color: #071b3f !important; background: #00b9ed !important; }
 }
+
+@media (max-width: 650px) {
+  html[data-brand-mode="white"] .topbar.dark-header .mobile-menu { display: grid; place-items: center; color: #071b3f !important; background: transparent; }
+  html[data-brand-mode="white"] .topbar.dark-header .mobile-menu:hover { color: #00b9ed !important; }
+  html[data-brand-mode="blue"] .topbar.dark-header .mobile-menu { color: #ffffff !important; }
+}
