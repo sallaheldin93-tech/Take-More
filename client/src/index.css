@@ -173,3 +173,15 @@ html[data-brand-mode="white"] .admin-metrics div, html[data-brand-mode="white"] 
 html[data-brand-mode="white"] .admin-heading p:not(.eyebrow), html[data-brand-mode="white"] .table-title span, html[data-brand-mode="white"] .table-row { color: #647785; }
 
 html[data-brand-mode="blue"] .scroll-reveal, html[data-brand-mode="white"] .scroll-reveal { transition-duration: .65s; }
+
+/* Mobile navigation contrast for both brand modes. */
+@media (max-width: 650px) {
+  html[data-brand-mode="blue"] .topbar.dark-header .main-nav { background: #071b3f; border-color: rgba(139,231,250,.18); }
+  html[data-brand-mode="blue"] .topbar.dark-header .main-nav button, html[data-brand-mode="blue"] .topbar.dark-header .main-nav a { color: #eaf7fb; }
+  html[data-brand-mode="blue"] .topbar.dark-header .main-nav button:hover, html[data-brand-mode="blue"] .topbar.dark-header .main-nav a:hover { color: #00b9ed; }
+  html[data-brand-mode="blue"] .topbar.dark-header .main-nav .nav-book { color: #071b3f; background: #00b9ed; }
+  html[data-brand-mode="white"] .topbar.dark-header .main-nav { background: #ffffff; border-color: rgba(7,27,63,.14); }
+  html[data-brand-mode="white"] .topbar.dark-header .main-nav button, html[data-brand-mode="white"] .topbar.dark-header .main-nav a { color: #071b3f; }
+  html[data-brand-mode="white"] .topbar.dark-header .main-nav button:hover, html[data-brand-mode="white"] .topbar.dark-header .main-nav a:hover { color: #00b9ed; }
+  html[data-brand-mode="white"] .topbar.dark-header .main-nav .nav-book { color: #071b3f; background: #00b9ed; }
+}
