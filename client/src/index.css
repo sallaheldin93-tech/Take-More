@@ -185,3 +185,11 @@ html[data-brand-mode="blue"] .scroll-reveal, html[data-brand-mode="white"] .scro
   html[data-brand-mode="white"] .topbar.dark-header .main-nav button:hover, html[data-brand-mode="white"] .topbar.dark-header .main-nav a:hover { color: #00b9ed; }
   html[data-brand-mode="white"] .topbar.dark-header .main-nav .nav-book { color: #071b3f; background: #00b9ed; }
 }
+
+@media (max-width: 650px) {
+  .topbar.dark-header .main-nav { display: grid; grid-template-columns: 1fr; align-items: stretch; gap: 3px; top: 70px; padding: 12px; border-radius: 0 0 16px 16px; }
+  .topbar.dark-header .main-nav button, .topbar.dark-header .main-nav a { display: flex; align-items: center; width: 100%; min-height: 42px; margin: 0; padding: 9px 14px; border-radius: 8px; text-align: left; line-height: 1.2; }
+  .topbar.dark-header .main-nav .nav-book { justify-content: space-between; margin-top: 7px; min-height: 46px; }
+  .topbar.dark-header .main-nav a.active-nav { background: rgba(0,185,237,.1); }
+  .topbar.dark-header .main-nav.mobile-open { display: grid; }
+}
