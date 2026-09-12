@@ -106,3 +106,14 @@ h1 em, h2 em { color: var(--orange); font-style: normal; }
 
 .footer-links .social-link:hover, .contact-social:hover, .contact-social.facebook:hover, .contact-social.instagram:hover, .contact-social.linkedin:hover { color: var(--orange); }
 .footer-links .social-link:hover svg, .contact-social:hover svg, .contact-social.facebook:hover svg, .contact-social.instagram:hover svg, .contact-social.linkedin:hover svg { color: var(--orange); }
+
+.scroll-reveal { opacity: 0; transform: translateY(24px); transition: opacity .65s var(--ease-out), transform .65s var(--ease-out); }
+.scroll-reveal.is-visible { opacity: 1; transform: translateY(0); }
+.service-detail-card:nth-child(2) { transition-delay: .08s; }.service-detail-card:nth-child(3) { transition-delay: .16s; }.service-detail-card:nth-child(4) { transition-delay: .24s; }
+.service-card:nth-child(2) { transition-delay: .08s; }.service-card:nth-child(3) { transition-delay: .16s; }.service-card:nth-child(4) { transition-delay: .24s; }
+.detail-book { display: inline-flex; align-items: center; gap: 7px; position: absolute; right: 30px; bottom: 27px; border: 1px solid currentColor; border-radius: 999px; padding: 9px 13px; color: var(--navy); font-size: 10px; font-weight: 800; transition: color .18s ease, background .18s ease, transform .18s var(--ease-out); }.service-detail-navy .detail-book { color: white; }.detail-book:hover { color: var(--navy); background: var(--orange); border-color: var(--orange); transform: translateY(-2px); }
+@media (max-width: 650px) { .detail-book { right: 25px; bottom: 25px; } }
+@media (prefers-reduced-motion: reduce) { .scroll-reveal { opacity: 1; transform: none; transition: none; } }
+
+.service-detail-card { min-height: 425px; }.service-detail-card ul { padding-bottom: 48px; }
+@media (max-width: 650px) { .service-detail-card { min-height: 410px; } }
