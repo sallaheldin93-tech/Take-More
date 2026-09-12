@@ -273,3 +273,14 @@ html[data-brand-mode="white"] .footer .brand img { width: 169px; height: 47px; }
 .contact-meta .whatsapp-contact.icon-only { width: 30px; height: 30px; justify-content: center; border: 1px solid rgba(37,211,102,.35); border-radius: 50%; color: #25d366; background: rgba(37,211,102,.08); }.contact-meta .whatsapp-contact.icon-only:hover { color: white; background: #25d366; }
 
 .contact-social.whatsapp { color: #25d366; }.contact-social.whatsapp:hover { color: var(--orange); }
+
+/* White-mode logo clarity and consistent card typography. */
+html[data-brand-mode="white"] .topbar.dark-header .brand img { display: block; opacity: 1; filter: none; mix-blend-mode: normal; object-fit: contain; }
+html[data-brand-mode="white"] .topbar.dark-header .brand { overflow: visible; }
+.service-card, .service-card h3, .service-card p, .service-card li, .service-detail-card, .service-detail-card h2, .service-detail-card p, .service-detail-card li { font-family: 'DM Sans', sans-serif; }
+.service-card h3, .service-detail-card h2 { font-weight: 700; letter-spacing: -.055em; }
+.service-card .service-description, .service-detail-intro { font-size: 12px; line-height: 1.65; letter-spacing: -.01em; }
+.service-card li, .service-detail-card li { font-size: 10.5px; line-height: 1.4; }
+html[data-brand-mode="white"] .service-card h3, html[data-brand-mode="white"] .service-detail-card h2 { color: #071b3f; }
+html[data-brand-mode="white"] .service-card .service-description, html[data-brand-mode="white"] .service-card li, html[data-brand-mode="white"] .service-detail-card .service-detail-intro, html[data-brand-mode="white"] .service-detail-card li { color: #526b7a; }
+html[data-brand-mode="white"] .service-card.blue h3, html[data-brand-mode="white"] .service-detail-navy h2 { color: #071b3f; }
