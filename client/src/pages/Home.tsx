@@ -9,8 +9,8 @@ import { Textarea } from "@/components/ui/textarea";
 
 const serviceCopy = [
   { icon: Layers3, eyebrow: "01 / OPERATIONS", title: "ERP Solutions", description: "End-to-end enterprise planning that unifies finance, inventory and operations in one connected system.", bullets: ["Finance & accounting", "Inventory control", "Reporting & analytics"], tone: "lime" },
-  { icon: Zap, eyebrow: "02 / SALES", title: "POS Systems", description: "Fast and reliable point-of-sale solutions for retail, restaurants and services that keep every transaction flowing.", bullets: ["Sales & billing", "Multi-branch support", "Daily reconciliation"], tone: "peach" },
-  { icon: Sparkles, eyebrow: "03 / PRESENCE", title: "Websites", description: "Modern, high-performance websites designed to build trust, tell your story and convert visitors into customers.", bullets: ["Responsive design", "Business & e-commerce", "SEO-friendly build"], tone: "lavender" },
+  { icon: Zap, eyebrow: "02 / SALES", title: "POS Systems", description: "Fast and reliable point-of-sale solutions for retail, restaurants and services that keep every transaction flowing.", bullets: ["Sales & billing", "Multi-branch support", "Daily reconciliation"], tone: "sky" },
+  { icon: Sparkles, eyebrow: "03 / PRESENCE", title: "Websites", description: "Modern, high-performance websites designed to build trust, tell your story and convert visitors into customers.", bullets: ["Responsive design", "Business & e-commerce", "SEO-friendly build"], tone: "ice" },
   { icon: ShieldCheck, eyebrow: "04 / GROWTH", title: "Business & CRM Automation", description: "Automation that streamlines customer relationships, follow-ups and internal workflows so your team works smarter.", bullets: ["Contact & lead tracking", "Task automation", "Sales pipeline"], tone: "blue" },
 ] as const;
 
