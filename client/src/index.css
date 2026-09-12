@@ -616,3 +616,65 @@ html[data-brand-mode="white"] .why-section.why-section-copy .why-points > div { 
   .why-section.why-section-copy { display: block; padding-top: 72px; padding-bottom: 82px; }
   .why-section.why-section-copy .why-points { grid-template-columns: 1fr; }
 }
+/* Animated credibility statistics replacing the removed artwork. */
+.why-section.why-section-copy { grid-template-columns: minmax(0, 980px); }
+.why-section.why-section-copy .why-copy > p:not(.eyebrow) { max-width: 690px; }
+.trust-stats {
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+  margin-top: 42px;
+}
+.trust-stat {
+  min-height: 142px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-end;
+  padding: 20px;
+  border: 1px solid rgba(139,231,250,.22);
+  border-radius: 16px;
+  background: transparent;
+  box-shadow: 0 10px 26px rgba(0,0,0,.08);
+  overflow: hidden;
+  position: relative;
+}
+.trust-stat:before {
+  content: '';
+  position: absolute;
+  width: 82px;
+  height: 82px;
+  right: -34px;
+  top: -37px;
+  border-radius: 50%;
+  background: rgba(0,185,237,.12);
+}
+.trust-stat strong {
+  position: relative;
+  color: #8be7fa;
+  font-size: clamp(38px, 5vw, 58px);
+  line-height: .92;
+  letter-spacing: -.07em;
+  font-variant-numeric: tabular-nums;
+}
+.trust-stat span {
+  position: relative;
+  margin-top: 13px;
+  color: #b9ceda;
+  font-size: 11px;
+  font-weight: 700;
+}
+html[data-brand-mode="white"] .trust-stat {
+  border-color: rgba(7,27,63,.13);
+  background: #ffffff;
+  box-shadow: 0 10px 26px rgba(7,27,63,.07);
+}
+html[data-brand-mode="white"] .trust-stat strong { color: #007ea8; }
+html[data-brand-mode="white"] .trust-stat span { color: #526b7a; }
+html[data-brand-mode="white"] .trust-stat:before { background: rgba(0,185,237,.09); }
+.why-section.why-section-copy .why-points { margin-top: 18px; }
+@media (max-width: 700px) {
+  .trust-stats { grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 10px; margin-top: 30px; }
+  .trust-stat { min-height: 122px; padding: 16px; }
+  .trust-stat strong { font-size: 39px; }
+  .trust-stat span { font-size: 10px; }
+}

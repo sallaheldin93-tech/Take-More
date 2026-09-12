@@ -1,4 +1,4 @@
-import { useEffect, useMemo, useState } from "react";
+import { useEffect, useMemo, useRef, useState } from "react";
 import { Link } from "wouter";
 import { CalendarDays, Check, ChevronDown, Clock3, Facebook, Instagram, Linkedin, Layers3, Menu, MessageCircle, Mail, MoveUpRight, Phone, ShieldCheck, Sparkles, X, Zap } from "lucide-react";
 import { toast } from "sonner";
@@ -27,6 +27,38 @@ const serviceCopy = [
   { icon: Sparkles, eyebrow: "03 / PRESENCE", title: "Websites", description: "Modern, high-performance websites designed to build trust, tell your story and convert visitors into customers.", bullets: ["Responsive design", "Business & e-commerce", "SEO-friendly build"], tone: "ice" },
   { icon: ShieldCheck, eyebrow: "04 / GROWTH", title: "Business & CRM Automation", description: "Automation that streamlines customer relationships, follow-ups and internal workflows so your team works smarter.", bullets: ["Contact & lead tracking", "Task automation", "Sales pipeline"], tone: "blue" },
 ] as const;
+
+function AnimatedStat({ value, suffix, label }: { value: number; suffix?: string; label: string }) {
+  const [display, setDisplay] = useState(0);
+  const ref = useRef<HTMLDivElement>(null);
+
+  useEffect(() => {
+    const node = ref.current;
+    if (!node) return;
+    const observer = new IntersectionObserver(([entry]) => {
+      if (!entry.isIntersecting) return;
+      if (window.matchMedia("(prefers-reduced-motion: reduce)").matches) {
+        setDisplay(value);
+        observer.disconnect();
+        return;
+      }
+      const startedAt = performance.now();
+      const duration = 1100;
+      const tick = (now: number) => {
+        const progress = Math.min((now - startedAt) / duration, 1);
+        const eased = 1 - Math.pow(1 - progress, 3);
+        setDisplay(Math.round(value * eased));
+        if (progress < 1) requestAnimationFrame(tick);
+      };
+      requestAnimationFrame(tick);
+      observer.disconnect();
+    }, { threshold: 0.45 });
+    observer.observe(node);
+    return () => observer.disconnect();
+  }, [value]);
+
+  return <div className="trust-stat" ref={ref}><strong>{display}{suffix}</strong><span>{label}</span></div>;
+}
 
 function BookingPanel({ onClose }: { onClose?: () => void }) {
   const config = trpc.booking.config.useQuery();
@@ -84,9 +116,8 @@ export default function Home() {
     {mobileOpen && <button className="mobile-nav-backdrop" aria-label="Close navigation menu" onClick={() => setMobileOpen(false)} />}
     <main>
       <section id="home" className="hero container"><div className="hero-copy"><p className="eyebrow reveal">SOFTWARE FOR THE REAL WORLD</p><h1 className="reveal delay-1">Software that runs<br /><em>your entire</em> business.</h1><p className="hero-text reveal delay-2">ERP <span>•</span> POS <span>•</span> Websites <span>•</span> Business & CRM Automation. Helping businesses simplify operations & grow smarter.</p><div className="hero-actions reveal delay-3"><Button className="primary-button" onClick={() => setBookingOpen(true)}>Book a discovery call <MoveUpRight size={17} /></Button><button className="text-link" onClick={() => scrollTo("services")}>Explore services <ChevronDown size={16} /></button></div></div><div className="hero-visual reveal delay-2"><div className="orbit orbit-one" /><div className="orbit orbit-two" /><div className="dashboard-card"><div className="dashboard-top"><span className="tiny-dot" /><span>TM / dashboard</span><span className="live-pill">LIVE</span></div><div className="dashboard-number">+38.4% <span>↗</span></div><p>business efficiency</p><div className="mini-bars"><i /><i /><i /><i /><i /><i /><i /></div><div className="dashboard-bottom"><span>ERP</span><span>POS</span><span>CRM</span></div></div><div className="floating-note"><span className="green-check"><Check size={13} /></span><div><strong>All systems go</strong><small>Everything connected</small></div></div><div className="hero-sticker">BUILT<br /><span>TO</span><br />GROW</div></div></section>
-      <section className="proof-strip container"><div><strong>50<span>+</span></strong><small>Happy clients</small></div><div><strong>120<span>+</span></strong><small>Projects delivered</small></div><div><strong>8<span>+</span></strong><small>Years of experience</small></div><div className="proof-note">We make complex<br /><em>feel simple.</em></div></section>
       <section id="services" className="services-section container"><div className="section-intro"><div><p className="eyebrow">WHAT WE DO</p><h2>One partner for<br /><em>your business software.</em></h2></div><p>From daily operations to customer growth — we deliver the systems your business runs on.</p></div><div className="service-grid">{serviceCopy.map(({ icon: Icon, eyebrow, title, description, bullets, tone }, index) => <article className={`service-card ${tone} scroll-reveal`} key={title}><div className="service-icon"><Icon size={22} /></div><p className="eyebrow">{eyebrow}</p><h3>{title}</h3><p className="service-description">{description}</p><ul>{bullets.map(item => <li key={item}><Check size={15} />{item}</li>)}</ul><button className="card-link" onClick={() => setBookingOpen(true)}>Get started <MoveUpRight size={15} /></button><span className="card-number">0{index + 1}</span></article>)}</div></section>
-      <section id="why" className="why-section why-section-copy container scroll-reveal"><div className="why-copy"><p className="eyebrow">WHY TAKE MORE</p><h2>Everything your business<br /><em>needs, in one place.</em></h2><p>We combine technical know-how with business thinking. No jargon, no disconnected tools — just technology that works harder for you.</p><div className="why-points"><div><span>01</span><strong>Clear thinking</strong><small>Solutions designed around your reality.</small></div><div><span>02</span><strong>Built to scale</strong><small>Systems that grow with your ambition.</small></div></div></div></section>
+      <section id="why" className="why-section why-section-copy container scroll-reveal"><div className="why-copy"><p className="eyebrow">WHY TAKE MORE</p><h2>Results you can<br /><em>build confidence on.</em></h2><p>We combine technical know-how with business thinking to deliver connected systems that create measurable value and support sustainable growth.</p><div className="trust-stats" aria-label="Take More business statistics"><AnimatedStat value={50} suffix="+" label="Happy clients" /><AnimatedStat value={120} suffix="+" label="Projects delivered" /><AnimatedStat value={8} suffix="+" label="Years of experience" /><AnimatedStat value={4} label="Core business solutions" /></div><div className="why-points"><div><span>01</span><strong>Clear thinking</strong><small>Solutions designed around your reality.</small></div><div><span>02</span><strong>Built to scale</strong><small>Systems that grow with your ambition.</small></div></div></div></section>
       <section id="contact" className="contact-section scroll-reveal"><div><p className="eyebrow">READY TO SIMPLIFY?</p><h2>Let's make your<br /><em>next move smarter.</em></h2></div><div className="contact-card"><p>Tell us about your business and we will recommend the right software and automation for your growth.</p><button className="primary-button" onClick={() => setBookingOpen(true)}>Tell us about your business <MoveUpRight size={17} /></button><div className="contact-meta"><span><Phone size={14} /> Cairo, Egypt</span><a className="email-contact" href="mailto:Info@take-more.com"><Mail size={14} /> Info@take-more.com</a></div><div className="contact-socials"><span>Connect with us</span><div><a className="contact-social facebook" href="https://www.facebook.com/share/1C6TU1C2ub/?mibextid=wwXIfr" target="_blank" rel="noreferrer" aria-label="Take More on Facebook"><BrandIcon brand="facebook" size={17} /></a><a className="contact-social whatsapp" href="https://wa.me/201153213270" target="_blank" rel="noreferrer" aria-label="Chat with Take More on WhatsApp" title="WhatsApp"><BrandIcon brand="whatsapp" size={17} /></a><a className="contact-social instagram" href="https://www.instagram.com/takemore.eg?stkn=YzJhYXNpYnJnZnFl&utm_source=qr" target="_blank" rel="noreferrer" aria-label="Take More on Instagram"><BrandIcon brand="instagram" size={17} /></a><a className="contact-social linkedin disabled" href="#contact" aria-label="LinkedIn link coming soon" onClick={event => event.preventDefault()}><BrandIcon brand="linkedin" size={17} /></a></div></div></div></section>
     </main>
     <footer className="footer container"><a className="brand" href="#home"><img src={brandMode === "white" ? "/manus-storage/take-more-logo-white_a363634f.png" : "/manus-storage/take-more-logo_88d6d8ae.png"} alt="Take More — Retail & Web, Made Smarter" /></a><p>Smart Business Solutions — Helping businesses simplify operations & grow smarter.</p><div className="footer-links"><a className="social-link facebook" href="https://www.facebook.com/share/1C6TU1C2ub/?mibextid=wwXIfr" target="_blank" rel="noreferrer"><BrandIcon brand="facebook" size={16} /><span>Facebook</span></a><a className="social-link instagram" href="https://www.instagram.com/takemore.eg?stkn=YzJhYXNpYnJnZnFl&utm_source=qr" target="_blank" rel="noreferrer"><BrandIcon brand="instagram" size={16} /><span>Instagram</span></a><a className="social-link linkedin" href="https://www.linkedin.com/" target="_blank" rel="noreferrer"><BrandIcon brand="linkedin" size={16} /><span>LinkedIn</span></a><Link href="/admin">Admin</Link></div></footer>
