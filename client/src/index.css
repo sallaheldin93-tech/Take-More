@@ -316,3 +316,12 @@ html[data-brand-mode="white"] .service-card .card-link { color: #071b3f; backgro
   html[data-brand-mode="white"] .topbar.dark-header .mobile-menu:hover { color: #00b9ed !important; }
   html[data-brand-mode="blue"] .topbar.dark-header .mobile-menu { color: #ffffff !important; }
 }
+
+/* Official social brand colors on hover. */
+.contact-social.facebook:hover, .footer-links .social-link.facebook:hover { color: #1877f2 !important; background: rgba(24,119,242,.12); border-color: rgba(24,119,242,.35); }
+.contact-social.instagram:hover, .footer-links .social-link.instagram:hover { color: #e1306c !important; background: linear-gradient(135deg, rgba(253,29,29,.14), rgba(225,48,108,.14), rgba(131,58,180,.14)); border-color: rgba(225,48,108,.4); }
+.contact-social.linkedin:hover, .footer-links .social-link.linkedin:hover { color: #0a66c2 !important; background: rgba(10,102,194,.12); border-color: rgba(10,102,194,.35); }
+.contact-social.whatsapp:hover, .footer-links .social-link.whatsapp:hover { color: #25d366 !important; background: rgba(37,211,102,.13); border-color: rgba(37,211,102,.4); }
+.floating-whatsapp { animation: whatsapp-pulse 2.6s ease-in-out infinite; }.floating-whatsapp:hover { animation-play-state: paused; }
+@keyframes whatsapp-pulse { 0%, 100% { box-shadow: 0 12px 28px rgba(7,27,63,.2), 0 0 0 0 rgba(37,211,102,.35); } 50% { box-shadow: 0 14px 30px rgba(7,27,63,.23), 0 0 0 10px rgba(37,211,102,0); } }
+@media (prefers-reduced-motion: reduce) { .floating-whatsapp { animation: none; } }
