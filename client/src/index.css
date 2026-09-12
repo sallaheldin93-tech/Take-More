@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -284,3 +284,22 @@ html[data-brand-mode="white"] .topbar.dark-header .brand { overflow: visible; }
 html[data-brand-mode="white"] .service-card h3, html[data-brand-mode="white"] .service-detail-card h2 { color: #071b3f; }
 html[data-brand-mode="white"] .service-card .service-description, html[data-brand-mode="white"] .service-card li, html[data-brand-mode="white"] .service-detail-card .service-detail-intro, html[data-brand-mode="white"] .service-detail-card li { color: #526b7a; }
 html[data-brand-mode="white"] .service-card.blue h3, html[data-brand-mode="white"] .service-detail-navy h2 { color: #071b3f; }
+
+/* Arabic typography and final service-card layout. */
+[dir="rtl"], [dir="rtl"] body, [dir="rtl"] button, [dir="rtl"] input, [dir="rtl"] textarea, [dir="rtl"] select { font-family: 'Cairo', 'DM Sans', sans-serif; }
+[dir="rtl"] .eyebrow { font-family: 'Cairo', sans-serif; letter-spacing: 0; }
+.service-card { min-height: 390px; padding-bottom: 68px; }
+.card-link { left: 22px; bottom: 18px; min-height: 32px; padding: 8px 12px; border: 1px solid rgba(0,185,237,.28); border-radius: 999px; background: rgba(255,255,255,.35); transition: color .18s ease, background .18s ease, border-color .18s ease, transform .18s var(--ease-out), box-shadow .18s ease; }
+.card-link:hover { color: #071b3f; background: var(--orange); border-color: var(--orange); transform: translateY(-2px); box-shadow: 0 7px 16px rgba(0,185,237,.2); }
+.service-card.blue .card-link { color: white; border-color: rgba(139,231,250,.3); background: rgba(255,255,255,.08); }.service-card.blue .card-link:hover { color: #071b3f; background: var(--orange); border-color: var(--orange); }
+html[data-brand-mode="white"] .service-card .card-link { color: #071b3f; background: rgba(255,255,255,.7); }.service-card .card-link svg { transition: transform .18s var(--ease-out); }.service-card .card-link:hover svg { transform: translate(2px, -2px); }
+@media (max-width: 650px) {
+  .service-grid { grid-template-columns: 1fr; gap: 14px; }
+  .service-card { min-height: 330px; padding: 21px 20px 61px; border-radius: 15px; }
+  .service-icon { margin-bottom: 30px; width: 45px; height: 45px; }
+  .service-card h3 { min-height: auto; margin-bottom: 11px; font-size: 22px; }
+  .service-card .service-description { max-width: 34rem; font-size: 12px; line-height: 1.65; }
+  .service-card ul { gap: 7px; margin-top: 15px; }
+  .card-link { left: 20px; bottom: 17px; }
+  .card-number { right: 19px; bottom: 25px; }
+}
