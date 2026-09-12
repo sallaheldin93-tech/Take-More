@@ -222,3 +222,38 @@ html[data-brand-mode="white"] .service-detail-ice { background: linear-gradient(
 html[data-brand-mode="white"] .service-detail-sky { background: linear-gradient(145deg, #eff6ff 0%, #d5e8fa 100%); }
 html[data-brand-mode="white"] .service-detail-navy { background: linear-gradient(145deg, #164a78 0%, #071b3f 100%); }
 @media (prefers-reduced-motion: reduce) { .topbar.dark-header .main-nav, .topbar.dark-header .main-nav.mobile-open, .topbar.dark-header .main-nav.mobile-open > * { animation: none; transition: none; } }
+
+/* Final visual refinement: gentle mode transition, calmer premium cards, and smoother mobile motion. */
+html, body, #root, .site-shell, .services-page, .admin-shell, .hero, .proof-strip, .services-section, .why-section, .contact-section, .footer, .services-hero, .services-bottom, .service-card, .service-detail-card, .admin-main, .admin-metrics div, .booking-table-card { transition: background-color .55s ease, color .55s ease, border-color .55s ease, box-shadow .55s ease; }
+html { background: #071b3f; }
+html[data-brand-mode="blue"] .service-card, html[data-brand-mode="white"] .service-card, html[data-brand-mode="blue"] .service-detail-card, html[data-brand-mode="white"] .service-detail-card { background-image: none; }
+html[data-brand-mode="blue"] .service-card.lime { background: #12345e; border-color: rgba(139,231,250,.16); }
+html[data-brand-mode="blue"] .service-card.sky { background: #143d68; border-color: rgba(139,231,250,.18); }
+html[data-brand-mode="blue"] .service-card.ice { background: #17466f; border-color: rgba(139,231,250,.2); }
+html[data-brand-mode="blue"] .service-card.blue { background: #0c2850; border-color: rgba(139,231,250,.14); }
+html[data-brand-mode="white"] .service-card.lime { color: #071b3f; background: #f3fbfd; border-color: #cceef5; }
+html[data-brand-mode="white"] .service-card.sky { color: #071b3f; background: #eef8fb; border-color: #ccebf3; }
+html[data-brand-mode="white"] .service-card.ice { color: #071b3f; background: #f2f6fb; border-color: #dbe8f5; }
+html[data-brand-mode="white"] .service-card.blue { color: #071b3f; background: #eaf3fa; border-color: #cfe1f0; }
+html[data-brand-mode="blue"] .service-detail-cyan { background: #164a78; border-color: rgba(139,231,250,.2); }
+html[data-brand-mode="blue"] .service-detail-ice { background: #1b537e; border-color: rgba(139,231,250,.2); }
+html[data-brand-mode="blue"] .service-detail-sky { background: #1d5a86; border-color: rgba(139,231,250,.2); }
+html[data-brand-mode="blue"] .service-detail-navy { background: #0a2349; border-color: rgba(139,231,250,.2); }
+html[data-brand-mode="white"] .service-detail-cyan { color: #071b3f; background: #f1fbfd; border-color: #cceef5; }
+html[data-brand-mode="white"] .service-detail-ice { color: #071b3f; background: #eef8fb; border-color: #ccebf3; }
+html[data-brand-mode="white"] .service-detail-sky { color: #071b3f; background: #f2f6fb; border-color: #dbe8f5; }
+html[data-brand-mode="white"] .service-detail-navy { color: #071b3f; background: #eaf3fa; border-color: #cfe1f0; }
+.service-card, .service-detail-card { position: relative; isolation: isolate; overflow: hidden; }
+.service-card:after, .service-detail-card:after { content: ''; position: absolute; z-index: -1; width: 150px; height: 150px; right: -64px; bottom: -70px; border-radius: 50%; background: rgba(0,185,237,.1); transition: transform .35s var(--ease-out), background-color .55s ease; }
+.service-card:hover:after, .service-detail-card:hover:after { transform: scale(1.45); background: rgba(0,185,237,.16); }
+.service-icon { display: grid; place-items: center; width: 51px; height: 51px; border: 1px solid rgba(0,185,237,.25); border-radius: 15px; color: var(--orange); background: rgba(0,185,237,.1); box-shadow: 0 7px 16px rgba(0,185,237,.1); }
+.service-card:hover .service-icon { color: #071b3f; background: var(--orange); border-color: var(--orange); box-shadow: 0 9px 20px rgba(0,185,237,.22); }
+.service-detail-top svg { padding: 10px; width: 47px; height: 47px; border: 1px solid rgba(0,185,237,.25); border-radius: 14px; background: rgba(0,185,237,.1); }
+@media (max-width: 650px) {
+  .topbar.dark-header .main-nav { transform: translateY(-7px); transition: opacity .32s ease, transform .32s var(--ease-out), max-height .36s var(--ease-out), visibility .36s; }
+  .topbar.dark-header .main-nav.mobile-open { transform: translateY(0); }
+  .topbar.dark-header .main-nav.mobile-open button, .topbar.dark-header .main-nav.mobile-open a { animation: none; opacity: 1; transform: none; }
+  .topbar.dark-header .main-nav button, .topbar.dark-header .main-nav a { transition: color .2s ease, background-color .2s ease; }
+  .service-card, .service-detail-card { transform: none; }
+  .service-card:hover, .service-detail-card:hover { transform: translateY(-3px); }
+}
