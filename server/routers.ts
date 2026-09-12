@@ -18,6 +18,15 @@ function formatDateTime(value: Date) {
   return new Intl.DateTimeFormat("en-GB", { timeZone: "Africa/Cairo", dateStyle: "medium", timeStyle: "short" }).format(value);
 }
 
+function normalizePhoneInput(value: unknown) {
+  if (typeof value !== "string") return value;
+  const arabicDigits = "٠١٢٣٤٥٦٧٨٩";
+  return value
+    .replace(/[٠-٩]/g, digit => String(arabicDigits.indexOf(digit)))
+    .replace(/[^0-9+]/g, "")
+    .trim();
+}
+
 function makeCode() {
   return `TM-${Date.now().toString(36).toUpperCase().slice(-6)}`;
 }
@@ -57,7 +66,7 @@ export const appRouter = router({
     create: publicProcedure.input(z.object({
       serviceId: z.number().int().positive(),
       customerName: z.string().min(2).max(160),
-      customerPhone: z.string().trim().min(7, "Please enter a valid WhatsApp number with at least 7 digits.").max(40),
+      customerPhone: z.preprocess(normalizePhoneInput, z.string().min(7, "Please enter a valid WhatsApp number with at least 7 digits.").max(40)),
       customerEmail: z.string().email().optional().or(z.literal("")),
       notes: z.string().max(1000).optional(),
       startAt: z.string().datetime(),
