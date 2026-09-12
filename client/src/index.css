@@ -303,3 +303,10 @@ html[data-brand-mode="white"] .service-card .card-link { color: #071b3f; backgro
   .card-link { left: 20px; bottom: 17px; }
   .card-number { right: 19px; bottom: 25px; }
 }
+
+@media (max-width: 650px) {
+  html[data-brand-mode="white"] .topbar.dark-header .main-nav.mobile-open { display: grid !important; visibility: visible !important; opacity: 1 !important; z-index: 30; background: #ffffff !important; color: #071b3f !important; border: 1px solid rgba(7,27,63,.16); box-shadow: 0 18px 35px rgba(7,27,63,.15); }
+  html[data-brand-mode="white"] .topbar.dark-header .main-nav.mobile-open button, html[data-brand-mode="white"] .topbar.dark-header .main-nav.mobile-open a { display: flex !important; visibility: visible !important; opacity: 1 !important; color: #071b3f !important; background: transparent; }
+  html[data-brand-mode="white"] .topbar.dark-header .main-nav.mobile-open button:hover, html[data-brand-mode="white"] .topbar.dark-header .main-nav.mobile-open a:hover { color: #00b9ed !important; background: #eefaff; }
+  html[data-brand-mode="white"] .topbar.dark-header .main-nav.mobile-open .nav-book { color: #071b3f !important; background: #00b9ed !important; }
+}
