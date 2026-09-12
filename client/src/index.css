@@ -1,4 +1,4 @@
-@import url('https://fonts.googleapis.com/css2?family=Cairo:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Alexandria:wght@300;400;500;600;700;800&family=Cairo:wght@400;500;600;700;800&family=DM+Mono:wght@400;500&family=Manrope:wght@400;500;600;700;800&display=swap');
 @import "tailwindcss";
 @import "tw-animate-css";
 
@@ -677,4 +677,90 @@ html[data-brand-mode="white"] .trust-stat:before { background: rgba(0,185,237,.0
   .trust-stat { min-height: 122px; padding: 16px; }
   .trust-stat strong { font-size: 39px; }
   .trust-stat span { font-size: 10px; }
+}
+/* Arabic/English language switch and Alexandria RTL typography. */
+.language-switch {
+  display: inline-grid;
+  place-items: center;
+  min-width: 38px;
+  height: 36px;
+  padding: 0 9px;
+  border: 1px solid rgba(139,231,250,.35);
+  border-radius: 999px;
+  color: #8be7fa;
+  background: rgba(255,255,255,.06);
+  font-family: 'Alexandria', sans-serif;
+  font-size: 10px;
+  font-weight: 700;
+  transition: color .18s ease, border-color .18s ease, background-color .18s ease, transform .18s var(--ease-out);
+}
+.language-switch:hover { color: #071b3f; border-color: #00b9ed; background: #00b9ed; transform: translateY(-2px); }
+html[data-brand-mode="white"] .language-switch { color: #007ea8; border-color: rgba(7,27,63,.18); background: #f2f8fb; }
+
+html[dir="rtl"] body,
+html[dir="rtl"] button,
+html[dir="rtl"] input,
+html[dir="rtl"] textarea,
+html[dir="rtl"] select,
+html[dir="rtl"] .service-card,
+html[dir="rtl"] .service-detail-card {
+  font-family: 'Alexandria', 'Cairo', sans-serif;
+}
+html[dir="rtl"] .hero h1,
+html[dir="rtl"] h2,
+html[dir="rtl"] .service-card h3,
+html[dir="rtl"] .service-detail-card h2,
+html[dir="rtl"] .booking-panel h3 {
+  font-family: 'Alexandria', 'Cairo', sans-serif;
+  letter-spacing: -.045em;
+  line-height: 1.12;
+}
+html[dir="rtl"] .eyebrow { font-family: 'Alexandria', sans-serif; letter-spacing: 0; }
+html[dir="rtl"] .hero-copy,
+html[dir="rtl"] .section-intro,
+html[dir="rtl"] .service-card,
+html[dir="rtl"] .why-copy,
+html[dir="rtl"] .service-detail-card,
+html[dir="rtl"] .services-bottom { text-align: right; }
+html[dir="rtl"] .hero-text { line-height: 2; }
+html[dir="rtl"] .section-intro > p { margin-right: 0; margin-left: 20px; }
+html[dir="rtl"] .service-card .card-link { right: 22px; left: auto; }
+html[dir="rtl"] .service-card .card-number { right: auto; left: 20px; }
+html[dir="rtl"] .service-card li,
+html[dir="rtl"] .service-detail-card li { flex-direction: row; }
+html[dir="rtl"] .why-points > div { grid-template-columns: 1fr 35px; }
+html[dir="rtl"] .why-points > div > span { grid-column: 2; }
+html[dir="rtl"] .why-points > div > strong,
+html[dir="rtl"] .why-points > div > small { grid-column: 1; }
+html[dir="rtl"] .service-detail-illustration { right: auto; left: 18px; }
+html[dir="rtl"] .service-detail-card h2,
+html[dir="rtl"] .service-detail-card .service-detail-intro,
+html[dir="rtl"] .service-detail-card ul { margin-left: 120px; margin-right: 0; }
+html[dir="rtl"] .detail-cta { left: auto; right: 30px; }
+html[dir="rtl"] .detail-book { right: auto; left: 30px; }
+html[dir="rtl"] .contact-meta,
+html[dir="rtl"] .contact-socials,
+html[dir="rtl"] .footer { direction: rtl; }
+html[dir="rtl"] .main-nav button,
+html[dir="rtl"] .main-nav a { text-align: right; }
+
+@media (max-width: 650px) {
+  .topbar.dark-header .header-actions { gap: 4px; }
+  .topbar.dark-header .language-switch { min-width: 34px; height: 34px; padding: 0 7px; font-size: 9px; }
+  html[dir="rtl"] .topbar.dark-header .main-nav button,
+  html[dir="rtl"] .topbar.dark-header .main-nav a { text-align: right; }
+  html[dir="rtl"] .service-card .card-link { right: 20px; left: auto; }
+  html[dir="rtl"] .service-card .card-number { right: auto; left: 19px; }
+  html[dir="rtl"] .service-detail-illustration { right: auto; left: 14px; }
+  html[dir="rtl"] .service-detail-card h2,
+  html[dir="rtl"] .service-detail-card .service-detail-intro,
+  html[dir="rtl"] .service-detail-card ul { margin-left: 82px; margin-right: 0; }
+  html[dir="rtl"] .detail-cta { left: auto; right: 22px; }
+  html[dir="rtl"] .detail-book { right: auto; left: 22px; }
+  html[dir="rtl"] .hero-copy { text-align: center; }
+  html[dir="rtl"] .section-intro > p { margin-left: 0; }
+}
+@media (max-width: 390px) {
+  .topbar.dark-header .mode-toggle { max-width: 72px; overflow: hidden; text-overflow: ellipsis; }
+  .topbar.dark-header .language-switch { min-width: 32px; }
 }

@@ -26,7 +26,34 @@ const serviceCopy = [
   { icon: Zap, eyebrow: "02 / SALES", title: "POS Systems", description: "Fast and reliable point-of-sale solutions for retail, restaurants and services that keep every transaction flowing.", bullets: ["Sales & billing", "Multi-branch support", "Daily reconciliation"], tone: "sky" },
   { icon: Sparkles, eyebrow: "03 / PRESENCE", title: "Websites", description: "Modern, high-performance websites designed to build trust, tell your story and convert visitors into customers.", bullets: ["Responsive design", "Business & e-commerce", "SEO-friendly build"], tone: "ice" },
   { icon: ShieldCheck, eyebrow: "04 / GROWTH", title: "Business & CRM Automation", description: "Automation that streamlines customer relationships, follow-ups and internal workflows so your team works smarter.", bullets: ["Contact & lead tracking", "Task automation", "Sales pipeline"], tone: "blue" },
+
 ] as const;
+
+const serviceCopyAr = [
+  { icon: Layers3, eyebrow: "01 / العمليات", title: "حلول ERP", description: "نظام متكامل يربط الحسابات والمخزون والعمليات اليومية داخل منصة واحدة واضحة.", bullets: ["الحسابات والمالية", "إدارة المخزون", "التقارير والتحليلات"], tone: "lime" },
+  { icon: Zap, eyebrow: "02 / المبيعات", title: "أنظمة نقاط البيع", description: "حلول نقاط بيع سريعة وموثوقة للمتاجر والمطاعم والخدمات، تساعدك على إدارة كل عملية بسهولة.", bullets: ["المبيعات والفواتير", "دعم الفروع المتعددة", "التسويات اليومية"], tone: "sky" },
+  { icon: Sparkles, eyebrow: "03 / الحضور الرقمي", title: "تصميم وتطوير المواقع", description: "مواقع عصرية وسريعة تعزز ثقة عملائك، وتعرض نشاطك باحترافية وتحول الزوار إلى عملاء.", bullets: ["تصميم متجاوب", "مواقع ومتاجر إلكترونية", "تهيئة لمحركات البحث"], tone: "ice" },
+  { icon: ShieldCheck, eyebrow: "04 / النمو", title: "أتمتة الأعمال وCRM", description: "أتمتة ذكية تنظم علاقات العملاء والمتابعات وسير العمل الداخلي حتى يعمل فريقك بكفاءة أكبر.", bullets: ["إدارة العملاء المحتملين", "أتمتة المهام", "خط سير المبيعات"], tone: "blue" },
+] as const;
+
+const homeCopy = {
+  en: {
+    nav: { home: "Home", services: "Services", why: "Why us", contact: "Contact", book: "Book a call", start: "Get started" },
+    mode: { white: "White", blue: "Blue" },
+    heroEyebrow: "SOFTWARE FOR THE REAL WORLD", heroTitleA: "Software that runs", heroTitleB: "your entire", heroTitleC: "business.", heroLine: "ERP • POS • Websites • Business & CRM Automation.", heroText: "Helping businesses simplify operations and grow smarter.", discovery: "Book a discovery call", explore: "Explore services",
+    servicesEyebrow: "WHAT WE DO", servicesTitleA: "One partner for", servicesTitleB: "your business software.", servicesText: "From daily operations to customer growth — we deliver the systems your business runs on.", cardCta: "Get started",
+    whyEyebrow: "WHY TAKE MORE", whyTitleA: "Results you can", whyTitleB: "build confidence on.", whyText: "We combine technical know-how with business thinking to deliver connected systems that create measurable value and support sustainable growth.", stats: ["Happy clients", "Projects delivered", "Years of experience", "Core business solutions"], clear: "Clear thinking", clearText: "Solutions designed around your reality.", scale: "Built to scale", scaleText: "Systems that grow with your ambition.",
+    contactEyebrow: "READY TO SIMPLIFY?", contactTitleA: "Let's make your", contactTitleB: "next move smarter.", contactText: "Tell us about your business and we will recommend the right software and automation for your growth.", tellUs: "Tell us about your business", connect: "Connect with us", location: "Cairo, Egypt", footer: "Smart Business Solutions — Helping businesses simplify operations and grow smarter.", chat: "Chat with us"
+  },
+  ar: {
+    nav: { home: "الرئيسية", services: "خدماتنا", why: "لماذا نحن", contact: "تواصل معنا", book: "احجز مكالمة", start: "ابدأ الآن" },
+    mode: { white: "أبيض", blue: "أزرق" },
+    heroEyebrow: "حلول برمجية تناسب أعمالك", heroTitleA: "برمجيات تدير", heroTitleB: "كل تفاصيل", heroTitleC: "أعمالك.", heroLine: "ERP • POS • المواقع • أتمتة الأعمال وCRM.", heroText: "نساعد الشركات على تبسيط عملياتها وتحقيق نمو أذكى.", discovery: "احجز مكالمة استكشافية", explore: "استكشف خدماتنا",
+    servicesEyebrow: "ماذا نقدم", servicesTitleA: "شريك واحد لكل", servicesTitleB: "حلول أعمالك التقنية.", servicesText: "من العمليات اليومية إلى نمو العملاء — نوفر الأنظمة التي يعتمد عليها نشاطك.", cardCta: "ابدأ الآن",
+    whyEyebrow: "لماذا TAKE MORE", whyTitleA: "نتائج تمنحك", whyTitleB: "ثقة أكبر.", whyText: "نجمع بين الخبرة التقنية والفهم التجاري لنقدم أنظمة مترابطة تحقق قيمة قابلة للقياس وتدعم نمو أعمالك بثبات.", stats: ["عميل سعيد", "مشروع تم تنفيذه", "سنوات من الخبرة", "حلول أعمال أساسية"], clear: "رؤية واضحة", clearText: "حلول مصممة وفق احتياجات نشاطك.", scale: "جاهز للتوسع", scaleText: "أنظمة تنمو مع طموحاتك.",
+    contactEyebrow: "جاهز لتبسيط أعمالك؟", contactTitleA: "لنصنع خطوتك", contactTitleB: "القادمة بذكاء.", contactText: "حدثنا عن نشاطك وسنرشح لك أنسب الحلول البرمجية والأتمتة التي تدعم نموك.", tellUs: "حدثنا عن نشاطك", connect: "تواصل معنا", location: "القاهرة، مصر", footer: "حلول أعمال ذكية تساعد الشركات على تبسيط عملياتها والنمو بكفاءة.", chat: "تواصل معنا"
+  }
+} as const;
 
 function AnimatedStat({ value, suffix, label }: { value: number; suffix?: string; label: string }) {
   const [display, setDisplay] = useState(0);
@@ -62,7 +89,7 @@ function AnimatedStat({ value, suffix, label }: { value: number; suffix?: string
 
 function BookingPanel({ onClose }: { onClose?: () => void }) {
   const config = trpc.booking.config.useQuery();
-  const [language, setLanguage] = useState<"en" | "ar">(() => navigator.language.toLowerCase().startsWith("ar") ? "ar" : "en");
+  const [language, setLanguage] = useState<"en" | "ar">(() => (localStorage.getItem("take-more-language") as "en" | "ar") || (navigator.language.toLowerCase().startsWith("ar") ? "ar" : "en"));
   const [serviceId, setServiceId] = useState<number | undefined>(() => Number(new URLSearchParams(window.location.search).get("service")) || undefined);
   const [date, setDate] = useState("");
   const [slot, setSlot] = useState("");
@@ -90,11 +117,23 @@ function BookingPanel({ onClose }: { onClose?: () => void }) {
 export default function Home() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [bookingOpen, setBookingOpen] = useState(false);
+  const [language, setLanguage] = useState<"en" | "ar">(() => {
+    const requested = new URLSearchParams(window.location.search).get("lang");
+    return requested === "ar" || requested === "en" ? requested : (localStorage.getItem("take-more-language") as "en" | "ar") || "en";
+  });
   const [brandMode, setBrandMode] = useState<"blue" | "white">(() => (localStorage.getItem("take-more-mode") as "blue" | "white") || "blue");
+  const content = homeCopy[language];
+  const services = language === "ar" ? serviceCopyAr : serviceCopy;
+
   useEffect(() => {
     document.documentElement.dataset.brandMode = brandMode;
     localStorage.setItem("take-more-mode", brandMode);
   }, [brandMode]);
+  useEffect(() => {
+    document.documentElement.lang = language;
+    document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
+    localStorage.setItem("take-more-language", language);
+  }, [language]);
   useEffect(() => {
     if (!mobileOpen) return;
     const closeOnEscape = (event: KeyboardEvent) => {
@@ -106,22 +145,60 @@ export default function Home() {
   useEffect(() => {
     if (new URLSearchParams(window.location.search).get("book") === "1") setBookingOpen(true);
     const items = document.querySelectorAll(".scroll-reveal");
-    const observer = new IntersectionObserver(entries => entries.forEach(entry => { if (entry.isIntersecting) { entry.target.classList.add("is-visible"); observer.unobserve(entry.target); } }), { threshold: 0.12 });
+    const observer = new IntersectionObserver(entries => entries.forEach(entry => {
+      if (entry.isIntersecting) {
+        entry.target.classList.add("is-visible");
+        observer.unobserve(entry.target);
+      }
+    }), { threshold: 0.12 });
     items.forEach(item => observer.observe(item));
     return () => observer.disconnect();
   }, []);
-  const scrollTo = (id: string) => { setMobileOpen(false); document.getElementById(id)?.scrollIntoView({ behavior: "smooth" }); };
-  return <div className="site-shell">
-    <header className="topbar dark-header"><a className="brand" href="#home" onClick={() => scrollTo("home")}><img src={brandMode === "white" ? "/manus-storage/take-more-logo-white_a363634f.png" : "/manus-storage/take-more-logo_88d6d8ae.png"} alt="Take More — Retail & Web, Made Smarter" /></a><nav id="home-mobile-nav" className={mobileOpen ? "main-nav mobile-open" : "main-nav"}><button onClick={() => scrollTo("home")}>Home</button><a href="/services" onClick={() => setMobileOpen(false)}>Services</a><button onClick={() => scrollTo("why")}>Why us</button><button onClick={() => scrollTo("contact")}>Contact</button><button className="nav-book" onClick={() => { setBookingOpen(true); setMobileOpen(false); }}>Book a call <MoveUpRight size={15} /></button></nav><button className="mobile-menu" onClick={() => setMobileOpen(value => !value)} aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileOpen} aria-controls="home-mobile-nav">{mobileOpen ? <X size={23} /> : <Menu size={23} />}</button><div className="header-actions"><button className="mode-toggle" onClick={() => setBrandMode(value => value === "blue" ? "white" : "blue")} aria-label="Toggle blue and white mode">{brandMode === "blue" ? "White mode" : "Blue mode"}</button><button className="desktop-book" onClick={() => setBookingOpen(true)}>Get started <MoveUpRight size={15} /></button></div></header>
+
+  const scrollTo = (id: string) => {
+    setMobileOpen(false);
+    document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
+  };
+
+  return <div className="site-shell" dir={language === "ar" ? "rtl" : "ltr"}>
+    <header className="topbar dark-header">
+      <a className="brand" href="#home" onClick={() => scrollTo("home")}><img src={brandMode === "white" ? "/manus-storage/take-more-logo-white_a363634f.png" : "/manus-storage/take-more-logo_88d6d8ae.png"} alt="Take More — Retail & Web, Made Smarter" /></a>
+      <nav id="home-mobile-nav" className={mobileOpen ? "main-nav mobile-open" : "main-nav"}>
+        <button onClick={() => scrollTo("home")}>{content.nav.home}</button>
+        <a href="/services" onClick={() => setMobileOpen(false)}>{content.nav.services}</a>
+        <button onClick={() => scrollTo("why")}>{content.nav.why}</button>
+        <button onClick={() => scrollTo("contact")}>{content.nav.contact}</button>
+        <button className="nav-book" onClick={() => { setBookingOpen(true); setMobileOpen(false); }}>{content.nav.book} <MoveUpRight size={15} /></button>
+      </nav>
+      <button className="mobile-menu" onClick={() => setMobileOpen(value => !value)} aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileOpen} aria-controls="home-mobile-nav">{mobileOpen ? <X size={23} /> : <Menu size={23} />}</button>
+      <div className="header-actions">
+        <button className="language-switch" onClick={() => setLanguage(value => value === "en" ? "ar" : "en")} aria-label="Switch website language">{language === "en" ? "AR" : "EN"}</button>
+        <button className="mode-toggle" onClick={() => setBrandMode(value => value === "blue" ? "white" : "blue")} aria-label="Toggle blue and white mode">{brandMode === "blue" ? content.mode.white : content.mode.blue}</button>
+        <button className="desktop-book" onClick={() => setBookingOpen(true)}>{content.nav.start} <MoveUpRight size={15} /></button>
+      </div>
+    </header>
     {mobileOpen && <button className="mobile-nav-backdrop" aria-label="Close navigation menu" onClick={() => setMobileOpen(false)} />}
+
     <main>
-      <section id="home" className="hero container"><div className="hero-copy"><p className="eyebrow reveal">SOFTWARE FOR THE REAL WORLD</p><h1 className="reveal delay-1">Software that runs<br /><em>your entire</em> business.</h1><p className="hero-text reveal delay-2">ERP <span>•</span> POS <span>•</span> Websites <span>•</span> Business & CRM Automation. Helping businesses simplify operations & grow smarter.</p><div className="hero-actions reveal delay-3"><Button className="primary-button" onClick={() => setBookingOpen(true)}>Book a discovery call <MoveUpRight size={17} /></Button><button className="text-link" onClick={() => scrollTo("services")}>Explore services <ChevronDown size={16} /></button></div></div><div className="hero-visual reveal delay-2"><div className="orbit orbit-one" /><div className="orbit orbit-two" /><div className="dashboard-card"><div className="dashboard-top"><span className="tiny-dot" /><span>TM / dashboard</span><span className="live-pill">LIVE</span></div><div className="dashboard-number">+38.4% <span>↗</span></div><p>business efficiency</p><div className="mini-bars"><i /><i /><i /><i /><i /><i /><i /></div><div className="dashboard-bottom"><span>ERP</span><span>POS</span><span>CRM</span></div></div><div className="floating-note"><span className="green-check"><Check size={13} /></span><div><strong>All systems go</strong><small>Everything connected</small></div></div><div className="hero-sticker">BUILT<br /><span>TO</span><br />GROW</div></div></section>
-      <section id="services" className="services-section container"><div className="section-intro"><div><p className="eyebrow">WHAT WE DO</p><h2>One partner for<br /><em>your business software.</em></h2></div><p>From daily operations to customer growth — we deliver the systems your business runs on.</p></div><div className="service-grid">{serviceCopy.map(({ icon: Icon, eyebrow, title, description, bullets, tone }, index) => <article className={`service-card ${tone} scroll-reveal`} key={title}><div className="service-icon"><Icon size={22} /></div><p className="eyebrow">{eyebrow}</p><h3>{title}</h3><p className="service-description">{description}</p><ul>{bullets.map(item => <li key={item}><Check size={15} />{item}</li>)}</ul><button className="card-link" onClick={() => setBookingOpen(true)}>Get started <MoveUpRight size={15} /></button><span className="card-number">0{index + 1}</span></article>)}</div></section>
-      <section id="why" className="why-section why-section-copy container scroll-reveal"><div className="why-copy"><p className="eyebrow">WHY TAKE MORE</p><h2>Results you can<br /><em>build confidence on.</em></h2><p>We combine technical know-how with business thinking to deliver connected systems that create measurable value and support sustainable growth.</p><div className="trust-stats" aria-label="Take More business statistics"><AnimatedStat value={50} suffix="+" label="Happy clients" /><AnimatedStat value={120} suffix="+" label="Projects delivered" /><AnimatedStat value={8} suffix="+" label="Years of experience" /><AnimatedStat value={4} label="Core business solutions" /></div><div className="why-points"><div><span>01</span><strong>Clear thinking</strong><small>Solutions designed around your reality.</small></div><div><span>02</span><strong>Built to scale</strong><small>Systems that grow with your ambition.</small></div></div></div></section>
-      <section id="contact" className="contact-section scroll-reveal"><div><p className="eyebrow">READY TO SIMPLIFY?</p><h2>Let's make your<br /><em>next move smarter.</em></h2></div><div className="contact-card"><p>Tell us about your business and we will recommend the right software and automation for your growth.</p><button className="primary-button" onClick={() => setBookingOpen(true)}>Tell us about your business <MoveUpRight size={17} /></button><div className="contact-meta"><span><Phone size={14} /> Cairo, Egypt</span><a className="email-contact" href="mailto:Info@take-more.com"><Mail size={14} /> Info@take-more.com</a></div><div className="contact-socials"><span>Connect with us</span><div><a className="contact-social facebook" href="https://www.facebook.com/share/1C6TU1C2ub/?mibextid=wwXIfr" target="_blank" rel="noreferrer" aria-label="Take More on Facebook"><BrandIcon brand="facebook" size={17} /></a><a className="contact-social whatsapp" href="https://wa.me/201153213270" target="_blank" rel="noreferrer" aria-label="Chat with Take More on WhatsApp" title="WhatsApp"><BrandIcon brand="whatsapp" size={17} /></a><a className="contact-social instagram" href="https://www.instagram.com/takemore.eg?stkn=YzJhYXNpYnJnZnFl&utm_source=qr" target="_blank" rel="noreferrer" aria-label="Take More on Instagram"><BrandIcon brand="instagram" size={17} /></a><a className="contact-social linkedin disabled" href="#contact" aria-label="LinkedIn link coming soon" onClick={event => event.preventDefault()}><BrandIcon brand="linkedin" size={17} /></a></div></div></div></section>
+      <section id="home" className="hero container">
+        <div className="hero-copy">
+          <p className="eyebrow reveal">{content.heroEyebrow}</p>
+          <h1 className="reveal delay-1">{content.heroTitleA}<br /><em>{content.heroTitleB}</em><br />{content.heroTitleC}</h1>
+          <p className="hero-text reveal delay-2">{content.heroLine}<br />{content.heroText}</p>
+          <div className="hero-actions reveal delay-3"><Button className="primary-button" onClick={() => setBookingOpen(true)}>{content.discovery} <MoveUpRight size={17} /></Button><button className="text-link" onClick={() => scrollTo("services")}>{content.explore} <ChevronDown size={16} /></button></div>
+        </div>
+        <div className="hero-visual reveal delay-2"><div className="orbit orbit-one" /><div className="orbit orbit-two" /><div className="dashboard-card"><div className="dashboard-top"><span className="tiny-dot" /><span>TM / dashboard</span><span className="live-pill">LIVE</span></div><div className="dashboard-number">+38.4% <span>↗</span></div><p>business efficiency</p><div className="mini-bars"><i /><i /><i /><i /><i /><i /><i /></div><div className="dashboard-bottom"><span>ERP</span><span>POS</span><span>CRM</span></div></div><div className="floating-note"><span className="green-check"><Check size={13} /></span><div><strong>{language === "ar" ? "كل الأنظمة تعمل" : "All systems go"}</strong><small>{language === "ar" ? "كل شيء متصل" : "Everything connected"}</small></div></div><div className="hero-sticker">BUILT<br /><span>TO</span><br />GROW</div></div>
+      </section>
+
+      <section id="services" className="services-section container"><div className="section-intro"><div><p className="eyebrow">{content.servicesEyebrow}</p><h2>{content.servicesTitleA}<br /><em>{content.servicesTitleB}</em></h2></div><p>{content.servicesText}</p></div><div className="service-grid">{services.map(({ icon: Icon, eyebrow, title, description, bullets, tone }, index) => <article className={`service-card ${tone} scroll-reveal`} key={title}><div className="service-icon"><Icon size={22} /></div><p className="eyebrow">{eyebrow}</p><h3>{title}</h3><p className="service-description">{description}</p><ul>{bullets.map(item => <li key={item}><Check size={15} />{item}</li>)}</ul><button className="card-link" onClick={() => setBookingOpen(true)}>{content.cardCta} <MoveUpRight size={15} /></button><span className="card-number">0{index + 1}</span></article>)}</div></section>
+
+      <section id="why" className="why-section why-section-copy container scroll-reveal"><div className="why-copy"><p className="eyebrow">{content.whyEyebrow}</p><h2>{content.whyTitleA}<br /><em>{content.whyTitleB}</em></h2><p>{content.whyText}</p><div className="trust-stats" aria-label="Take More business statistics"><AnimatedStat value={50} suffix="+" label={content.stats[0]} /><AnimatedStat value={120} suffix="+" label={content.stats[1]} /><AnimatedStat value={8} suffix="+" label={content.stats[2]} /><AnimatedStat value={4} label={content.stats[3]} /></div><div className="why-points"><div><span>01</span><strong>{content.clear}</strong><small>{content.clearText}</small></div><div><span>02</span><strong>{content.scale}</strong><small>{content.scaleText}</small></div></div></div></section>
+
+      <section id="contact" className="contact-section scroll-reveal"><div><p className="eyebrow">{content.contactEyebrow}</p><h2>{content.contactTitleA}<br /><em>{content.contactTitleB}</em></h2></div><div className="contact-card"><p>{content.contactText}</p><button className="primary-button" onClick={() => setBookingOpen(true)}>{content.tellUs} <MoveUpRight size={17} /></button><div className="contact-meta"><span><Phone size={14} /> {content.location}</span><a className="email-contact" href="mailto:Info@take-more.com"><Mail size={14} /> Info@take-more.com</a></div><div className="contact-socials"><span>{content.connect}</span><div><a className="contact-social facebook" href="https://www.facebook.com/share/1C6TU1C2ub/?mibextid=wwXIfr" target="_blank" rel="noreferrer" aria-label="Take More on Facebook"><BrandIcon brand="facebook" size={17} /></a><a className="contact-social whatsapp" href="https://wa.me/201153213270" target="_blank" rel="noreferrer" aria-label="Chat with Take More on WhatsApp" title="WhatsApp"><BrandIcon brand="whatsapp" size={17} /></a><a className="contact-social instagram" href="https://www.instagram.com/takemore.eg?stkn=YzJhYXNpYnJnZnFl&utm_source=qr" target="_blank" rel="noreferrer" aria-label="Take More on Instagram"><BrandIcon brand="instagram" size={17} /></a><a className="contact-social linkedin disabled" href="#contact" aria-label="LinkedIn link coming soon" onClick={event => event.preventDefault()}><BrandIcon brand="linkedin" size={17} /></a></div></div></div></section>
     </main>
-    <footer className="footer container"><a className="brand" href="#home"><img src={brandMode === "white" ? "/manus-storage/take-more-logo-white_a363634f.png" : "/manus-storage/take-more-logo_88d6d8ae.png"} alt="Take More — Retail & Web, Made Smarter" /></a><p>Smart Business Solutions — Helping businesses simplify operations & grow smarter.</p><div className="footer-links"><a className="social-link facebook" href="https://www.facebook.com/share/1C6TU1C2ub/?mibextid=wwXIfr" target="_blank" rel="noreferrer"><BrandIcon brand="facebook" size={16} /><span>Facebook</span></a><a className="social-link instagram" href="https://www.instagram.com/takemore.eg?stkn=YzJhYXNpYnJnZnFl&utm_source=qr" target="_blank" rel="noreferrer"><BrandIcon brand="instagram" size={16} /><span>Instagram</span></a><a className="social-link linkedin" href="https://www.linkedin.com/" target="_blank" rel="noreferrer"><BrandIcon brand="linkedin" size={16} /><span>LinkedIn</span></a><Link href="/admin">Admin</Link></div></footer>
-    <a className="floating-whatsapp" href="https://wa.me/201153213270" target="_blank" rel="noreferrer" aria-label="Chat with Take More on WhatsApp"><BrandIcon brand="whatsapp" size={25} /><span>Chat with us</span></a>
+
+    <footer className="footer container"><a className="brand" href="#home"><img src={brandMode === "white" ? "/manus-storage/take-more-logo-white_a363634f.png" : "/manus-storage/take-more-logo_88d6d8ae.png"} alt="Take More — Retail & Web, Made Smarter" /></a><p>{content.footer}</p><div className="footer-links"><a className="social-link facebook" href="https://www.facebook.com/share/1C6TU1C2ub/?mibextid=wwXIfr" target="_blank" rel="noreferrer"><BrandIcon brand="facebook" size={16} /><span>Facebook</span></a><a className="social-link instagram" href="https://www.instagram.com/takemore.eg?stkn=YzJhYXNpYnJnZnFl&utm_source=qr" target="_blank" rel="noreferrer"><BrandIcon brand="instagram" size={16} /><span>Instagram</span></a><a className="social-link linkedin" href="https://www.linkedin.com/" target="_blank" rel="noreferrer"><BrandIcon brand="linkedin" size={16} /><span>LinkedIn</span></a><Link href="/admin">Admin</Link></div></footer>
+    <a className="floating-whatsapp" href="https://wa.me/201153213270" target="_blank" rel="noreferrer" aria-label="Chat with Take More on WhatsApp"><BrandIcon brand="whatsapp" size={25} /><span>{content.chat}</span></a>
     {bookingOpen && <div className="modal-backdrop" onClick={event => { if (event.target === event.currentTarget) setBookingOpen(false); }}><BookingPanel onClose={() => setBookingOpen(false)} /></div>}
   </div>;
 }
