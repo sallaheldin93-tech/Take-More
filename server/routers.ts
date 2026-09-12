@@ -7,6 +7,7 @@ import { adminProcedure, protectedProcedure, publicProcedure, router } from "./_
 import { and, desc, eq, gte, lt } from "drizzle-orm";
 import { availability, bookings, getDb, listAvailability, listBookings, listServices, services } from "./db";
 import { notifyBooking } from "./whatsapp";
+import { notifyOwner } from "./_core/notification";
 
 const defaultSlots = ["10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30"];
 
@@ -86,8 +87,19 @@ export const appRouter = router({
       } catch (error) {
         throw new TRPCError({ code: "CONFLICT", message: "This time was just booked. Please choose another slot." });
       }
-      const notification = await notifyBooking({ bookingCode, customerName: input.customerName, customerPhone: input.customerPhone, serviceName: service[0].name, dateLabel: formatDateTime(startAt).split(",")[0] || formatDateTime(startAt), timeLabel: formatDateTime(startAt).split(",")[1]?.trim() || "" });
-      await db.update(bookings).set({ whatsappCustomerSent: notification.customerSent, whatsappOwnerSent: notification.ownerSent }).where(eq(bookings.bookingCode, bookingCode));
+      const dateLabel = formatDateTime(startAt).split(",")[0] || formatDateTime(startAt);
+      const timeLabel = formatDateTime(startAt).split(",")[1]?.trim() || "";
+      const notification = await notifyBooking({ bookingCode, customerName: input.customerName, customerPhone: input.customerPhone, serviceName: service[0].name, dateLabel, timeLabel });
+      let ownerNotified = false;
+      try {
+        ownerNotified = await notifyOwner({
+          title: `New Take More booking — ${bookingCode}`,
+          content: `New booking received for Info@take-more.com\n\nCustomer: ${input.customerName}\nPhone: ${input.customerPhone}\nEmail: ${input.customerEmail || "Not provided"}\nService: ${service[0].name}\nDate: ${dateLabel}\nTime: ${timeLabel}\nBooking code: ${bookingCode}\nWhatsApp notification sent: ${notification.ownerSent ? "Yes" : "Not configured"}`,
+        });
+      } catch (error) {
+        console.warn("[Booking] Owner notification failed", error);
+      }
+      await db.update(bookings).set({ whatsappCustomerSent: notification.customerSent, whatsappOwnerSent: notification.ownerSent || ownerNotified }).where(eq(bookings.bookingCode, bookingCode));
       return { bookingCode, startAt: startAt.toISOString(), serviceName: service[0].name, whatsapp: notification };
     }),
     adminList: adminProcedure.query(async () => listBookings()),

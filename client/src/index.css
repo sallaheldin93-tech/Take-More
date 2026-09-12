@@ -124,3 +124,5 @@ h1 em, h2 em { color: var(--orange); font-style: normal; }
 @keyframes success-pop { from { opacity: 0; transform: scale(.78); } to { opacity: 1; transform: scale(1); } }
 [dir="rtl"] .booking-steps, [dir="rtl"] .booking-footer, [dir="rtl"] .booking-grid, [dir="rtl"] .details-fields { direction: rtl; }
 @media (max-width: 650px) { .success-actions { flex-direction: column; }.booking-heading-actions { gap: 5px; } }
+
+.contact-meta .email-contact { display: flex; align-items: center; gap: 5px; color: #91a0a6; }.contact-meta .email-contact:hover, .contact-meta .email-contact:hover svg { color: var(--orange); }
