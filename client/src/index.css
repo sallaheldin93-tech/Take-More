@@ -325,3 +325,23 @@ html[data-brand-mode="white"] .service-card .card-link { color: #071b3f; backgro
 .floating-whatsapp { animation: whatsapp-pulse 2.6s ease-in-out infinite; }.floating-whatsapp:hover { animation-play-state: paused; }
 @keyframes whatsapp-pulse { 0%, 100% { box-shadow: 0 12px 28px rgba(7,27,63,.2), 0 0 0 0 rgba(37,211,102,.35); } 50% { box-shadow: 0 14px 30px rgba(7,27,63,.23), 0 0 0 10px rgba(37,211,102,0); } }
 @media (prefers-reduced-motion: reduce) { .floating-whatsapp { animation: none; } }
+
+/* Final theme polish: smooth transitions and guaranteed contrast for text/icons. */
+:root { color-scheme: dark; }
+html[data-brand-mode="white"] { color-scheme: light; }
+html, body, #root, .site-shell, .services-page, .admin-shell, .topbar, .main-nav, .main-nav a, .main-nav button, .mode-toggle, .hero, .proof-strip, .services-section, .why-section, .contact-section, .contact-card, .footer, .services-hero, .services-bottom, .service-card, .service-detail-card, .service-icon, .service-detail-top svg, .contact-social, .footer-links a, .desktop-book, .primary-button, .floating-whatsapp, .booking-panel, .booking-panel input, .booking-panel select, .booking-panel textarea { transition: background-color .48s cubic-bezier(.23,1,.32,1), color .38s cubic-bezier(.23,1,.32,1), border-color .38s ease, box-shadow .48s ease, opacity .3s ease, transform .3s cubic-bezier(.23,1,.32,1); }
+html[data-brand-mode="blue"] .hero h1, html[data-brand-mode="blue"] .section-intro h2, html[data-brand-mode="blue"] .why-copy h2, html[data-brand-mode="blue"] .contact-section h2, html[data-brand-mode="blue"] .services-hero h1, html[data-brand-mode="blue"] .services-bottom h2 { color: #f7fbff; }
+html[data-brand-mode="blue"] .hero-text, html[data-brand-mode="blue"] .section-intro > p, html[data-brand-mode="blue"] .why-copy > p:not(.eyebrow), html[data-brand-mode="blue"] .proof-strip small, html[data-brand-mode="blue"] .proof-note, html[data-brand-mode="blue"] .service-card .service-description, html[data-brand-mode="blue"] .service-card li { color: #c5d8e4; }
+html[data-brand-mode="blue"] .service-card h3, html[data-brand-mode="blue"] .service-detail-card h2 { color: #f7fbff; }
+html[data-brand-mode="blue"] .service-card .eyebrow, html[data-brand-mode="blue"] .service-detail-card .eyebrow { color: #9ed0df; }
+html[data-brand-mode="white"] .hero h1, html[data-brand-mode="white"] .section-intro h2, html[data-brand-mode="white"] .why-copy h2, html[data-brand-mode="white"] .contact-section h2, html[data-brand-mode="white"] .services-hero h1, html[data-brand-mode="white"] .services-bottom h2 { color: #071b3f; }
+html[data-brand-mode="white"] .hero-text, html[data-brand-mode="white"] .section-intro > p, html[data-brand-mode="white"] .why-copy > p:not(.eyebrow), html[data-brand-mode="white"] .proof-strip small, html[data-brand-mode="white"] .proof-note, html[data-brand-mode="white"] .service-card .service-description, html[data-brand-mode="white"] .service-card li, html[data-brand-mode="white"] .service-detail-card .service-detail-intro, html[data-brand-mode="white"] .service-detail-card li { color: #526b7a; }
+html[data-brand-mode="white"] .service-card h3, html[data-brand-mode="white"] .service-detail-card h2 { color: #071b3f; }
+html[data-brand-mode="white"] .service-card .eyebrow, html[data-brand-mode="white"] .service-detail-card .eyebrow { color: #337285; }
+.service-card svg, .service-detail-card svg, .contact-social svg, .footer-links svg, .floating-whatsapp svg, .mode-toggle svg { flex: 0 0 auto; opacity: 1; }
+html[data-brand-mode="blue"] .service-icon, html[data-brand-mode="blue"] .service-detail-top svg { color: #8be7fa; border-color: rgba(139,231,250,.35); background: rgba(0,185,237,.15); }
+html[data-brand-mode="white"] .service-icon, html[data-brand-mode="white"] .service-detail-top svg { color: #007ea8; border-color: rgba(0,126,168,.3); background: rgba(0,185,237,.1); }
+html[data-brand-mode="blue"] .footer-links, html[data-brand-mode="blue"] .contact-socials { color: #b7cbd6; }
+html[data-brand-mode="white"] .footer-links, html[data-brand-mode="white"] .contact-socials { color: #526b7a; }
+html[data-brand-mode="white"] .floating-whatsapp { color: #071b3f; }
+@media (prefers-reduced-motion: reduce) { html, body, #root, .site-shell, .services-page, .admin-shell, .topbar, .main-nav, .main-nav a, .main-nav button, .mode-toggle, .hero, .service-card, .service-detail-card { transition: none !important; } }
