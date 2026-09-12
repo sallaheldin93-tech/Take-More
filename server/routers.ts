@@ -57,7 +57,7 @@ export const appRouter = router({
     create: publicProcedure.input(z.object({
       serviceId: z.number().int().positive(),
       customerName: z.string().min(2).max(160),
-      customerPhone: z.string().min(7).max(40),
+      customerPhone: z.string().trim().min(7, "Please enter a valid WhatsApp number with at least 7 digits.").max(40),
       customerEmail: z.string().email().optional().or(z.literal("")),
       notes: z.string().max(1000).optional(),
       startAt: z.string().datetime(),
