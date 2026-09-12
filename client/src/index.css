@@ -524,3 +524,69 @@ html[data-brand-mode="blue"] .service-detail-card li { color: #d8e8ef; } html[da
   .topbar.dark-header .main-nav,
   .mobile-nav-backdrop { animation: none; transition: none; }
 }
+/* Final user-requested visual alignment: menu contrast and cards matching page surfaces. */
+html[data-brand-mode="blue"] .service-card,
+html[data-brand-mode="blue"] .service-detail-card {
+  color: #f7fbff !important;
+  background-color: #071b3f !important;
+  background-image: none !important;
+  border-color: rgba(139,231,250,.26) !important;
+  box-shadow: 0 14px 32px rgba(0,0,0,.16);
+}
+html[data-brand-mode="white"] .service-card,
+html[data-brand-mode="white"] .service-detail-card {
+  color: #071b3f !important;
+  background-color: #ffffff !important;
+  background-image: none !important;
+  border-color: rgba(7,27,63,.14) !important;
+  box-shadow: 0 14px 32px rgba(7,27,63,.08);
+}
+html[data-brand-mode="blue"] .service-card h3,
+html[data-brand-mode="blue"] .service-card .service-description,
+html[data-brand-mode="blue"] .service-card li,
+html[data-brand-mode="blue"] .service-detail-card h2,
+html[data-brand-mode="blue"] .service-detail-card .service-detail-intro,
+html[data-brand-mode="blue"] .service-detail-card li { color: #f7fbff !important; }
+html[data-brand-mode="blue"] .service-card .service-description,
+html[data-brand-mode="blue"] .service-detail-card .service-detail-intro,
+html[data-brand-mode="blue"] .service-card li,
+html[data-brand-mode="blue"] .service-detail-card li { color: #c5d8e4 !important; }
+html[data-brand-mode="white"] .service-card h3,
+html[data-brand-mode="white"] .service-card .service-description,
+html[data-brand-mode="white"] .service-card li,
+html[data-brand-mode="white"] .service-detail-card h2,
+html[data-brand-mode="white"] .service-detail-card .service-detail-intro,
+html[data-brand-mode="white"] .service-detail-card li { color: #071b3f !important; }
+html[data-brand-mode="white"] .service-card .service-description,
+html[data-brand-mode="white"] .service-detail-card .service-detail-intro,
+html[data-brand-mode="white"] .service-card li,
+html[data-brand-mode="white"] .service-detail-card li { color: #526b7a !important; }
+html[data-brand-mode="blue"] .service-card:hover,
+html[data-brand-mode="blue"] .service-detail-card:hover { border-color: rgba(0,185,237,.62) !important; box-shadow: 0 20px 44px rgba(0,0,0,.24), 0 0 0 1px rgba(0,185,237,.1); }
+html[data-brand-mode="white"] .service-card:hover,
+html[data-brand-mode="white"] .service-detail-card:hover { border-color: rgba(0,126,168,.4) !important; box-shadow: 0 20px 44px rgba(7,27,63,.13); }
+@media (max-width: 650px) {
+  html[data-brand-mode="white"] body .topbar.dark-header nav.main-nav.mobile-open {
+    color: #071b3f !important;
+    background-color: #ffffff !important;
+  }
+  html[data-brand-mode="white"] body .topbar.dark-header nav.main-nav.mobile-open > button,
+  html[data-brand-mode="white"] body .topbar.dark-header nav.main-nav.mobile-open > a {
+    color: #071b3f !important;
+    background-color: transparent !important;
+    -webkit-text-fill-color: #071b3f;
+    opacity: 1 !important;
+  }
+  html[data-brand-mode="white"] body .topbar.dark-header nav.main-nav.mobile-open > button:hover,
+  html[data-brand-mode="white"] body .topbar.dark-header nav.main-nav.mobile-open > a:hover,
+  html[data-brand-mode="white"] body .topbar.dark-header nav.main-nav.mobile-open > a.active-nav {
+    color: #007ea8 !important;
+    -webkit-text-fill-color: #007ea8;
+    background-color: #eaf8fc !important;
+  }
+  html[data-brand-mode="white"] body .topbar.dark-header nav.main-nav.mobile-open > .nav-book {
+    color: #071b3f !important;
+    -webkit-text-fill-color: #071b3f;
+    background-color: #00b9ed !important;
+  }
+}
