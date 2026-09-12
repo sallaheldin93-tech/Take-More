@@ -130,3 +130,46 @@ h1 em, h2 em { color: var(--orange); font-style: normal; }
 .header-actions { display: flex; align-items: center; gap: 10px; }.mode-toggle { border: 1px solid rgba(139,231,250,.35); border-radius: 999px; padding: 9px 12px; color: #d9e4ed; background: rgba(255,255,255,.06); font-size: 10px; font-weight: 800; transition: color .18s ease, background .18s ease, border-color .18s ease, transform .18s var(--ease-out); }.mode-toggle:hover { color: var(--orange); border-color: var(--orange); background: rgba(0,185,237,.13); transform: translateY(-2px); }
 html[data-brand-mode="white"] .topbar.dark-header { color: var(--navy); background: #ffffff; border-bottom-color: rgba(7,27,63,.12); } html[data-brand-mode="white"] .topbar.dark-header .main-nav button, html[data-brand-mode="white"] .topbar.dark-header .main-nav a { color: var(--navy); } html[data-brand-mode="white"] .topbar.dark-header .main-nav button:hover, html[data-brand-mode="white"] .topbar.dark-header .main-nav a:hover, html[data-brand-mode="white"] .topbar.dark-header .main-nav a.active-nav { color: var(--orange); } html[data-brand-mode="white"] .topbar.dark-header .mode-toggle { color: var(--navy); border-color: rgba(7,27,63,.2); background: #f2fbfe; }
 @media (max-width: 650px) { .header-actions { gap: 5px; }.mode-toggle { padding: 8px 9px; font-size: 9px; }.topbar.dark-header .header-actions .desktop-book { display: none; } }
+
+/* Complete page-wide brand modes. Every major surface follows the selected mode. */
+html[data-brand-mode="blue"], html[data-brand-mode="blue"] body { background: #071b3f; color: #f5fbff; }
+html[data-brand-mode="blue"] .site-shell, html[data-brand-mode="blue"] .services-page, html[data-brand-mode="blue"] .admin-shell { background: #071b3f; color: #f5fbff; }
+html[data-brand-mode="blue"] .hero, html[data-brand-mode="blue"] .proof-strip, html[data-brand-mode="blue"] .services-section, html[data-brand-mode="blue"] .why-section { background: #071b3f; color: #f5fbff; }
+html[data-brand-mode="blue"] .hero-text, html[data-brand-mode="blue"] .section-intro > p, html[data-brand-mode="blue"] .why-copy > p:not(.eyebrow), html[data-brand-mode="blue"] .proof-strip small, html[data-brand-mode="blue"] .proof-note { color: #b9cfdd; }
+html[data-brand-mode="blue"] .proof-strip { border-top-color: rgba(139,231,250,.18); }
+html[data-brand-mode="blue"] .service-card.lime, html[data-brand-mode="blue"] .service-card.sky, html[data-brand-mode="blue"] .service-card.ice { color: white; background: #164a78; }
+html[data-brand-mode="blue"] .service-card.blue { background: #0c315b; }
+html[data-brand-mode="blue"] .service-card .eyebrow, html[data-brand-mode="blue"] .service-card .service-description, html[data-brand-mode="blue"] .service-card ul { color: #d8e8f0; }
+html[data-brand-mode="blue"] .service-card .card-number { color: #8eb4c9; }
+html[data-brand-mode="blue"] .why-art { background: #103b68; }
+html[data-brand-mode="blue"] .why-art span { color: white; }
+html[data-brand-mode="blue"] .art-square.square-one { background: #00b9ed; }
+html[data-brand-mode="blue"] .art-square.square-two { background: #8be7fa; }
+html[data-brand-mode="blue"] .art-square.square-three { background: #2c78a5; }
+html[data-brand-mode="blue"] .admin-main { background: #071b3f; color: white; }
+html[data-brand-mode="blue"] .admin-heading p:not(.eyebrow), html[data-brand-mode="blue"] .table-title span, html[data-brand-mode="blue"] .table-row { color: #b9cfdd; }
+html[data-brand-mode="blue"] .admin-metrics div, html[data-brand-mode="blue"] .booking-table-card { color: var(--ink); background: #10345f; box-shadow: 0 8px 25px rgba(0,0,0,.16); }
+html[data-brand-mode="blue"] .admin-metrics span, html[data-brand-mode="blue"] .table-head, html[data-brand-mode="blue"] .table-row small { color: #a9c1cf; }
+html[data-brand-mode="blue"] .admin-metrics strong, html[data-brand-mode="blue"] .table-row strong, html[data-brand-mode="blue"] .table-title h2 { color: white; }
+html[data-brand-mode="blue"] .table-row { border-top-color: rgba(139,231,250,.13); }
+html[data-brand-mode="blue"] .booking-panel { color: var(--ink); background: #f5f4ef; }
+
+html[data-brand-mode="white"], html[data-brand-mode="white"] body { background: #ffffff; color: #071b3f; }
+html[data-brand-mode="white"] .site-shell, html[data-brand-mode="white"] .services-page, html[data-brand-mode="white"] .admin-shell { background: #ffffff; color: #071b3f; }
+html[data-brand-mode="white"] .hero, html[data-brand-mode="white"] .proof-strip, html[data-brand-mode="white"] .services-section, html[data-brand-mode="white"] .why-section { background: #ffffff; color: #071b3f; }
+html[data-brand-mode="white"] .services-hero { color: #071b3f; background: #ffffff; }
+html[data-brand-mode="white"] .services-hero > p:not(.eyebrow), html[data-brand-mode="white"] .services-bottom p:not(.eyebrow) { color: #647785; }
+html[data-brand-mode="white"] .services-details { background: #ffffff; }
+html[data-brand-mode="white"] .services-bottom, html[data-brand-mode="white"] .contact-section, html[data-brand-mode="white"] .footer { color: #071b3f; background: #ffffff; border-color: rgba(7,27,63,.12); }
+html[data-brand-mode="white"] .contact-section h2, html[data-brand-mode="white"] .services-bottom h2 { color: #071b3f; }
+html[data-brand-mode="white"] .contact-card { color: #071b3f; }
+html[data-brand-mode="white"] .contact-card p, html[data-brand-mode="white"] .contact-meta, html[data-brand-mode="white"] .contact-meta .whatsapp-contact, html[data-brand-mode="white"] .contact-meta .email-contact { color: #647785; }
+html[data-brand-mode="white"] .contact-social { color: #071b3f; background: #e8faff; border-color: rgba(0,185,237,.25); }
+html[data-brand-mode="white"] .contact-socials { border-color: rgba(7,27,63,.12); color: #647785; }
+html[data-brand-mode="white"] .footer p, html[data-brand-mode="white"] .footer-links { color: #647785; }
+html[data-brand-mode="white"] .footer-links .social-link:hover { color: #071b3f; background: #e8faff; }
+html[data-brand-mode="white"] .admin-main { background: #ffffff; color: #071b3f; }
+html[data-brand-mode="white"] .admin-metrics div, html[data-brand-mode="white"] .booking-table-card { background: #f7fbfd; }
+html[data-brand-mode="white"] .admin-heading p:not(.eyebrow), html[data-brand-mode="white"] .table-title span, html[data-brand-mode="white"] .table-row { color: #647785; }
+
+html[data-brand-mode="blue"] .scroll-reveal, html[data-brand-mode="white"] .scroll-reveal { transition-duration: .65s; }
