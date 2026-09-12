@@ -193,3 +193,32 @@ html[data-brand-mode="blue"] .scroll-reveal, html[data-brand-mode="white"] .scro
   .topbar.dark-header .main-nav a.active-nav { background: rgba(0,185,237,.1); }
   .topbar.dark-header .main-nav.mobile-open { display: grid; }
 }
+
+/* Refined motion, premium cards, and readable logo treatment in White Mode. */
+@media (max-width: 650px) {
+  .topbar.dark-header .main-nav { display: grid; visibility: hidden; opacity: 0; transform: translateY(-12px) scale(.98); transform-origin: top center; max-height: 0; overflow: hidden; pointer-events: none; transition: opacity .24s var(--ease-out), transform .24s var(--ease-out), max-height .3s var(--ease-out), visibility .3s; }
+  .topbar.dark-header .main-nav.mobile-open { display: grid; visibility: visible; opacity: 1; transform: translateY(0) scale(1); max-height: 390px; pointer-events: auto; }
+  .topbar.dark-header .main-nav button, .topbar.dark-header .main-nav a { transition: color .18s ease, background .18s ease, transform .18s var(--ease-out); }
+  .topbar.dark-header .main-nav.mobile-open button, .topbar.dark-header .main-nav.mobile-open a { animation: mobile-nav-item .28s var(--ease-out) both; }
+  .topbar.dark-header .main-nav.mobile-open > :nth-child(2) { animation-delay: .03s; }.topbar.dark-header .main-nav.mobile-open > :nth-child(3) { animation-delay: .06s; }.topbar.dark-header .main-nav.mobile-open > :nth-child(4) { animation-delay: .09s; }.topbar.dark-header .main-nav.mobile-open > :nth-child(5) { animation-delay: .12s; }
+  @keyframes mobile-nav-item { from { opacity: 0; transform: translateX(-8px); } to { opacity: 1; transform: translateX(0); } }
+}
+html[data-brand-mode="white"] .topbar.dark-header .brand { padding: 2px 8px; border-radius: 11px; background: #071b3f; }
+html[data-brand-mode="white"] .topbar.dark-header .brand img { width: 153px; height: 43px; }
+.service-card, .service-detail-card { border: 1px solid rgba(7,27,63,.06); box-shadow: 0 10px 26px rgba(7,27,63,.06); transition: transform .24s var(--ease-out), box-shadow .24s var(--ease-out), border-color .24s ease, filter .24s ease; }
+.service-card:hover, .service-detail-card:hover { border-color: rgba(0,185,237,.38); box-shadow: 0 19px 42px rgba(7,27,63,.15); filter: saturate(1.06); }
+.service-card .service-icon, .service-detail-card .service-detail-top svg { transition: transform .24s var(--ease-out), background .24s ease; }
+.service-card:hover .service-icon, .service-detail-card:hover .service-detail-top svg { transform: translateY(-3px) rotate(-5deg); }
+html[data-brand-mode="white"] .service-card.lime { background: linear-gradient(145deg, #dffaff 0%, #a9edf9 100%); }
+html[data-brand-mode="white"] .service-card.sky { background: linear-gradient(145deg, #eafaff 0%, #c7eef8 100%); }
+html[data-brand-mode="white"] .service-card.ice { background: linear-gradient(145deg, #f0f6ff 0%, #d9eaff 100%); }
+html[data-brand-mode="white"] .service-card.blue { background: linear-gradient(145deg, #215984 0%, #0d315a 100%); }
+html[data-brand-mode="blue"] .service-card.lime { background: linear-gradient(145deg, #175585 0%, #0d315d 100%); }
+html[data-brand-mode="blue"] .service-card.sky { background: linear-gradient(145deg, #1d638e 0%, #103b68 100%); }
+html[data-brand-mode="blue"] .service-card.ice { background: linear-gradient(145deg, #23628a 0%, #143d69 100%); }
+html[data-brand-mode="blue"] .service-card.blue { background: linear-gradient(145deg, #123d70 0%, #071b3f 100%); }
+html[data-brand-mode="white"] .service-detail-cyan { background: linear-gradient(145deg, #bdf4fc 0%, #81ddec 100%); }
+html[data-brand-mode="white"] .service-detail-ice { background: linear-gradient(145deg, #ecfbff 0%, #cbeef6 100%); }
+html[data-brand-mode="white"] .service-detail-sky { background: linear-gradient(145deg, #eff6ff 0%, #d5e8fa 100%); }
+html[data-brand-mode="white"] .service-detail-navy { background: linear-gradient(145deg, #164a78 0%, #071b3f 100%); }
+@media (prefers-reduced-motion: reduce) { .topbar.dark-header .main-nav, .topbar.dark-header .main-nav.mobile-open, .topbar.dark-header .main-nav.mobile-open > * { animation: none; transition: none; } }
