@@ -76,7 +76,7 @@ export default function Services() {
     }), { threshold: 0.12 });
     items.forEach(item => observer.observe(item));
     return () => observer.disconnect();
-  }, []);
+  }, [language]);
 
   useEffect(() => {
     if (!mobileOpen) return;

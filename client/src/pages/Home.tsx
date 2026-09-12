@@ -156,7 +156,7 @@ export default function Home() {
     }), { threshold: 0.12 });
     items.forEach(item => observer.observe(item));
     return () => observer.disconnect();
-  }, []);
+  }, [language]);
 
   const scrollTo = (id: string) => {
     setMobileOpen(false);
