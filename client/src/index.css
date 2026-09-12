@@ -262,3 +262,10 @@ html[data-brand-mode="white"] .service-detail-navy { color: #071b3f; background:
 html[data-brand-mode="white"] .topbar.dark-header .brand { padding: 0; border: 0; border-radius: 0; background: transparent; box-shadow: none; }
 html[data-brand-mode="white"] .topbar.dark-header .brand img { width: 169px; height: 47px; }
 @media (max-width: 650px) { html[data-brand-mode="white"] .topbar.dark-header .brand { padding: 0; background: transparent; } html[data-brand-mode="white"] .topbar.dark-header .brand img { width: 169px; height: 47px; } }
+
+/* Footer logo uses the matching transparent asset for each background. */
+.footer .brand { display: inline-flex; align-items: center; justify-content: flex-start; width: 169px; height: 47px; padding: 0; border-radius: 0; background: transparent; }
+.footer .brand img { display: block; width: 169px; height: 47px; object-fit: contain; }
+html[data-brand-mode="white"] .footer .brand { background: transparent; box-shadow: none; }
+html[data-brand-mode="white"] .footer .brand img { width: 169px; height: 47px; }
+@media (max-width: 650px) { .footer .brand, .footer .brand img { width: 150px; height: 42px; } }
