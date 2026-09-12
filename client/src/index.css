@@ -269,3 +269,5 @@ html[data-brand-mode="white"] .topbar.dark-header .brand img { width: 169px; hei
 html[data-brand-mode="white"] .footer .brand { background: transparent; box-shadow: none; }
 html[data-brand-mode="white"] .footer .brand img { width: 169px; height: 47px; }
 @media (max-width: 650px) { .footer .brand, .footer .brand img { width: 150px; height: 42px; } }
+
+.contact-meta .whatsapp-contact.icon-only { width: 30px; height: 30px; justify-content: center; border: 1px solid rgba(37,211,102,.35); border-radius: 50%; color: #25d366; background: rgba(37,211,102,.08); }.contact-meta .whatsapp-contact.icon-only:hover { color: white; background: #25d366; }
