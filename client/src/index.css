@@ -590,3 +590,29 @@ html[data-brand-mode="white"] .service-detail-card:hover { border-color: rgba(0,
     background-color: #00b9ed !important;
   }
 }
+/* Why Us section after removing the decorative ERP/POS/CRM artwork. */
+.why-section.why-section-copy {
+  grid-template-columns: minmax(0, 820px);
+  justify-content: center;
+  gap: 0;
+  padding-top: 105px;
+  padding-bottom: 125px;
+}
+.why-section.why-section-copy .why-copy { width: 100%; }
+.why-section.why-section-copy .why-copy > p:not(.eyebrow) { max-width: 620px; }
+.why-section.why-section-copy .why-points {
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px;
+  margin-top: 38px;
+}
+.why-section.why-section-copy .why-points > div {
+  padding: 20px;
+  border: 1px solid rgba(139,231,250,.2);
+  border-radius: 14px;
+  background: transparent;
+}
+html[data-brand-mode="white"] .why-section.why-section-copy .why-points > div { border-color: rgba(7,27,63,.13); }
+@media (max-width: 650px) {
+  .why-section.why-section-copy { display: block; padding-top: 72px; padding-bottom: 82px; }
+  .why-section.why-section-copy .why-points { grid-template-columns: 1fr; }
+}
