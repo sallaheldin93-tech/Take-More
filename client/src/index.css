@@ -801,3 +801,58 @@ html[data-brand-mode="white"] .language-switch svg { color: #007ea8; }
   .topbar.dark-header .language-switch,
   .topbar.dark-header .mode-toggle { width: 35px; min-width: 35px; height: 35px; min-height: 35px; }
 }
+/* Booking reliability UI polish: intentional motion, focus states, and reduced-motion support. */
+.booking-panel {
+  animation: booking-panel-in 240ms cubic-bezier(.23, 1, .32, 1) both;
+}
+
+.booking-panel input:focus,
+.booking-panel select:focus,
+.booking-panel textarea:focus {
+  outline: none;
+  border-color: var(--cyan, #10bce8);
+  box-shadow: 0 0 0 4px color-mix(in srgb, var(--cyan, #10bce8) 18%, transparent);
+}
+
+.booking-panel .slot {
+  transition: transform 160ms cubic-bezier(.23, 1, .32, 1), background-color 180ms ease, border-color 180ms ease, color 180ms ease;
+}
+
+.booking-panel .slot:hover:not(.selected) {
+  transform: translateY(-2px);
+}
+
+.primary-button,
+.card-link,
+.main-nav a,
+.main-nav button,
+.contact-social,
+.footer-links a {
+  transition: transform 160ms cubic-bezier(.23, 1, .32, 1), color 180ms ease, background-color 180ms ease, border-color 180ms ease, box-shadow 180ms ease;
+}
+
+.primary-button:active,
+.card-link:active,
+.contact-social:active,
+.footer-links a:active {
+  transform: scale(.97);
+}
+
+@keyframes booking-panel-in {
+  from { opacity: 0; transform: translateY(12px) scale(.985); }
+  to { opacity: 1; transform: translateY(0) scale(1); }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .booking-panel,
+  .booking-panel .slot,
+  .primary-button,
+  .card-link,
+  .main-nav a,
+  .main-nav button,
+  .contact-social,
+  .footer-links a {
+    animation: none !important;
+    transition: none !important;
+  }
+}

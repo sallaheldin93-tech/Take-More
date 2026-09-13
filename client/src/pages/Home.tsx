@@ -103,7 +103,16 @@ function BookingPanel({ onClose }: { onClose?: () => void }) {
   };
   const createBooking = trpc.booking.create.useMutation({
     onSuccess: result => { setSuccess({ bookingCode: result.bookingCode, serviceName: result.serviceName, whatsappSent: result.whatsapp.customerSent }); setSlot(""); setDate(""); setForm({ customerName: "", customerPhone: "", customerEmail: "", notes: "" }); },
-    onError: error => toast.error(error.message.includes("customerPhone") ? (language === "ar" ? "اكتب رقم WhatsApp صحيحًا من 7 أرقام على الأقل." : "Please enter a valid WhatsApp number with at least 7 digits.") : error.message),
+    onError: error => {
+      const message = error.message.includes("customerPhone")
+        ? (language === "ar" ? "اكتب رقم WhatsApp صحيحًا من 7 أرقام على الأقل." : "Please enter a valid WhatsApp number with at least 7 digits.")
+        : error.data?.code === "PRECONDITION_FAILED"
+          ? (language === "ar" ? "الحجز غير متاح مؤقتًا. يرجى المحاولة مرة أخرى بعد قليل." : "Booking is temporarily unavailable. Please try again shortly.")
+          : error.data?.code === "CONFLICT"
+            ? (language === "ar" ? "هذا الموعد تم حجزه للتو. اختر موعدًا آخر." : "This slot was just booked. Please choose another time.")
+            : error.message;
+      toast.error(message);
+    },
   });
   const selectedService = config.data?.services.find(item => item.id === serviceId);
   const minDate = useMemo(() => new Date(Date.now() + 24 * 60 * 60 * 1000).toISOString().slice(0, 10), []);
