@@ -71,6 +71,7 @@ export const appRouter = router({
       customerEmail: z.string().email().optional().or(z.literal("")),
       notes: z.string().max(1000).optional(),
       startAt: z.string().datetime(),
+      language: z.enum(["ar", "en"]).default("en"),
     })).mutation(async ({ input }) => {
       const db = await getDb();
       if (!db) throw new TRPCError({ code: "PRECONDITION_FAILED", message: "Booking database is not connected yet." });
@@ -89,7 +90,7 @@ export const appRouter = router({
       }
       const dateLabel = formatDateTime(startAt).split(",")[0] || formatDateTime(startAt);
       const timeLabel = formatDateTime(startAt).split(",")[1]?.trim() || "";
-      const notification = await notifyBooking({ bookingCode, customerName: input.customerName, customerPhone: input.customerPhone, serviceName: service[0].name, dateLabel, timeLabel });
+      const notification = await notifyBooking({ bookingCode, customerName: input.customerName, customerPhone: input.customerPhone, serviceName: service[0].name, dateLabel, timeLabel, language: input.language });
       let ownerNotified = false;
       try {
         ownerNotified = await notifyOwner({
