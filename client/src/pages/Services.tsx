@@ -18,17 +18,17 @@ import {
 import { Link } from "wouter";
 
 const servicesEn = [
-  { icon: Layers3, image: "/manus-storage/erp-illustration_8dfcf856.png", serviceId: 1, number: "01", kicker: "OPERATIONS", title: "ERP Solutions", intro: "Bring finance, inventory and daily operations into one clear, connected system.", bullets: ["Finance and accounting workflows", "Inventory control and stock visibility", "Reports that help you act faster"], tone: "service-detail-cyan" },
-  { icon: ShoppingCart, image: "/manus-storage/pos-illustration_680ba0c9.png", serviceId: 2, number: "02", kicker: "SALES", title: "POS Systems", intro: "Keep every transaction moving with a reliable point-of-sale experience built around your business.", bullets: ["Fast sales and billing", "Multi-branch support", "Daily reconciliation and insights"], tone: "service-detail-ice" },
-  { icon: Globe2, image: "/manus-storage/website-illustration_d9df8bb4.png", serviceId: 3, number: "03", kicker: "PRESENCE", title: "Websites", intro: "Turn your digital presence into a practical business asset that builds trust and converts visitors.", bullets: ["Responsive, premium design", "Business and e-commerce builds", "SEO-friendly foundations"], tone: "service-detail-sky" },
-  { icon: Zap, image: "/manus-storage/crm-illustration_83bed60d.png", serviceId: 4, number: "04", kicker: "GROWTH", title: "Business & CRM Automation", intro: "Make follow-ups, lead tracking and internal workflows simpler for your whole team.", bullets: ["Contact and lead tracking", "Task and follow-up automation", "Clear sales pipeline visibility"], tone: "service-detail-navy" },
+  { icon: Layers3, image: "/assets/erp-illustration.png", serviceId: 1, number: "01", kicker: "OPERATIONS", title: "ERP Solutions", intro: "Bring finance, inventory and daily operations into one clear, connected system.", bullets: ["Finance and accounting workflows", "Inventory control and stock visibility", "Reports that help you act faster"], tone: "service-detail-cyan" },
+  { icon: ShoppingCart, image: "/assets/pos-illustration.png", serviceId: 2, number: "02", kicker: "SALES", title: "POS Systems", intro: "Keep every transaction moving with a reliable point-of-sale experience built around your business.", bullets: ["Fast sales and billing", "Multi-branch support", "Daily reconciliation and insights"], tone: "service-detail-ice" },
+  { icon: Globe2, image: "/assets/website-illustration.png", serviceId: 3, number: "03", kicker: "PRESENCE", title: "Websites", intro: "Turn your digital presence into a practical business asset that builds trust and converts visitors.", bullets: ["Responsive, premium design", "Business and e-commerce builds", "SEO-friendly foundations"], tone: "service-detail-sky" },
+  { icon: Zap, image: "/assets/crm-illustration.png", serviceId: 4, number: "04", kicker: "GROWTH", title: "Business & CRM Automation", intro: "Make follow-ups, lead tracking and internal workflows simpler for your whole team.", bullets: ["Contact and lead tracking", "Task and follow-up automation", "Clear sales pipeline visibility"], tone: "service-detail-navy" },
 ];
 
 const servicesAr = [
-  { icon: Layers3, image: "/manus-storage/erp-illustration_8dfcf856.png", serviceId: 1, number: "01", kicker: "العمليات", title: "حلول ERP", intro: "اربط الحسابات والمخزون والعمليات اليومية داخل نظام واحد واضح ومتكامل.", bullets: ["إدارة الحسابات والمالية", "مراقبة المخزون وتوفر المنتجات", "تقارير تساعدك على اتخاذ القرار"], tone: "service-detail-cyan" },
-  { icon: ShoppingCart, image: "/manus-storage/pos-illustration_680ba0c9.png", serviceId: 2, number: "02", kicker: "المبيعات", title: "أنظمة نقاط البيع", intro: "حافظ على سرعة كل عملية بيع من خلال تجربة نقاط بيع موثوقة ومصممة لنشاطك.", bullets: ["مبيعات وفواتير سريعة", "دعم الفروع المتعددة", "تسويات وتقارير يومية"], tone: "service-detail-ice" },
-  { icon: Globe2, image: "/manus-storage/website-illustration_d9df8bb4.png", serviceId: 3, number: "03", kicker: "الحضور الرقمي", title: "تصميم وتطوير المواقع", intro: "حوّل حضورك الرقمي إلى أصل تجاري يعزز الثقة ويحول الزوار إلى عملاء.", bullets: ["تصميم احترافي ومتجاوب", "مواقع أعمال ومتاجر إلكترونية", "أساس قوي لمحركات البحث"], tone: "service-detail-sky" },
-  { icon: Zap, image: "/manus-storage/crm-illustration_83bed60d.png", serviceId: 4, number: "04", kicker: "النمو", title: "أتمتة الأعمال وCRM", intro: "بسّط المتابعات وإدارة العملاء وسير العمل الداخلي لفريقك بالكامل.", bullets: ["إدارة جهات الاتصال والعملاء", "أتمتة المهام والمتابعات", "رؤية واضحة لخط سير المبيعات"], tone: "service-detail-navy" },
+  { icon: Layers3, image: "/assets/erp-illustration.png", serviceId: 1, number: "01", kicker: "العمليات", title: "حلول ERP", intro: "اربط الحسابات والمخزون والعمليات اليومية داخل نظام واحد واضح ومتكامل.", bullets: ["إدارة الحسابات والمالية", "مراقبة المخزون وتوفر المنتجات", "تقارير تساعدك على اتخاذ القرار"], tone: "service-detail-cyan" },
+  { icon: ShoppingCart, image: "/assets/pos-illustration.png", serviceId: 2, number: "02", kicker: "المبيعات", title: "أنظمة نقاط البيع", intro: "حافظ على سرعة كل عملية بيع من خلال تجربة نقاط بيع موثوقة ومصممة لنشاطك.", bullets: ["مبيعات وفواتير سريعة", "دعم الفروع المتعددة", "تسويات وتقارير يومية"], tone: "service-detail-ice" },
+  { icon: Globe2, image: "/assets/website-illustration.png", serviceId: 3, number: "03", kicker: "الحضور الرقمي", title: "تصميم وتطوير المواقع", intro: "حوّل حضورك الرقمي إلى أصل تجاري يعزز الثقة ويحول الزوار إلى عملاء.", bullets: ["تصميم احترافي ومتجاوب", "مواقع أعمال ومتاجر إلكترونية", "أساس قوي لمحركات البحث"], tone: "service-detail-sky" },
+  { icon: Zap, image: "/assets/crm-illustration.png", serviceId: 4, number: "04", kicker: "النمو", title: "أتمتة الأعمال وCRM", intro: "بسّط المتابعات وإدارة العملاء وسير العمل الداخلي لفريقك بالكامل.", bullets: ["إدارة جهات الاتصال والعملاء", "أتمتة المهام والمتابعات", "رؤية واضحة لخط سير المبيعات"], tone: "service-detail-navy" },
 ];
 
 const pageCopy = {
@@ -90,7 +90,7 @@ export default function Services() {
   return (
     <div className="services-page" dir={language === "ar" ? "rtl" : "ltr"}>
       <header className="topbar dark-header">
-        <Link className="brand" href="/" onClick={() => setMobileOpen(false)}><img src={brandMode === "white" ? "/manus-storage/take-more-logo-white_a363634f.png" : "/manus-storage/take-more-logo_88d6d8ae.png"} alt="Take More — Retail & Web, Made Smarter" /></Link>
+        <Link className="brand" href="/" onClick={() => setMobileOpen(false)}><img src={brandMode === "white" ? "/assets/take-more-logo-white.png" : "/assets/take-more-logo.png"} alt="Take More — Retail & Web, Made Smarter" /></Link>
         <nav id="services-mobile-nav" className={mobileOpen ? "main-nav mobile-open" : "main-nav"}>
           <Link href="/" onClick={() => setMobileOpen(false)}>{content.nav.home}</Link>
           <Link className="active-nav" href="/services" onClick={() => setMobileOpen(false)}>{content.nav.services}</Link>
@@ -113,7 +113,7 @@ export default function Services() {
         <section className="services-bottom scroll-reveal"><div><p className="eyebrow">{content.bottomEyebrow}</p><h2>{content.bottomTitleA}<br /><em>{content.bottomTitleB}</em></h2></div><div><p>{content.bottomText}</p><Link className="primary-button" href="/?book=1">{content.discovery} <ArrowUpRight size={17} /></Link></div></section>
       </main>
 
-      <footer className="footer"><Link className="brand" href="/"><img src={brandMode === "white" ? "/manus-storage/take-more-logo-white_a363634f.png" : "/manus-storage/take-more-logo_88d6d8ae.png"} alt="Take More — Retail & Web, Made Smarter" /></Link><p>{content.footer}</p><div className="footer-links"><a href="https://www.facebook.com/share/1C6TU1C2ub/?mibextid=wwXIfr" target="_blank" rel="noreferrer">Facebook</a><a href="https://www.instagram.com/takemore.eg?stkn=YzJhYXNpYnJnZnFl&utm_source=qr" target="_blank" rel="noreferrer">Instagram</a><Link href="/admin">Admin</Link></div></footer>
+      <footer className="footer"><Link className="brand" href="/"><img src={brandMode === "white" ? "/assets/take-more-logo-white.png" : "/assets/take-more-logo.png"} alt="Take More — Retail & Web, Made Smarter" /></Link><p>{content.footer}</p><div className="footer-links"><a href="https://www.facebook.com/share/1C6TU1C2ub/?mibextid=wwXIfr" target="_blank" rel="noreferrer">Facebook</a><a href="https://www.instagram.com/takemore.eg?stkn=YzJhYXNpYnJnZnFl&utm_source=qr" target="_blank" rel="noreferrer">Instagram</a><Link href="/admin">Admin</Link></div></footer>
       <a className="floating-whatsapp" href="https://wa.me/201153213270" target="_blank" rel="noreferrer" aria-label="Chat with Take More on WhatsApp"><MessageCircle size={25} /><span>{content.chat}</span></a>
     </div>
   );
