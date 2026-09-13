@@ -856,3 +856,31 @@ html[data-brand-mode="white"] .language-switch svg { color: #007ea8; }
     transition: none !important;
   }
 }
+.booking-date-input {
+  cursor: pointer;
+  color-scheme: dark;
+}
+
+html[data-brand-mode="white"] .booking-date-input {
+  color-scheme: light;
+}
+
+.booking-date-input::-webkit-calendar-picker-indicator {
+  cursor: pointer;
+  opacity: .82;
+  padding: 4px;
+  border-radius: 6px;
+  transition: opacity 160ms ease, background-color 160ms ease, transform 160ms ease;
+}
+
+.booking-date-input:hover::-webkit-calendar-picker-indicator {
+  opacity: 1;
+  transform: scale(1.08);
+  background: color-mix(in srgb, var(--cyan, #10bce8) 15%, transparent);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .booking-date-input::-webkit-calendar-picker-indicator {
+    transition: none;
+  }
+}
