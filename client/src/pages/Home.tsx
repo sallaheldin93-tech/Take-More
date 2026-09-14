@@ -38,7 +38,7 @@ const serviceCopyAr = [
 
 const homeCopy = {
   en: {
-    nav: { home: "Home", services: "Services", why: "Why us", contact: "Contact", book: "Book a call", start: "Get started" },
+    nav: { home: "Home", services: "Services", work: "Solutions", process: "How we work", why: "Why us", contact: "Contact", book: "Book a call", start: "Get started" },
     mode: { white: "White", blue: "Blue" },
     heroEyebrow: "SOFTWARE FOR THE REAL WORLD", heroTitleA: "Software that runs", heroTitleB: "your entire", heroTitleC: "business.", heroLine: "ERP • POS • Websites • Business & CRM Automation.", heroText: "Helping businesses simplify operations and grow smarter.", discovery: "Book a discovery call", explore: "Explore services",
     servicesEyebrow: "WHAT WE DO", servicesTitleA: "One partner for", servicesTitleB: "your business software.", servicesText: "From daily operations to customer growth — we deliver the systems your business runs on.", cardCta: "Get started",
@@ -46,13 +46,74 @@ const homeCopy = {
     contactEyebrow: "READY TO SIMPLIFY?", contactTitleA: "Let's make your", contactTitleB: "next move smarter.", contactText: "Tell us about your business and we will recommend the right software and automation for your growth.", tellUs: "Tell us about your business", connect: "Connect with us", location: "Cairo, Egypt", footer: "Smart Business Solutions — Helping businesses simplify operations and grow smarter.", chat: "Chat with us"
   },
   ar: {
-    nav: { home: "الرئيسية", services: "خدماتنا", why: "لماذا نحن", contact: "تواصل معنا", book: "احجز مكالمة", start: "ابدأ الآن" },
+    nav: { home: "الرئيسية", services: "خدماتنا", work: "حلولنا", process: "كيف نعمل", why: "لماذا نحن", contact: "تواصل معنا", book: "احجز مكالمة", start: "ابدأ الآن" },
     mode: { white: "أبيض", blue: "أزرق" },
     heroEyebrow: "حلول برمجية تناسب أعمالك", heroTitleA: "برمجيات تدير", heroTitleB: "كل تفاصيل", heroTitleC: "أعمالك.", heroLine: "ERP • POS • المواقع • أتمتة الأعمال وCRM.", heroText: "نساعد الشركات على تبسيط عملياتها وتحقيق نمو أذكى.", discovery: "احجز مكالمة استكشافية", explore: "استكشف خدماتنا",
     servicesEyebrow: "ماذا نقدم", servicesTitleA: "شريك واحد لكل", servicesTitleB: "حلول أعمالك التقنية.", servicesText: "من العمليات اليومية إلى نمو العملاء — نوفر الأنظمة التي يعتمد عليها نشاطك.", cardCta: "ابدأ الآن",
     whyEyebrow: "لماذا TAKE MORE", whyTitleA: "نتائج تمنحك", whyTitleB: "ثقة أكبر.", whyText: "نجمع بين الخبرة التقنية والفهم التجاري لنقدم أنظمة مترابطة تحقق قيمة قابلة للقياس وتدعم نمو أعمالك بثبات.", stats: ["عميل سعيد", "مشروع تم تنفيذه", "سنوات من الخبرة", "حلول أعمال أساسية"], clear: "رؤية واضحة", clearText: "حلول مصممة وفق احتياجات نشاطك.", scale: "جاهز للتوسع", scaleText: "أنظمة تنمو مع طموحاتك.",
     contactEyebrow: "جاهز لتبسيط أعمالك؟", contactTitleA: "لنصنع خطوتك", contactTitleB: "القادمة بذكاء.", contactText: "حدثنا عن نشاطك وسنرشح لك أنسب الحلول البرمجية والأتمتة التي تدعم نموك.", tellUs: "حدثنا عن نشاطك", connect: "تواصل معنا", location: "القاهرة، مصر", footer: "حلول أعمال ذكية تساعد الشركات على تبسيط عملياتها والنمو بكفاءة.", chat: "تواصل معنا"
   }
+} as const;
+
+const trustSections = {
+  en: {
+    showcaseEyebrow: "CAPABILITY SNAPSHOTS",
+    showcaseTitleA: "Solutions built",
+    showcaseTitleB: "around real work.",
+    showcaseText: "A closer look at the business systems Take More can shape around your operations, customers and growth goals.",
+    showcaseItems: [
+      { icon: Layers3, number: "01", title: "Connected operations", text: "Bring finance, inventory and daily workflows into one clearer operating picture.", tag: "ERP / Operations" },
+      { icon: Zap, number: "02", title: "Faster transactions", text: "Create a dependable POS experience that keeps sales, billing and reporting moving.", tag: "POS / Retail" },
+      { icon: Sparkles, number: "03", title: "Digital presence", text: "Turn your website into a useful business asset that earns trust and starts conversations.", tag: "Web / Growth" },
+    ],
+    processEyebrow: "HOW WE WORK",
+    processTitleA: "From first conversation",
+    processTitleB: "to a system that fits.",
+    processText: "A simple, transparent process keeps decisions clear and progress visible at every step.",
+    processItems: [
+      ["01", "Understand", "We listen to your business, goals and current bottlenecks."],
+      ["02", "Shape", "We turn the requirements into a focused solution and clear next steps."],
+      ["03", "Build", "We design, develop and test the experience around your real workflow."],
+      ["04", "Grow", "We hand over a foundation that can improve as your business grows."],
+    ],
+    proofEyebrow: "THE TAKE MORE APPROACH",
+    proofTitleA: "Clear thinking",
+    proofTitleB: "before more software.",
+    proofItems: [
+      ["Business-first", "Technology choices start with the way your team actually works."],
+      ["Built to evolve", "A strong foundation leaves room for new branches, users and ideas."],
+      ["One connected view", "Your operations, customer experience and digital presence work together."],
+    ],
+  },
+  ar: {
+    showcaseEyebrow: "نماذج من الحلول",
+    showcaseTitleA: "حلول مصممة",
+    showcaseTitleB: "حول واقع عملك.",
+    showcaseText: "نظرة على نوعية الأنظمة التي يمكن لـ Take More تصميمها حول عملياتك وعملائك وأهداف نموك.",
+    showcaseItems: [
+      { icon: Layers3, number: "01", title: "عمليات مترابطة", text: "اربط الحسابات والمخزون وسير العمل اليومي في صورة تشغيلية أوضح.", tag: "ERP / العمليات" },
+      { icon: Zap, number: "02", title: "معاملات أسرع", text: "أنشئ تجربة نقاط بيع موثوقة تحافظ على انسيابية المبيعات والفواتير والتقارير.", tag: "POS / التجزئة" },
+      { icon: Sparkles, number: "03", title: "حضور رقمي فعال", text: "حوّل موقعك إلى أصل تجاري مفيد يبني الثقة ويفتح حوارات جديدة.", tag: "المواقع / النمو" },
+    ],
+    processEyebrow: "كيف نعمل",
+    processTitleA: "من أول محادثة",
+    processTitleB: "إلى نظام يناسبك.",
+    processText: "خطوات بسيطة وشفافة تجعل القرارات واضحة والتقدم ظاهرًا في كل مرحلة.",
+    processItems: [
+      ["01", "نفهم", "نستمع إلى نشاطك وأهدافك والعوائق الموجودة في عملياتك."],
+      ["02", "نخطط", "نحوّل الاحتياجات إلى حل واضح وخطوات تنفيذ محددة."],
+      ["03", "نبني", "نصمم ونطور ونختبر التجربة حول طريقة عمل فريقك الحقيقية."],
+      ["04", "نطوّر", "نسلمك أساسًا قويًا يمكن تحسينه مع نمو نشاطك."],
+    ],
+    proofEyebrow: "منهج TAKE MORE",
+    proofTitleA: "رؤية واضحة",
+    proofTitleB: "قبل المزيد من البرمجيات.",
+    proofItems: [
+      ["الأعمال أولًا", "اختيارات التقنية تبدأ من طريقة عمل فريقك الفعلية."],
+      ["جاهز للتطور", "أساس قوي يترك مساحة للفروع والمستخدمين والأفكار الجديدة."],
+      ["صورة مترابطة", "عملياتك وتجربة عملائك وحضورك الرقمي تعمل معًا."],
+    ],
+  },
 } as const;
 
 function AnimatedStat({ value, suffix, label }: { value: number; suffix?: string; label: string }) {
@@ -136,6 +197,7 @@ export default function Home() {
   const [brandMode, setBrandMode] = useState<"blue" | "white">(() => (localStorage.getItem("take-more-mode") as "blue" | "white") || "blue");
   const content = homeCopy[language];
   const services = language === "ar" ? serviceCopyAr : serviceCopy;
+  const trust = trustSections[language];
 
   useEffect(() => {
     document.documentElement.dataset.brandMode = brandMode;
@@ -178,6 +240,8 @@ export default function Home() {
       <nav id="home-mobile-nav" className={mobileOpen ? "main-nav mobile-open" : "main-nav"}>
         <button onClick={() => scrollTo("home")}>{content.nav.home}</button>
         <a href="/services" onClick={() => setMobileOpen(false)}>{content.nav.services}</a>
+        <button onClick={() => scrollTo("work")}>{content.nav.work}</button>
+        <button onClick={() => scrollTo("process")}>{content.nav.process}</button>
         <button onClick={() => scrollTo("why")}>{content.nav.why}</button>
         <button onClick={() => scrollTo("contact")}>{content.nav.contact}</button>
         <button className="nav-book" onClick={() => { setBookingOpen(true); setMobileOpen(false); }}>{content.nav.book} <MoveUpRight size={15} /></button>
@@ -203,6 +267,12 @@ export default function Home() {
       </section>
 
       <section id="services" className="services-section container"><div className="section-intro"><div><p className="eyebrow">{content.servicesEyebrow}</p><h2>{content.servicesTitleA}<br /><em>{content.servicesTitleB}</em></h2></div><p>{content.servicesText}</p></div><div className="service-grid">{services.map(({ icon: Icon, eyebrow, title, description, bullets, tone }, index) => <article className={`service-card ${tone} scroll-reveal`} key={title}><div className="service-icon"><Icon size={22} /></div><p className="eyebrow">{eyebrow}</p><h3>{title}</h3><p className="service-description">{description}</p><ul>{bullets.map(item => <li key={item}><Check size={15} />{item}</li>)}</ul><button className="card-link" onClick={() => setBookingOpen(true)}>{content.cardCta} <MoveUpRight size={15} /></button><span className="card-number">0{index + 1}</span></article>)}</div></section>
+
+      <section id="work" className="showcase-section container scroll-reveal"><div className="section-intro"><div><p className="eyebrow">{trust.showcaseEyebrow}</p><h2>{trust.showcaseTitleA}<br /><em>{trust.showcaseTitleB}</em></h2></div><p>{trust.showcaseText}</p></div><div className="showcase-grid">{trust.showcaseItems.map(({ icon: Icon, number, title, text: description, tag }) => <article className="showcase-card" key={number}><div className="showcase-card-top"><span className="showcase-icon"><Icon size={22} /></span><span>{number}</span></div><p className="eyebrow">{tag}</p><h3>{title}</h3><p>{description}</p><span className="showcase-arrow"><MoveUpRight size={17} /></span></article>)}</div></section>
+
+      <section id="process" className="process-section container scroll-reveal"><div className="process-heading"><p className="eyebrow">{trust.processEyebrow}</p><h2>{trust.processTitleA}<br /><em>{trust.processTitleB}</em></h2><p>{trust.processText}</p></div><div className="process-grid">{trust.processItems.map(([number, title, description]) => <article className="process-step" key={number}><span>{number}</span><div><h3>{title}</h3><p>{description}</p></div></article>)}</div></section>
+
+      <section id="proof" className="proof-section container scroll-reveal"><div><p className="eyebrow">{trust.proofEyebrow}</p><h2>{trust.proofTitleA}<br /><em>{trust.proofTitleB}</em></h2></div><div className="proof-grid">{trust.proofItems.map(([title, description]) => <article className="proof-card" key={title}><ShieldCheck size={20} /><h3>{title}</h3><p>{description}</p></article>)}</div></section>
 
       <section id="why" className="why-section why-section-copy container scroll-reveal"><div className="why-copy"><p className="eyebrow">{content.whyEyebrow}</p><h2>{content.whyTitleA}<br /><em>{content.whyTitleB}</em></h2><p>{content.whyText}</p><div className="trust-stats" aria-label="Take More business statistics"><AnimatedStat value={50} suffix="+" label={content.stats[0]} /><AnimatedStat value={120} suffix="+" label={content.stats[1]} /><AnimatedStat value={8} suffix="+" label={content.stats[2]} /><AnimatedStat value={4} label={content.stats[3]} /></div><div className="why-points"><div><span>01</span><strong>{content.clear}</strong><small>{content.clearText}</small></div><div><span>02</span><strong>{content.scale}</strong><small>{content.scaleText}</small></div></div></div></section>
 
