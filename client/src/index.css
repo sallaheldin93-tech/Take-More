@@ -1149,3 +1149,93 @@ html[data-brand-mode="white"] .process-step p {
 @media (prefers-reduced-motion: reduce) {
   html { scroll-behavior: auto; }
 }
+/* Unify trust, showcase, proof and process cards with the service-card palette. */
+html[data-brand-mode="blue"] .showcase-card,
+html[data-brand-mode="blue"] .proof-card,
+html[data-brand-mode="blue"] .process-step {
+  position: relative;
+  overflow: hidden;
+  color: #f7fbff;
+  background: #164a78;
+  border: 1px solid rgba(0, 185, 237, .48);
+  box-shadow: 0 14px 32px rgba(0, 0, 0, .16);
+}
+
+html[data-brand-mode="blue"] .showcase-card::before,
+html[data-brand-mode="blue"] .proof-card::before,
+html[data-brand-mode="blue"] .process-step::before {
+  content: "";
+  position: absolute;
+  right: -38px;
+  bottom: -52px;
+  width: 150px;
+  height: 150px;
+  border-radius: 50%;
+  background: rgba(0, 185, 237, .12);
+  pointer-events: none;
+}
+
+html[data-brand-mode="blue"] .showcase-card > *,
+html[data-brand-mode="blue"] .proof-card > *,
+html[data-brand-mode="blue"] .process-step > * {
+  position: relative;
+  z-index: 1;
+}
+
+html[data-brand-mode="blue"] .showcase-card h3,
+html[data-brand-mode="blue"] .proof-card h3,
+html[data-brand-mode="blue"] .process-step h3 {
+  color: #f7fbff;
+}
+
+html[data-brand-mode="blue"] .showcase-card p,
+html[data-brand-mode="blue"] .proof-card p,
+html[data-brand-mode="blue"] .process-step p,
+html[data-brand-mode="blue"] .showcase-card small,
+html[data-brand-mode="blue"] .proof-card small,
+html[data-brand-mode="blue"] .process-step small {
+  color: #c5d8e4;
+}
+
+html[data-brand-mode="blue"] .showcase-card .eyebrow,
+html[data-brand-mode="blue"] .proof-card .eyebrow,
+html[data-brand-mode="blue"] .process-step .eyebrow,
+html[data-brand-mode="blue"] .showcase-card svg,
+html[data-brand-mode="blue"] .proof-card svg,
+html[data-brand-mode="blue"] .process-step svg {
+  color: #00b9ed;
+}
+
+html[data-brand-mode="blue"] .showcase-card:hover,
+html[data-brand-mode="blue"] .proof-card:hover,
+html[data-brand-mode="blue"] .process-step:hover {
+  border-color: #00b9ed;
+  background: #1a527f;
+  box-shadow: 0 20px 44px rgba(0, 0, 0, .24), 0 0 0 1px rgba(0, 185, 237, .14);
+}
+
+html[data-brand-mode="white"] .showcase-card,
+html[data-brand-mode="white"] .proof-card,
+html[data-brand-mode="white"] .process-step {
+  color: #071b3f;
+  background: #f2f8fb;
+  border: 1px solid rgba(0, 126, 168, .28);
+}
+
+html[data-brand-mode="white"] .showcase-card p,
+html[data-brand-mode="white"] .proof-card p,
+html[data-brand-mode="white"] .process-step p,
+html[data-brand-mode="white"] .showcase-card small,
+html[data-brand-mode="white"] .proof-card small,
+html[data-brand-mode="white"] .process-step small {
+  color: #526b7a;
+}
+
+html[data-brand-mode="white"] .showcase-card .eyebrow,
+html[data-brand-mode="white"] .proof-card .eyebrow,
+html[data-brand-mode="white"] .process-step .eyebrow,
+html[data-brand-mode="white"] .showcase-card svg,
+html[data-brand-mode="white"] .proof-card svg,
+html[data-brand-mode="white"] .process-step svg {
+  color: #007ea8;
+}
