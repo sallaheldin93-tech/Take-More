@@ -1239,3 +1239,40 @@ html[data-brand-mode="white"] .proof-card svg,
 html[data-brand-mode="white"] .process-step svg {
   color: #007ea8;
 }
+/* User-requested card background: Take More navy. */
+html[data-brand-mode="blue"] .service-card,
+html[data-brand-mode="blue"] .service-detail-card,
+html[data-brand-mode="blue"] .showcase-card,
+html[data-brand-mode="blue"] .proof-card,
+html[data-brand-mode="blue"] .process-step {
+  background-color: #071b3f !important;
+  background-image: none !important;
+  border-color: rgba(0, 185, 237, .38) !important;
+}
+
+html[data-brand-mode="blue"] .service-card:hover,
+html[data-brand-mode="blue"] .service-detail-card:hover,
+html[data-brand-mode="blue"] .showcase-card:hover,
+html[data-brand-mode="blue"] .proof-card:hover,
+html[data-brand-mode="blue"] .process-step:hover {
+  background-color: #071b3f !important;
+  border-color: #00b9ed !important;
+}
+
+html[data-brand-mode="blue"] .service-card h3,
+html[data-brand-mode="blue"] .service-card .service-description,
+html[data-brand-mode="blue"] .service-card li,
+html[data-brand-mode="blue"] .service-detail-card h2,
+html[data-brand-mode="blue"] .service-detail-card .service-detail-intro,
+html[data-brand-mode="blue"] .service-detail-card li,
+html[data-brand-mode="blue"] .showcase-card h3,
+html[data-brand-mode="blue"] .proof-card h3,
+html[data-brand-mode="blue"] .process-step h3 {
+  color: #f7fbff !important;
+}
+
+html[data-brand-mode="blue"] .showcase-card p,
+html[data-brand-mode="blue"] .proof-card p,
+html[data-brand-mode="blue"] .process-step p {
+  color: #c5d8e4 !important;
+}
