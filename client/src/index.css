@@ -1063,3 +1063,89 @@ html[data-brand-mode="white"] .process-step {
 @media (prefers-reduced-motion: reduce) {
   .route-loading-spinner { animation: none; }
 }
+/* Final system-wide color and interaction polish */
+:root {
+  --brand-cyan: #00b9ed;
+  --brand-navy: #071b3f;
+  --brand-ice: #8be7fa;
+}
+
+::selection {
+  color: var(--brand-navy);
+  background: var(--brand-ice);
+}
+
+button:focus-visible,
+a:focus-visible,
+input:focus-visible,
+select:focus-visible,
+textarea:focus-visible {
+  outline: 3px solid color-mix(in srgb, var(--brand-cyan) 65%, transparent);
+  outline-offset: 3px;
+}
+
+html[data-brand-mode="blue"] .topbar.dark-header {
+  border-bottom: 1px solid rgba(139, 231, 250, .14);
+}
+
+html[data-brand-mode="white"] .topbar.dark-header {
+  border-bottom: 1px solid rgba(7, 27, 63, .12);
+}
+
+html[data-brand-mode="white"] .hero-text,
+html[data-brand-mode="white"] .section-intro > p,
+html[data-brand-mode="white"] .why-copy > p:not(.eyebrow),
+html[data-brand-mode="white"] .proof-note,
+html[data-brand-mode="white"] .footer p {
+  color: #526b7a;
+}
+
+html[data-brand-mode="white"] .booking-panel {
+  background: #ffffff;
+  border: 1px solid rgba(7, 27, 63, .1);
+}
+
+html[data-brand-mode="white"] .booking-panel input,
+html[data-brand-mode="white"] .booking-panel select,
+html[data-brand-mode="white"] .booking-panel textarea,
+html[data-brand-mode="white"] .slot {
+  border-color: rgba(7, 27, 63, .16);
+  background: #fbfdff;
+  color: #071b3f;
+}
+
+html[data-brand-mode="white"] .booking-panel label,
+html[data-brand-mode="white"] .booking-footer p,
+html[data-brand-mode="white"] .muted {
+  color: #526b7a;
+}
+
+html[data-brand-mode="blue"] .showcase-card,
+html[data-brand-mode="blue"] .proof-card,
+html[data-brand-mode="blue"] .process-step {
+  background: #123e6b;
+  border-color: rgba(139, 231, 250, .24);
+}
+
+html[data-brand-mode="white"] .showcase-card,
+html[data-brand-mode="white"] .proof-card,
+html[data-brand-mode="white"] .process-step {
+  background: #f7fbfd;
+  border-color: rgba(7, 27, 63, .12);
+}
+
+html[data-brand-mode="white"] .showcase-card > p:not(.eyebrow),
+html[data-brand-mode="white"] .proof-card p,
+html[data-brand-mode="white"] .process-step p {
+  color: #526b7a;
+}
+
+@media (max-width: 650px) {
+  .container { width: min(100% - 36px, 500px); }
+  .topbar { width: min(100% - 28px, 1240px); }
+  .booking-panel { padding: 22px 18px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  html { scroll-behavior: auto; }
+}
