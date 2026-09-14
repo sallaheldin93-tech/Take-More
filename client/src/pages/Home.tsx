@@ -239,7 +239,7 @@ export default function Home() {
       <a className="brand" href="#home" onClick={() => scrollTo("home")}><img src={brandMode === "white" ? "/assets/take-more-logo-white.png" : "/assets/take-more-logo.png"} alt="Take More — Retail & Web, Made Smarter" /></a>
       <nav id="home-mobile-nav" className={mobileOpen ? "main-nav mobile-open" : "main-nav"}>
         <button onClick={() => scrollTo("home")}>{content.nav.home}</button>
-        <a href="/services" onClick={() => setMobileOpen(false)}>{content.nav.services}</a>
+        <button onClick={() => scrollTo("services")}>{content.nav.services}</button>
         <button onClick={() => scrollTo("work")}>{content.nav.work}</button>
         <button onClick={() => scrollTo("process")}>{content.nav.process}</button>
         <button onClick={() => scrollTo("why")}>{content.nav.why}</button>
