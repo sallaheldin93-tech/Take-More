@@ -8,6 +8,10 @@
     {
       "source": "/api/:path*",
       "destination": "https://3000-idbofz1hdmodabc1i0ts5-c95de389.sg2.manus.computer/api/:path*"
+    },
+    {
+      "source": "/(.*)",
+      "destination": "/index.html"
     }
   ],
   "functions": {
