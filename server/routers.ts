@@ -4,6 +4,7 @@ import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { adminProcedure, protectedProcedure, publicProcedure, router } from "./_core/trpc";
+import { sendBookingEmail } from "./email";
 import { and, desc, eq, gte, lt } from "drizzle-orm";
 import { availability, bookings, getDb, listAvailability, listBookings, listServices, services } from "./db";
 import { notifyBooking } from "./whatsapp";
@@ -91,17 +92,18 @@ export const appRouter = router({
       const dateLabel = formatDateTime(startAt).split(",")[0] || formatDateTime(startAt);
       const timeLabel = formatDateTime(startAt).split(",")[1]?.trim() || "";
       const notification = await notifyBooking({ bookingCode, customerName: input.customerName, customerPhone: input.customerPhone, serviceName: service[0].name, dateLabel, timeLabel, language: input.language });
+      const email = await sendBookingEmail({ bookingCode, customerName: input.customerName, customerPhone: input.customerPhone, customerEmail: input.customerEmail || undefined, serviceName: service[0].name, dateLabel, timeLabel, notes: input.notes });
       let ownerNotified = false;
       try {
         ownerNotified = await notifyOwner({
           title: `New Take More booking — ${bookingCode}`,
-          content: `New booking received for Info@take-more.com\n\nCustomer: ${input.customerName}\nPhone: ${input.customerPhone}\nEmail: ${input.customerEmail || "Not provided"}\nService: ${service[0].name}\nDate: ${dateLabel}\nTime: ${timeLabel}\nBooking code: ${bookingCode}\nWhatsApp notification sent: ${notification.ownerSent ? "Yes" : "Not configured"}`,
+          content: `New booking email sent to info@take-more.com: ${email.sent ? "Yes" : "No"}\n\nCustomer: ${input.customerName}\nPhone: ${input.customerPhone}\nEmail: ${input.customerEmail || "Not provided"}\nService: ${service[0].name}\nDate: ${dateLabel}\nTime: ${timeLabel}\nBooking code: ${bookingCode}\nWhatsApp notification sent: ${notification.ownerSent ? "Yes" : "Not configured"}`,
         });
       } catch (error) {
         console.warn("[Booking] Owner notification failed", error);
       }
       await db.update(bookings).set({ whatsappCustomerSent: notification.customerSent, whatsappOwnerSent: notification.ownerSent || ownerNotified }).where(eq(bookings.bookingCode, bookingCode));
-      return { bookingCode, startAt: startAt.toISOString(), serviceName: service[0].name, whatsapp: notification };
+      return { bookingCode, startAt: startAt.toISOString(), serviceName: service[0].name, whatsapp: notification, email: { sent: email.sent, reason: email.reason } };
     }),
     adminList: adminProcedure.query(async () => listBookings()),
     adminUpdateStatus: adminProcedure.input(z.object({ id: z.number().int(), status: z.enum(["confirmed", "cancelled"]) })).mutation(async ({ input }) => {
