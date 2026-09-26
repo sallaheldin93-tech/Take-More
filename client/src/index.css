@@ -1276,3 +1276,27 @@ html[data-brand-mode="blue"] .proof-card p,
 html[data-brand-mode="blue"] .process-step p {
   color: #c5d8e4 !important;
 }
+
+
+/* Content architecture inspired by leading digital product studios. */
+.testimonials-section, .faq-section { padding-top: 110px; }
+.testimonial-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 18px; margin-top: 42px; }
+.testimonial-card { position: relative; min-height: 230px; padding: 30px; border: 1px solid rgba(91, 221, 255, .24); border-radius: 24px; background: rgba(7, 27, 63, .88); transition: transform .22s ease, border-color .22s ease, background .22s ease; }
+.testimonial-card:hover { transform: translateY(-6px); border-color: rgba(0, 198, 239, .8); background: rgba(12, 45, 91, .96); }
+.testimonial-mark { display: block; color: #16c7ed; font-size: 12px; letter-spacing: .18em; margin-bottom: 34px; }
+.testimonial-card p { color: rgba(241, 248, 255, .85); line-height: 1.8; font-size: 16px; }
+.testimonial-card h3 { margin-top: 28px; color: #fff; font-size: 18px; }
+.testimonial-card small { display: block; margin-top: 6px; color: rgba(187, 214, 233, .68); }
+.faq-list { margin-top: 38px; border-top: 1px solid rgba(91, 221, 255, .22); }
+.faq-item { border-bottom: 1px solid rgba(91, 221, 255, .22); padding: 22px 0; }
+.faq-item summary { display: grid; grid-template-columns: 48px 1fr auto; align-items: center; gap: 16px; cursor: pointer; list-style: none; color: #fff; }
+.faq-item summary::-webkit-details-marker { display: none; }
+.faq-item summary span { color: #16c7ed; font-size: 12px; letter-spacing: .14em; }
+.faq-item summary strong { font-size: 19px; font-weight: 600; }
+.faq-item summary svg { color: #16c7ed; transition: transform .2s ease; }
+.faq-item[open] summary svg { transform: rotate(180deg); }
+.faq-item p { max-width: 760px; margin: 18px 0 0 64px; color: rgba(210, 229, 242, .78); line-height: 1.9; }
+html[data-brand-mode="white"] .testimonial-card { background: #fff; border-color: rgba(7, 27, 63, .14); }
+html[data-brand-mode="white"] .testimonial-card p, html[data-brand-mode="white"] .faq-item summary, html[data-brand-mode="white"] .testimonial-card h3 { color: #071b3f; }
+html[data-brand-mode="white"] .testimonial-card small, html[data-brand-mode="white"] .faq-item p { color: rgba(7, 27, 63, .68); }
+@media (max-width: 760px) { .testimonial-grid { grid-template-columns: 1fr; gap: 14px; } .testimonials-section, .faq-section { padding-top: 76px; } .testimonial-card { min-height: 0; padding: 24px; } .faq-item summary { grid-template-columns: 34px 1fr auto; gap: 10px; } .faq-item summary strong { font-size: 16px; line-height: 1.55; } .faq-item p { margin-inline-start: 44px; font-size: 14px; } }

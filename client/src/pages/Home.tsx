@@ -22,35 +22,42 @@ const BrandIcon = ({ brand, size = 18 }: { brand: "facebook" | "instagram" | "li
 };
 
 const serviceCopy = [
-  { icon: Layers3, eyebrow: "01 / OPERATIONS", title: "ERP Solutions", description: "End-to-end enterprise planning that unifies finance, inventory and operations in one connected system.", bullets: ["Finance & accounting", "Inventory control", "Reporting & analytics"], tone: "lime" },
-  { icon: Zap, eyebrow: "02 / SALES", title: "POS Systems", description: "Fast and reliable point-of-sale solutions for retail, restaurants and services that keep every transaction flowing.", bullets: ["Sales & billing", "Multi-branch support", "Daily reconciliation"], tone: "sky" },
-  { icon: Sparkles, eyebrow: "03 / PRESENCE", title: "Websites", description: "Modern, high-performance websites designed to build trust, tell your story and convert visitors into customers.", bullets: ["Responsive design", "Business & e-commerce", "SEO-friendly build"], tone: "ice" },
-  { icon: ShieldCheck, eyebrow: "04 / GROWTH", title: "Business & CRM Automation", description: "Automation that streamlines customer relationships, follow-ups and internal workflows so your team works smarter.", bullets: ["Contact & lead tracking", "Task automation", "Sales pipeline"], tone: "blue" },
-
+  { icon: Layers3, eyebrow: "01 / OPERATIONS", title: "ERP Solutions", description: "Connect finance, inventory, purchasing and daily operations in one clear system built around the way your business works.", bullets: ["Finance & accounting", "Inventory and purchasing", "Reports and dashboards"], tone: "lime" },
+  { icon: Zap, eyebrow: "02 / SALES", title: "POS & Retail Systems", description: "Keep every sale, invoice and branch under control with a reliable point-of-sale experience for growing businesses.", bullets: ["Sales and billing", "Multi-branch control", "Daily reconciliation"], tone: "sky" },
+  { icon: Sparkles, eyebrow: "03 / DIGITAL", title: "Websites & E-commerce", description: "Build a fast, credible digital presence that explains your offer clearly and turns visits into real conversations.", bullets: ["Corporate websites", "Online stores", "SEO-ready foundation"], tone: "ice" },
+  { icon: ShieldCheck, eyebrow: "04 / GROWTH", title: "CRM & Automation", description: "Organize leads, follow-ups and internal workflows so your team spends less time chasing tasks and more time growing.", bullets: ["Lead management", "Automated follow-ups", "Sales pipeline"], tone: "blue" },
+  { icon: Layers3, eyebrow: "05 / DATA", title: "Dashboards & Reporting", description: "Turn scattered business data into practical dashboards that help you see performance and act faster.", bullets: ["KPI dashboards", "Management reports", "Connected data views"], tone: "lime" },
+  { icon: Sparkles, eyebrow: "06 / BRAND", title: "Brand & UI/UX Design", description: "Create a consistent visual identity and an intuitive experience that makes your business easier to trust and use.", bullets: ["Brand direction", "UI/UX systems", "Conversion-focused pages"], tone: "ice" },
+  { icon: ShieldCheck, eyebrow: "07 / SUPPORT", title: "Hosting & Maintenance", description: "Keep your digital tools secure, stable and updated with practical support after launch.", bullets: ["Performance monitoring", "Security updates", "Technical support"], tone: "blue" },
+  { icon: Zap, eyebrow: "08 / STRATEGY", title: "Business Consultation", description: "Start with a clear roadmap that prioritizes the right technology, avoids wasted spend and supports measurable progress.", bullets: ["Needs assessment", "Technology roadmap", "Growth priorities"], tone: "sky" },
 ] as const;
 
 const serviceCopyAr = [
-  { icon: Layers3, eyebrow: "01 / العمليات", title: "حلول ERP", description: "نظام متكامل يربط الحسابات والمخزون والعمليات اليومية داخل منصة واحدة واضحة.", bullets: ["الحسابات والمالية", "إدارة المخزون", "التقارير والتحليلات"], tone: "lime" },
-  { icon: Zap, eyebrow: "02 / المبيعات", title: "أنظمة نقاط البيع", description: "حلول نقاط بيع سريعة وموثوقة للمتاجر والمطاعم والخدمات، تساعدك على إدارة كل عملية بسهولة.", bullets: ["المبيعات والفواتير", "دعم الفروع المتعددة", "التسويات اليومية"], tone: "sky" },
-  { icon: Sparkles, eyebrow: "03 / الحضور الرقمي", title: "تصميم وتطوير المواقع", description: "مواقع عصرية وسريعة تعزز ثقة عملائك، وتعرض نشاطك باحترافية وتحول الزوار إلى عملاء.", bullets: ["تصميم متجاوب", "مواقع ومتاجر إلكترونية", "تهيئة لمحركات البحث"], tone: "ice" },
-  { icon: ShieldCheck, eyebrow: "04 / النمو", title: "أتمتة الأعمال وCRM", description: "أتمتة ذكية تنظم علاقات العملاء والمتابعات وسير العمل الداخلي حتى يعمل فريقك بكفاءة أكبر.", bullets: ["إدارة العملاء المحتملين", "أتمتة المهام", "خط سير المبيعات"], tone: "blue" },
+  { icon: Layers3, eyebrow: "01 / العمليات", title: "حلول ERP", description: "اربط الحسابات والمخزون والمشتريات والعمليات اليومية داخل نظام واضح مصمم حول طريقة عمل نشاطك.", bullets: ["الحسابات والمالية", "المخزون والمشتريات", "التقارير ولوحات المتابعة"], tone: "lime" },
+  { icon: Zap, eyebrow: "02 / المبيعات", title: "نقاط البيع والتجزئة", description: "تحكم في المبيعات والفواتير والفروع من خلال تجربة نقاط بيع موثوقة تناسب الأعمال المتنامية.", bullets: ["المبيعات والفواتير", "إدارة الفروع", "التسويات اليومية"], tone: "sky" },
+  { icon: Sparkles, eyebrow: "03 / الحضور الرقمي", title: "المواقع والمتاجر الإلكترونية", description: "ابنِ حضورًا رقميًا سريعًا واحترافيًا يشرح خدمتك بوضوح ويحوّل الزيارات إلى محادثات حقيقية.", bullets: ["مواقع الشركات", "المتاجر الإلكترونية", "تهيئة لمحركات البحث"], tone: "ice" },
+  { icon: ShieldCheck, eyebrow: "04 / النمو", title: "CRM وأتمتة الأعمال", description: "نظّم العملاء المحتملين والمتابعات وسير العمل حتى يوفر فريقك الوقت ويركز على النمو.", bullets: ["إدارة العملاء المحتملين", "المتابعات الآلية", "خط سير المبيعات"], tone: "blue" },
+  { icon: Layers3, eyebrow: "05 / البيانات", title: "لوحات البيانات والتقارير", description: "حوّل بيانات نشاطك المتفرقة إلى لوحات عملية تساعدك على فهم الأداء واتخاذ القرار أسرع.", bullets: ["مؤشرات الأداء", "تقارير الإدارة", "رؤية موحدة للبيانات"], tone: "lime" },
+  { icon: Sparkles, eyebrow: "06 / الهوية", title: "الهوية وتصميم UI/UX", description: "صمّم هوية متناسقة وتجربة استخدام سهلة تجعل نشاطك أكثر وضوحًا وثقة في عين العميل.", bullets: ["توجيه الهوية", "أنظمة واجهات", "صفحات تركز على التحويل"], tone: "ice" },
+  { icon: ShieldCheck, eyebrow: "07 / الدعم", title: "الاستضافة والصيانة", description: "حافظ على أدواتك الرقمية آمنة ومستقرة ومحدثة من خلال دعم عملي بعد الإطلاق.", bullets: ["متابعة الأداء", "تحديثات الأمان", "الدعم الفني"], tone: "blue" },
+  { icon: Zap, eyebrow: "08 / الاستراتيجية", title: "استشارات الأعمال", description: "ابدأ بخارطة طريق واضحة تحدد التقنية المناسبة وتقلل الإنفاق غير الضروري وتدعم التقدم القابل للقياس.", bullets: ["تحليل الاحتياجات", "خارطة تقنية", "أولويات النمو"], tone: "sky" },
 ] as const;
 
 const homeCopy = {
   en: {
-    nav: { home: "Home", services: "Services", work: "Solutions", process: "How we work", why: "Why us", contact: "Contact", book: "Book a call", start: "Get started" },
+    nav: { home: "Home", services: "Services", work: "Solutions", process: "How we work", why: "Why us", faq: "FAQ", contact: "Contact", book: "Book a call", start: "Get started" },
     mode: { white: "White", blue: "Blue" },
     heroEyebrow: "SOFTWARE FOR THE REAL WORLD", heroTitleA: "Software that runs", heroTitleB: "your entire", heroTitleC: "business.", heroLine: "ERP • POS • Websites • Business & CRM Automation.", heroText: "Helping businesses simplify operations and grow smarter.", discovery: "Book a discovery call", explore: "Explore services",
     servicesEyebrow: "WHAT WE DO", servicesTitleA: "One partner for", servicesTitleB: "your business software.", servicesText: "From daily operations to customer growth — we deliver the systems your business runs on.", cardCta: "Get started",
-    whyEyebrow: "WHY TAKE MORE", whyTitleA: "Results you can", whyTitleB: "build confidence on.", whyText: "We combine technical know-how with business thinking to deliver connected systems that create measurable value and support sustainable growth.", stats: ["Happy clients", "Projects delivered", "Years of experience", "Core business solutions"], clear: "Clear thinking", clearText: "Solutions designed around your reality.", scale: "Built to scale", scaleText: "Systems that grow with your ambition.",
+    whyEyebrow: "WHY TAKE MORE", whyTitleA: "Results you can", whyTitleB: "build confidence on.", whyText: "We combine technical know-how with business thinking to deliver connected systems that create measurable value and support sustainable growth.", stats: ["Connected operations", "Clear next steps", "Practical support", "Core solutions"], clear: "Clear thinking", clearText: "Solutions designed around your reality.", scale: "Built to scale", scaleText: "Systems that grow with your ambition.",
     contactEyebrow: "READY TO SIMPLIFY?", contactTitleA: "Let's make your", contactTitleB: "next move smarter.", contactText: "Tell us about your business and we will recommend the right software and automation for your growth.", tellUs: "Tell us about your business", connect: "Connect with us", location: "Cairo, Egypt", footer: "Smart Business Solutions — Helping businesses simplify operations and grow smarter.", chat: "Chat with us"
   },
   ar: {
-    nav: { home: "الرئيسية", services: "خدماتنا", work: "حلولنا", process: "كيف نعمل", why: "لماذا نحن", contact: "تواصل معنا", book: "احجز مكالمة", start: "ابدأ الآن" },
+    nav: { home: "الرئيسية", services: "خدماتنا", work: "حلولنا", process: "كيف نعمل", why: "لماذا نحن", faq: "الأسئلة الشائعة", contact: "تواصل معنا", book: "احجز مكالمة", start: "ابدأ الآن" },
     mode: { white: "أبيض", blue: "أزرق" },
     heroEyebrow: "حلول برمجية تناسب أعمالك", heroTitleA: "برمجيات تدير", heroTitleB: "كل تفاصيل", heroTitleC: "أعمالك.", heroLine: "ERP • POS • المواقع • أتمتة الأعمال وCRM.", heroText: "نساعد الشركات على تبسيط عملياتها وتحقيق نمو أذكى.", discovery: "احجز مكالمة استكشافية", explore: "استكشف خدماتنا",
     servicesEyebrow: "ماذا نقدم", servicesTitleA: "شريك واحد لكل", servicesTitleB: "حلول أعمالك التقنية.", servicesText: "من العمليات اليومية إلى نمو العملاء — نوفر الأنظمة التي يعتمد عليها نشاطك.", cardCta: "ابدأ الآن",
-    whyEyebrow: "لماذا TAKE MORE", whyTitleA: "نتائج تمنحك", whyTitleB: "ثقة أكبر.", whyText: "نجمع بين الخبرة التقنية والفهم التجاري لنقدم أنظمة مترابطة تحقق قيمة قابلة للقياس وتدعم نمو أعمالك بثبات.", stats: ["عميل سعيد", "مشروع تم تنفيذه", "سنوات من الخبرة", "حلول أعمال أساسية"], clear: "رؤية واضحة", clearText: "حلول مصممة وفق احتياجات نشاطك.", scale: "جاهز للتوسع", scaleText: "أنظمة تنمو مع طموحاتك.",
+    whyEyebrow: "لماذا TAKE MORE", whyTitleA: "نتائج تمنحك", whyTitleB: "ثقة أكبر.", whyText: "نجمع بين الخبرة التقنية والفهم التجاري لنقدم أنظمة مترابطة تحقق قيمة قابلة للقياس وتدعم نمو أعمالك بثبات.", stats: ["عمليات مترابطة", "خطوات واضحة", "دعم عملي", "حلول أساسية"], clear: "رؤية واضحة", clearText: "حلول مصممة وفق احتياجات نشاطك.", scale: "جاهز للتوسع", scaleText: "أنظمة تنمو مع طموحاتك.",
     contactEyebrow: "جاهز لتبسيط أعمالك؟", contactTitleA: "لنصنع خطوتك", contactTitleB: "القادمة بذكاء.", contactText: "حدثنا عن نشاطك وسنرشح لك أنسب الحلول البرمجية والأتمتة التي تدعم نموك.", tellUs: "حدثنا عن نشاطك", connect: "تواصل معنا", location: "القاهرة، مصر", footer: "حلول أعمال ذكية تساعد الشركات على تبسيط عملياتها والنمو بكفاءة.", chat: "تواصل معنا"
   }
 } as const;
@@ -114,6 +121,36 @@ const trustSections = {
       ["صورة مترابطة", "عملياتك وتجربة عملائك وحضورك الرقمي تعمل معًا."],
     ],
   },
+} as const;
+
+const faqCopy = {
+  en: [
+    ["What can Take More help us with?", "We help businesses organize operations, improve their digital presence and automate repetitive work through practical software solutions."],
+    ["Do you work with small and growing businesses?", "Yes. We start with the most important business need and shape a solution that can expand as your team and operations grow."],
+    ["How do we start?", "Book a discovery call, tell us what is slowing your business down, and we will recommend a focused next step."],
+    ["Can you improve an existing website or system?", "Yes. We can review the current experience, identify friction and improve the design, performance or workflow without starting blindly from zero."],
+    ["Do you provide support after launch?", "Yes. We can continue with maintenance, improvements, monitoring and technical support based on your needs."],
+  ],
+  ar: [
+    ["ما الذي يمكن أن تساعدنا فيه Take More؟", "نساعد الشركات على تنظيم العمليات، وتحسين حضورها الرقمي، وأتمتة المهام المتكررة من خلال حلول برمجية عملية."],
+    ["هل تعملون مع الشركات الصغيرة والنامية؟", "نعم. نبدأ من الاحتياج الأهم لنشاطك ونبني حلًا قابلًا للتوسع مع نمو فريقك وعملياتك."],
+    ["كيف نبدأ؟", "احجز مكالمة استكشافية، حدثنا عن أكثر ما يعطل نشاطك، وسنقترح عليك خطوة عملية واضحة."],
+    ["هل يمكنكم تطوير موقع أو نظام موجود؟", "نعم. نراجع التجربة الحالية، ونحدد نقاط التعطيل، ثم نحسن التصميم أو الأداء أو سير العمل دون البدء من الصفر بشكل عشوائي."],
+    ["هل تقدمون دعمًا بعد الإطلاق؟", "نعم. نوفر الصيانة والتحسينات والمتابعة والدعم الفني حسب احتياجات نشاطك."],
+  ],
+} as const;
+
+const testimonialCopy = {
+  en: [
+    ["A clearer way to work", "Take More helps us see the connection between daily operations, customer experience and the next stage of growth."],
+    ["Practical from day one", "The conversation started with our real business problem, not with a list of unnecessary features."],
+    ["Built around the business", "The strongest part is the focus on a solution that our team can actually use and improve over time."],
+  ],
+  ar: [
+    ["طريقة أوضح للعمل", "ساعدتنا Take More على رؤية العلاقة بين العمليات اليومية وتجربة العميل وخطوتنا التالية للنمو."],
+    ["عملية من اليوم الأول", "بدأ الحوار من مشكلة حقيقية في نشاطنا، وليس من قائمة خصائص لا نحتاجها."],
+    ["حل حول واقع النشاط", "أكثر ما يميز التجربة هو التركيز على حل يستطيع فريقنا استخدامه وتطويره مع الوقت."],
+  ],
 } as const;
 
 function AnimatedStat({ value, suffix, label }: { value: number; suffix?: string; label: string }) {
@@ -251,6 +288,7 @@ export default function Home() {
         <button onClick={() => scrollTo("work")}>{content.nav.work}</button>
         <button onClick={() => scrollTo("process")}>{content.nav.process}</button>
         <button onClick={() => scrollTo("why")}>{content.nav.why}</button>
+        <button onClick={() => scrollTo("faq")}>{content.nav.faq}</button>
         <button onClick={() => scrollTo("contact")}>{content.nav.contact}</button>
         <button className="nav-book" onClick={() => { setBookingOpen(true); setMobileOpen(false); }}>{content.nav.book} <MoveUpRight size={15} /></button>
       </nav>
@@ -282,7 +320,11 @@ export default function Home() {
 
       <section id="proof" className="proof-section container scroll-reveal"><div><p className="eyebrow">{trust.proofEyebrow}</p><h2>{trust.proofTitleA}<br /><em>{trust.proofTitleB}</em></h2></div><div className="proof-grid">{trust.proofItems.map(([title, description]) => <article className="proof-card" key={title}><ShieldCheck size={20} /><h3>{title}</h3><p>{description}</p></article>)}</div></section>
 
-      <section id="why" className="why-section why-section-copy container scroll-reveal"><div className="why-copy"><p className="eyebrow">{content.whyEyebrow}</p><h2>{content.whyTitleA}<br /><em>{content.whyTitleB}</em></h2><p>{content.whyText}</p><div className="trust-stats" aria-label="Take More business statistics"><AnimatedStat value={50} suffix="+" label={content.stats[0]} /><AnimatedStat value={120} suffix="+" label={content.stats[1]} /><AnimatedStat value={8} suffix="+" label={content.stats[2]} /><AnimatedStat value={4} label={content.stats[3]} /></div><div className="why-points"><div><span>01</span><strong>{content.clear}</strong><small>{content.clearText}</small></div><div><span>02</span><strong>{content.scale}</strong><small>{content.scaleText}</small></div></div></div></section>
+      <section id="testimonials" className="testimonials-section container scroll-reveal"><div className="section-intro"><div><p className="eyebrow">{language === "ar" ? "لماذا يختارنا العملاء" : "WHY BUSINESSES CHOOSE US"}</p><h2>{language === "ar" ? <>شراكة عملية<br /><em>تبدأ من احتياجك.</em></> : <>A practical partner<br /><em>for your next move.</em></>}</h2></div><p>{language === "ar" ? "نركز على الوضوح والنتيجة وطريقة الاستخدام اليومية، حتى تكون التقنية إضافة حقيقية لنشاطك." : "We focus on clarity, outcomes and everyday usability so technology becomes a real advantage for your business."}</p></div><div className="testimonial-grid">{testimonialCopy[language].map(([title, quote], index) => <article className="testimonial-card" key={title}><span className="testimonial-mark">0{index + 1}</span><p>“{quote}”</p><h3>{title}</h3><small>{language === "ar" ? "انطباع من تجربة عميل" : "A client experience snapshot"}</small></article>)}</div></section>
+
+      <section id="faq" className="faq-section container scroll-reveal"><div className="section-intro"><div><p className="eyebrow">{language === "ar" ? "الأسئلة الشائعة" : "FAQ"}</p><h2>{language === "ar" ? <>كل ما تحتاج<br /><em>معرفته قبل البداية.</em></> : <>The answers<br /><em>before we begin.</em></>}</h2></div><p>{language === "ar" ? "أسئلة بسيطة تساعدك على فهم طريقة العمل والخطوة المناسبة لنشاطك." : "A few simple answers to help you understand the process and choose the right next step."}</p></div><div className="faq-list">{faqCopy[language].map(([question, answer], index) => <details className="faq-item" key={question}><summary><span>0{index + 1}</span><strong>{question}</strong><ChevronDown size={17} /></summary><p>{answer}</p></details>)}</div></section>
+
+      <section id="why" className="why-section why-section-copy container scroll-reveal"><div className="why-copy"><p className="eyebrow">{content.whyEyebrow}</p><h2>{content.whyTitleA}<br /><em>{content.whyTitleB}</em></h2><p>{content.whyText}</p><div className="trust-stats" aria-label="Take More business statistics"><div className="trust-stat"><strong>✓</strong><span>{content.stats[0]}</span></div><div className="trust-stat"><strong>✓</strong><span>{content.stats[1]}</span></div><div className="trust-stat"><strong>✓</strong><span>{content.stats[2]}</span></div><div className="trust-stat"><strong>✓</strong><span>{content.stats[3]}</span></div></div><div className="why-points"><div><span>01</span><strong>{content.clear}</strong><small>{content.clearText}</small></div><div><span>02</span><strong>{content.scale}</strong><small>{content.scaleText}</small></div></div></div></section>
 
       <section id="contact" className="contact-section scroll-reveal"><div><p className="eyebrow">{content.contactEyebrow}</p><h2>{content.contactTitleA}<br /><em>{content.contactTitleB}</em></h2></div><div className="contact-card"><p>{content.contactText}</p><button className="primary-button" onClick={() => setBookingOpen(true)}>{content.tellUs} <MoveUpRight size={17} /></button><div className="contact-meta"><span><Phone size={14} /> {content.location}</span><a className="email-contact" href="mailto:Info@take-more.com"><Mail size={14} /> Info@take-more.com</a></div><div className="contact-socials"><span>{content.connect}</span><div><a className="contact-social facebook" href="https://www.facebook.com/share/1C6TU1C2ub/?mibextid=wwXIfr" target="_blank" rel="noreferrer" aria-label="Take More on Facebook"><BrandIcon brand="facebook" size={17} /></a><a className="contact-social whatsapp" href="https://wa.me/201153213270" target="_blank" rel="noreferrer" aria-label="Chat with Take More on WhatsApp" title="WhatsApp"><BrandIcon brand="whatsapp" size={17} /></a><a className="contact-social instagram" href="https://www.instagram.com/takemore.eg?stkn=YzJhYXNpYnJnZnFl&utm_source=qr" target="_blank" rel="noreferrer" aria-label="Take More on Instagram"><BrandIcon brand="instagram" size={17} /></a><a className="contact-social linkedin disabled" href="#contact" aria-label="LinkedIn link coming soon" onClick={event => event.preventDefault()}><BrandIcon brand="linkedin" size={17} /></a></div></div></div></section>
     </main>
