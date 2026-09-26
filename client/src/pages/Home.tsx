@@ -3,6 +3,7 @@ import { Link } from "wouter";
 import { CalendarDays, Check, ChevronDown, Clock3, Facebook, Instagram, Languages, Linkedin, Layers3, Loader2, Menu, MessageCircle, Mail, Moon, MoveUpRight, Phone, ShieldCheck, Sparkles, Sun, X, Zap } from "lucide-react";
 import { toast } from "sonner";
 import { trpc } from "@/lib/trpc";
+import { applySeo } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
@@ -252,6 +253,10 @@ export default function Home() {
     document.documentElement.lang = language;
     document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
     localStorage.setItem("take-more-language", language);
+    const seo = language === "ar"
+      ? { title: "Take More | حلول ERP ونقاط البيع والمواقع في مصر", description: "Take More تقدم حلول ERP، أنظمة نقاط البيع، تصميم المواقع والمتاجر الإلكترونية، CRM وأتمتة الأعمال لمساعدة الشركات على النمو بوضوح.", keywords: "حلول ERP مصر, نقاط البيع, تصميم مواقع مصر, CRM, أتمتة الأعمال" }
+      : { title: "Take More | Smart Business Software in Egypt", description: "Take More delivers ERP, POS, websites, e-commerce, CRM and business automation solutions that help companies operate and grow with clarity.", keywords: "ERP Egypt, POS Egypt, business software, website development, CRM automation" };
+    applySeo({ ...seo, lang: language, path: "/", services: services.map((service, index) => ({ name: service.title, description: service.description, slug: `/services#service-${index < 4 ? ["erp", "pos", "websites", "crm"][index] : "solutions"}` })) });
   }, [language]);
   useEffect(() => {
     if (!mobileOpen) return;

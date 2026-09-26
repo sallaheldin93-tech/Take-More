@@ -16,6 +16,7 @@ import {
   Zap,
 } from "lucide-react";
 import { Link } from "wouter";
+import { applySeo } from "@/lib/seo";
 
 const servicesEn = [
   { icon: Layers3, image: "/assets/erp-illustration.webp", serviceId: 1, number: "01", kicker: "OPERATIONS", title: "ERP Solutions", intro: "Bring finance, inventory and daily operations into one clear, connected system.", bullets: ["Finance and accounting workflows", "Inventory control and stock visibility", "Reports that help you act faster"], tone: "service-detail-cyan" },
@@ -30,6 +31,21 @@ const servicesAr = [
   { icon: Globe2, image: "/assets/website-illustration.webp", serviceId: 3, number: "03", kicker: "الحضور الرقمي", title: "تصميم وتطوير المواقع", intro: "حوّل حضورك الرقمي إلى أصل تجاري يعزز الثقة ويحول الزوار إلى عملاء.", bullets: ["تصميم احترافي ومتجاوب", "مواقع أعمال ومتاجر إلكترونية", "أساس قوي لمحركات البحث"], tone: "service-detail-sky" },
   { icon: Zap, image: "/assets/crm-illustration.webp", serviceId: 4, number: "04", kicker: "النمو", title: "أتمتة الأعمال وCRM", intro: "بسّط المتابعات وإدارة العملاء وسير العمل الداخلي لفريقك بالكامل.", bullets: ["إدارة جهات الاتصال والعملاء", "أتمتة المهام والمتابعات", "رؤية واضحة لخط سير المبيعات"], tone: "service-detail-navy" },
 ];
+
+const serviceSeo = {
+  en: [
+    { name: "ERP Solutions", description: "Custom ERP solutions in Egypt that connect finance, inventory, purchasing and daily business operations.", slug: "/services#service-erp" },
+    { name: "POS Systems", description: "Reliable POS systems for retail, restaurants and growing businesses with sales, billing and branch control.", slug: "/services#service-pos" },
+    { name: "Websites and E-commerce", description: "Fast, responsive business websites and e-commerce stores designed to build trust, improve visibility and convert visitors.", slug: "/services#service-websites" },
+    { name: "Business and CRM Automation", description: "CRM and business automation solutions that organize leads, follow-ups, customer data and internal workflows.", slug: "/services#service-crm" },
+  ],
+  ar: [
+    { name: "حلول ERP", description: "حلول ERP مخصصة في مصر لربط الحسابات والمخزون والمشتريات والعمليات اليومية داخل نظام واحد.", slug: "/services#service-erp" },
+    { name: "أنظمة نقاط البيع", description: "أنظمة نقاط بيع موثوقة للمتاجر والمطاعم والأعمال المتنامية لإدارة المبيعات والفواتير والفروع.", slug: "/services#service-pos" },
+    { name: "تصميم وتطوير المواقع والمتاجر", description: "مواقع شركات ومتاجر إلكترونية سريعة ومتجاوبة تعزز الظهور والثقة وتحول الزوار إلى عملاء.", slug: "/services#service-websites" },
+    { name: "أتمتة الأعمال وCRM", description: "حلول CRM وأتمتة أعمال لتنظيم العملاء المحتملين والمتابعات وبيانات العملاء وسير العمل الداخلي.", slug: "/services#service-crm" },
+  ],
+} as const;
 
 const pageCopy = {
   en: {
@@ -64,6 +80,10 @@ export default function Services() {
     document.documentElement.lang = language;
     document.documentElement.dir = language === "ar" ? "rtl" : "ltr";
     localStorage.setItem("take-more-language", language);
+    const seo = language === "ar"
+      ? { title: "خدمات Take More | ERP ونقاط البيع والمواقع وأتمتة الأعمال", description: "اكتشف خدمات Take More في مصر: حلول ERP، أنظمة نقاط البيع، تصميم المواقع والمتاجر الإلكترونية، وCRM وأتمتة الأعمال.", keywords: "ERP مصر, نقاط البيع, تصميم مواقع, متجر إلكتروني, CRM, أتمتة الأعمال" }
+      : { title: "Take More Services | ERP, POS, Websites and Automation", description: "Explore Take More business technology services in Egypt: ERP, POS systems, websites, e-commerce and CRM automation.", keywords: "ERP Egypt, POS systems, website development, e-commerce, CRM automation" };
+    applySeo({ ...seo, lang: language, path: "/services", services: serviceSeo[language] });
   }, [language]);
 
   useEffect(() => {
@@ -109,7 +129,7 @@ export default function Services() {
 
       <main>
         <section className="services-hero scroll-reveal"><p className="eyebrow">{content.heroEyebrow}</p><h1>{content.heroTitleA}<br /><em>{content.heroTitleB}</em></h1><p>{content.heroText}</p><div className="services-hero-meta"><span><Sparkles size={16} /> {content.reality}</span><span><BarChart3 size={16} /> {content.scale}</span></div></section>
-        <section className="services-details">{services.map(({ icon: Icon, image, serviceId, number, kicker, title, intro, bullets, tone }) => <article className={`service-detail-card ${tone} scroll-reveal`} key={title}><div className="service-detail-top"><span className="service-detail-number">{number}</span><Icon size={27} /></div><div className="service-detail-illustration"><img src={image} alt="" loading="lazy" /></div><p className="eyebrow">{kicker}</p><h2>{title}</h2><p className="service-detail-intro">{intro}</p><ul>{bullets.map(bullet => <li key={bullet}><Check size={16} />{bullet}</li>)}</ul><Link className="detail-cta" href={`/?book=1&service=${serviceId}`}>{content.conversation} <ArrowUpRight size={16} /></Link><Link className="detail-book" href={`/?book=1&service=${serviceId}`}>{content.bookNow} <ArrowUpRight size={15} /></Link></article>)}</section>
+        <section className="services-details">{services.map(({ icon: Icon, image, serviceId, number, kicker, title, intro, bullets, tone }) => <article id={`service-${serviceId === 1 ? "erp" : serviceId === 2 ? "pos" : serviceId === 3 ? "websites" : "crm"}`} className={`service-detail-card ${tone} scroll-reveal`} key={title}><div className="service-detail-top"><span className="service-detail-number">{number}</span><Icon size={27} /></div><div className="service-detail-illustration"><img src={image} alt={title} loading="lazy" /></div><p className="eyebrow">{kicker}</p><h2>{title}</h2><p className="service-detail-intro">{intro}</p><ul>{bullets.map(bullet => <li key={bullet}><Check size={16} />{bullet}</li>)}</ul><Link className="detail-cta" href={`/?book=1&service=${serviceId}`}>{content.conversation} <ArrowUpRight size={16} /></Link><Link className="detail-book" href={`/?book=1&service=${serviceId}`}>{content.bookNow} <ArrowUpRight size={15} /></Link></article>)}</section>
         <section className="services-bottom scroll-reveal"><div><p className="eyebrow">{content.bottomEyebrow}</p><h2>{content.bottomTitleA}<br /><em>{content.bottomTitleB}</em></h2></div><div><p>{content.bottomText}</p><Link className="primary-button" href="/?book=1">{content.discovery} <ArrowUpRight size={17} /></Link></div></section>
       </main>
 
