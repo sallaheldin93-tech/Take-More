@@ -11,6 +11,7 @@ import { SiteHeader } from "@/components/home/SiteHeader";
 import { HeroSection } from "@/components/home/HeroSection";
 import { ServicesSection } from "@/components/home/ServicesSection";
 import { WorkGallery } from "@/components/home/WorkGallery";
+import { CapabilitiesSection } from "@/components/home/CapabilitiesSection";
 import { ClosingSection, FaqSection, PlaceSection, StatementSection } from "@/components/home/StudioSections";
 
 const normalizePhone = (value: string) => value
@@ -209,7 +210,7 @@ function BookingPanel({ onClose }: { onClose?: () => void }) {
   const [form, setForm] = useState({ customerName: "", customerPhone: "", customerEmail: "", notes: "" });
   const slots = trpc.booking.availableSlots.useQuery({ serviceId: serviceId || 1, date }, { enabled: Boolean(serviceId && date) });
   const copy = language === "ar" ? {
-    eyebrow: "احجز مكالمة استكشافية", title: "اختر الموعد المناسب لك.", service: "ما الخدمة التي تحتاجها؟", choose: "اختر خدمة", date: "التاريخ المفضل", available: "المواعيد المتاحة", session: "دقيقة للجلسة", checking: "جارٍ التحقق من المواعيد…", empty: "لا توجد مواعيد متاحة في هذا اليوم.", name: "الاسم بالكامل", phone: "رقم WhatsApp مع كود الدولة", email: "البريد الإلكتروني (اختي��ري)", notes: "حدثنا عن نشاطك التجاري (اختياري)", confirmation: "سيتم إرسال التأكيد إلى WhatsApp الخاص بك.", confirm: "تأكيد الحجز", confirming: "جارٍ التأكيد…", successTitle: "تم تأكيد حجزك بنجاح!", successText: "شكرًا لك. تم إرسال تفاصيل الحجز إلى WhatsApp وسنتواصل معك قريبًا.", successTextNoWhatsApp: "تم تسجيل الحجز بنجاح، لكن تعذر إرسال رسالة WhatsApp تلقائيًا. احتفظ برقم الحجز وسنتواصل معك.", code: "رقم الحجز", done: "تم", newBooking: "حجز موعد آخر", close: "إغلاق"
+    eyebrow: "احجز مكالمة استكشافية", title: "اختر الموعد المناسب لك.", service: "ما الخدمة التي تحتاجها؟", choose: "اختر خدمة", date: "التاريخ المفضل", available: "المواعيد المتاحة", session: "دقيقة للجلسة", checking: "جارٍ التحقق من المواعيد…", empty: "لا توجد مواعيد متاحة في هذا اليوم.", name: "الاسم بالكامل", phone: "رقم WhatsApp مع كود الدولة", email: "البريد الإلكترون�� (اختي��ري)", notes: "حدثنا عن نشاطك التجاري (اختياري)", confirmation: "سيتم إرسال التأكيد إلى WhatsApp الخاص بك.", confirm: "تأكيد الحجز", confirming: "جارٍ التأكيد…", successTitle: "تم تأكيد حجزك بنجاح!", successText: "شكرًا لك. تم إرسال تفاصيل الحجز إلى WhatsApp وسنتواصل معك قريبًا.", successTextNoWhatsApp: "تم تسجيل الحجز بنجاح، لكن تعذر إرسال رسالة WhatsApp تلقائيًا. احتفظ برقم الحجز وسنتواصل معك.", code: "رقم الحجز", done: "تم", newBooking: "حجز موعد آخر", close: "إغلاق"
   } : {
     eyebrow: "BOOK A DISCOVERY CALL", title: "Choose a time that works.", service: "What do you need?", choose: "Select a service", date: "Preferred date", available: "Available times", session: "minute session", checking: "Checking live availability…", empty: "No times left on this day. Try another date.", name: "Full name", phone: "WhatsApp number (with country code)", email: "Email (optional)", notes: "Tell us a little about your business (optional)", confirmation: "Confirmation is sent to your WhatsApp.", confirm: "Confirm booking", confirming: "Confirming…", successTitle: "Your booking is confirmed!", successText: "Thanks for booking with Take More. The details were sent to WhatsApp and we will be in touch shortly.", successTextNoWhatsApp: "Your booking was saved, but the automatic WhatsApp message could not be sent. Keep the booking code and we will contact you.", code: "Booking code", done: "Done", newBooking: "Book another time", close: "Close"
   };
@@ -299,6 +300,7 @@ export default function Home() {
       <HeroSection language={language} onTalk={() => setBookingOpen(true)} onExplore={() => scrollTo("services")} />
 
       <WorkGallery language={language} />
+      <CapabilitiesSection language={language} />
       <StatementSection language={language} />
       <ServicesSection language={language} />
       <PlaceSection language={language} />
