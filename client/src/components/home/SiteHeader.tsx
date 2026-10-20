@@ -1,10 +1,10 @@
-import { ChevronLeft, ChevronRight, Languages, Menu, X } from "lucide-react";
+import { ArrowUpLeft, ArrowUpRight, Menu, X } from "lucide-react";
 
 type Language = "en" | "ar";
 
 const navCopy = {
-  ar: { home: "الرئيسية", services: "خدماتنا", work: "أعمالنا", about: "من نحن", contact: "تواصل معنا", start: "ابدأ مشروعك", open: "فتح القائمة", close: "إغلاق القائمة" },
-  en: { home: "Home", services: "Services", work: "Our work", about: "About us", contact: "Contact", start: "Start your project", open: "Open menu", close: "Close menu" },
+  ar: { home: "الرئيسية", services: "خدماتنا", work: "أعمالنا", about: "من نحن", contact: "تواصل معنا", start: "ابدأ مشروعك", open: "فتح القائمة", close: "إغلاق القائمة", nav: "التنقل الرئيسي" },
+  en: { home: "Home", services: "Services", work: "Work", about: "About", contact: "Contact", start: "Start a project", open: "Open menu", close: "Close menu", nav: "Main navigation" },
 } as const;
 
 type Props = {
@@ -19,58 +19,51 @@ type Props = {
 
 export function SiteHeader({ language, activeSection, mobileOpen, onToggleMobile, onNavigate, onToggleLanguage, onStart }: Props) {
   const copy = navCopy[language];
-  const Arrow = language === "ar" ? ChevronLeft : ChevronRight;
+  const Arrow = language === "ar" ? ArrowUpLeft : ArrowUpRight;
   const links = [
-    { id: "home", label: copy.home },
-    { id: "services", label: copy.services },
     { id: "work", label: copy.work },
+    { id: "services", label: copy.services },
     { id: "why", label: copy.about },
     { id: "contact", label: copy.contact },
   ];
 
   return (
-    <header className="tmx-header">
-      <div className="tmx-header-inner">
-        <a className="tmx-logo" href="#home" onClick={event => { event.preventDefault(); onNavigate("home"); }}>
-          <img src="/assets/take-more-logo.png" alt="Take More" width={169} height={47} />
-        </a>
+    <header className="sd-header">
+      <a className="sd-logo" href="#home" onClick={event => { event.preventDefault(); onNavigate("home"); }}>
+        <img src="/assets/take-more-logo-white.png" alt="Take More" width={150} height={42} />
+      </a>
 
-        <nav id="tmx-nav" className={mobileOpen ? "tmx-nav is-open" : "tmx-nav"} aria-label={language === "ar" ? "التنقل الرئيسي" : "Main navigation"}>
+      <div className="sd-header-actions">
+        <nav id="sd-nav" className={mobileOpen ? "sd-nav is-open" : "sd-nav"} aria-label={copy.nav}>
           {links.map(link => (
             <button
               key={link.id}
               type="button"
-              className={activeSection === link.id ? "tmx-nav-link is-active" : "tmx-nav-link"}
-              aria-current={activeSection === link.id ? "page" : undefined}
+              className={activeSection === link.id ? "sd-nav-link is-active" : "sd-nav-link"}
+              aria-current={activeSection === link.id ? "true" : undefined}
               onClick={() => onNavigate(link.id)}
             >
               {link.label}
             </button>
           ))}
-          <button type="button" className="tmx-nav-cta-mobile" onClick={onStart}>
-            {copy.start} <Arrow size={16} aria-hidden="true" />
-          </button>
         </nav>
-
-        <div className="tmx-header-actions">
-          <button type="button" className="tmx-lang" onClick={onToggleLanguage} aria-label={language === "en" ? "عرض الموقع بالعربية" : "View website in English"}>
-            <Languages size={16} aria-hidden="true" />
-            <span>{language === "en" ? "عربي" : "EN"}</span>
-          </button>
-          <button type="button" className="tmx-outline-btn" onClick={onStart}>
-            {copy.start} <Arrow size={16} aria-hidden="true" />
-          </button>
-          <button
-            type="button"
-            className="tmx-menu-btn"
-            onClick={onToggleMobile}
-            aria-label={mobileOpen ? copy.close : copy.open}
-            aria-expanded={mobileOpen}
-            aria-controls="tmx-nav"
-          >
-            {mobileOpen ? <X size={22} /> : <Menu size={22} />}
-          </button>
-        </div>
+        <button type="button" className="sd-pill sd-pill-quiet" onClick={onToggleLanguage} aria-label={language === "en" ? "عرض الموقع بالعربية" : "View website in English"}>
+          {language === "en" ? "عربي" : "EN"}
+        </button>
+        <button type="button" className="sd-pill sd-start" onClick={onStart}>{copy.start}</button>
+        <button type="button" className="sd-round" onClick={onStart} aria-label={copy.start}>
+          <Arrow size={17} aria-hidden="true" />
+        </button>
+        <button
+          type="button"
+          className="sd-round sd-menu-btn"
+          onClick={onToggleMobile}
+          aria-label={mobileOpen ? copy.close : copy.open}
+          aria-expanded={mobileOpen}
+          aria-controls="sd-nav"
+        >
+          {mobileOpen ? <X size={18} /> : <Menu size={18} />}
+        </button>
       </div>
     </header>
   );

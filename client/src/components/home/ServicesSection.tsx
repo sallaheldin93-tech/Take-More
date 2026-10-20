@@ -1,70 +1,60 @@
-import { ArrowLeft, ArrowRight, Cloud, Code2, Settings } from "lucide-react";
+import { ArrowUpLeft, ArrowUpRight } from "lucide-react";
 import { Link } from "wouter";
 
 type Language = "en" | "ar";
 
 const servicesCopy = {
   ar: {
-    pill: "خدماتنا",
-    title: "كل ما تحتاجه لنمو عملك في مكان واحد",
-    text: "من تطوير المواقع إلى أنظمة إدارة الأعمال، نقدم حلولاً رقمية متكاملة.",
-    more: "اعرف المزيد",
-    all: "عرض كل الخدمات",
+    eyebrow: "ماذا نقدم",
+    title: ["حلول", "تعمل معك"],
+    text: "من العمليات اليومية إلى نمو العملاء، نوفر الأنظمة التي يعتمد عليها نشاطك.",
+    all: "كل الخدمات",
     items: [
-      { title: "تطوير المواقع الإلكترونية", text: "مواقع سريعة وعصرية تعكس هوية علامتك وتحقق أهدافك." },
-      { title: "أنظمة إدارة الأعمال", text: "أنظمة مخصصة لإدارة شركتك بكفاءة أعلى وقرارات أدق." },
-      { title: "الحلول السحابية", text: "بنية تحتية مرنة وآمنة تساعدك على التوسع من أي مكان." },
+      { slug: "erp", tag: "ERP", title: "حلول ERP", text: "الحسابات والمخزون والمشتريات في نظام واحد واضح." },
+      { slug: "pos", tag: "POS", title: "نقاط البيع والتجزئة", text: "المبيعات والفواتير والفروع تحت السيطرة." },
+      { slug: "websites", tag: "WEB", title: "المواقع والمتاجر", text: "حضور رقمي سريع يحوّل الزيارات إلى محادثات." },
+      { slug: "crm", tag: "CRM", title: "CRM وأتمتة الأعمال", text: "متابعات آلية ووقت أكثر للنمو." },
     ],
   },
   en: {
-    pill: "Our services",
-    title: "Everything your business needs to grow, in one place",
-    text: "From website development to business management systems, we deliver complete digital solutions.",
-    more: "Learn more",
-    all: "View all services",
+    eyebrow: "WHAT WE DO",
+    title: ["Systems", "that work"],
+    text: "From daily operations to customer growth, we deliver the systems your business runs on.",
+    all: "All services",
     items: [
-      { title: "Website development", text: "Fast, modern websites that reflect your brand and hit your goals." },
-      { title: "Business management systems", text: "Custom systems to run your company more efficiently with sharper decisions." },
-      { title: "Cloud solutions", text: "Flexible, secure infrastructure that helps you scale from anywhere." },
+      { slug: "erp", tag: "ERP", title: "ERP Solutions", text: "Finance, inventory and purchasing in one clear system." },
+      { slug: "pos", tag: "POS", title: "POS & Retail", text: "Every sale, invoice and branch under control." },
+      { slug: "websites", tag: "WEB", title: "Websites & Stores", text: "A fast digital presence that starts conversations." },
+      { slug: "crm", tag: "CRM", title: "CRM & Automation", text: "Automated follow-ups and more time to grow." },
     ],
   },
 } as const;
 
-const icons = [Code2, Settings, Cloud];
-const anchors = ["websites", "erp", "solutions"];
-
 export function ServicesSection({ language }: { language: Language }) {
   const copy = servicesCopy[language];
-  const Arrow = language === "ar" ? ArrowLeft : ArrowRight;
+  const Arrow = language === "ar" ? ArrowUpLeft : ArrowUpRight;
 
   return (
-    <section id="services" className="tmx-services">
-      <div className="tmx-container">
-        <div className="tmx-services-head scroll-reveal">
-          <p className="tmx-pill">{copy.pill}</p>
-          <h2 className="tmx-section-title">{copy.title}</h2>
-          <p className="tmx-section-text">{copy.text}</p>
-        </div>
-        <div className="tmx-services-grid">
-          {copy.items.map((item, index) => {
-            const Icon = icons[index];
-            return (
-              <article key={item.title} className="tmx-service-card scroll-reveal">
-                <span className="tmx-service-icon"><Icon size={28} aria-hidden="true" /></span>
-                <div className="tmx-service-body">
-                  <h3>{item.title}</h3>
-                  <p>{item.text}</p>
-                  <Link href={`/services#service-${anchors[index]}`} className="tmx-service-link">
-                    {copy.more} <Arrow size={16} aria-hidden="true" />
-                  </Link>
-                </div>
-              </article>
-            );
-          })}
-        </div>
-        <div className="tmx-services-all">
-          <Link href="/services" className="tmx-text-btn">{copy.all} <Arrow size={18} aria-hidden="true" /></Link>
-        </div>
+    <section id="services" className="sd-section sd-services">
+      <div className="sd-section-head scroll-reveal">
+        <p className="sd-eyebrow">{copy.eyebrow}</p>
+        <h2 className="sd-display">{copy.title[0]}<br />{copy.title[1]}</h2>
+        <p className="sd-lede">{copy.text}</p>
+      </div>
+      <ul className="sd-service-list">
+        {copy.items.map(item => (
+          <li key={item.slug} className="scroll-reveal">
+            <Link href={`/services#service-${item.slug}`} className="sd-service-row">
+              <span className="sd-service-tag">{item.tag}</span>
+              <strong>{item.title}</strong>
+              <span className="sd-service-text">{item.text}</span>
+              <span className="sd-round" aria-hidden="true"><Arrow size={17} /></span>
+            </Link>
+          </li>
+        ))}
+      </ul>
+      <div className="sd-services-all">
+        <Link href="/services" className="sd-pill">{copy.all}</Link>
       </div>
     </section>
   );
