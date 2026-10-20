@@ -56,6 +56,9 @@ html[data-brand-mode] .site-shell.sd-page, .sd-page { min-height: 100vh; backgro
 .sd-tile-media { overflow: hidden; border-radius: 22px; background: var(--sd-soft); }
 .sd-tile-media img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--sd-ease); }
 .sd-tile:hover .sd-tile-media img { transform: scale(1.04); }
+.sd-tile-shot { border-radius: 14px; box-shadow: 0 0 0 1px rgba(15, 23, 42, .08), 0 18px 40px -22px rgba(15, 23, 42, .45); }
+.sd-tile-shot img { object-fit: cover; object-position: center; }
+.sd-tile:hover .sd-tile-shot img { transform: scale(1.02); }
 .sd-tile-type { display: grid; place-items: center; padding: 32px; text-align: center; }
 .sd-tile-type span { font-size: clamp(30px, 3.6vw, 54px); font-weight: 800; line-height: 1.1; letter-spacing: -.04em; text-wrap: balance; }
 [dir="rtl"] .sd-tile-type span { letter-spacing: 0; line-height: 1.35; }
