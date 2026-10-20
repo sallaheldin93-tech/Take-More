@@ -7,6 +7,9 @@ import { applySeo } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { SiteHeader } from "@/components/home/SiteHeader";
+import { HeroSection } from "@/components/home/HeroSection";
+import { ServicesSection } from "@/components/home/ServicesSection";
 
 const normalizePhone = (value: string) => value
   .replace(/[٠-٩]/g, digit => String("٠١٢٣٤٥٦٧٨٩".indexOf(digit)))
@@ -233,6 +236,7 @@ function BookingPanel({ onClose }: { onClose?: () => void }) {
 export default function Home() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [bookingOpen, setBookingOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
   const [language, setLanguage] = useState<"en" | "ar">(() => {
     const requested = new URLSearchParams(window.location.search).get("lang");
     if (requested === "ar" || requested === "en") return requested;
@@ -281,43 +285,18 @@ export default function Home() {
 
   const scrollTo = (id: string) => {
     setMobileOpen(false);
+    setActiveSection(id);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
   return <div className="site-shell" dir={language === "ar" ? "rtl" : "ltr"}>
-    <header className="topbar dark-header">
-      <a className="brand" href="#home" onClick={() => scrollTo("home")}><img src={brandMode === "white" ? "/assets/take-more-logo-white.png" : "/assets/take-more-logo.png"} alt="Take More — Retail & Web, Made Smarter" /></a>
-      <nav id="home-mobile-nav" className={mobileOpen ? "main-nav mobile-open" : "main-nav"}>
-        <button onClick={() => scrollTo("home")}>{content.nav.home}</button>
-        <button onClick={() => scrollTo("services")}>{content.nav.services}</button>
-        <button onClick={() => scrollTo("work")}>{content.nav.work}</button>
-        <button onClick={() => scrollTo("process")}>{content.nav.process}</button>
-        <button onClick={() => scrollTo("why")}>{content.nav.why}</button>
-        <button onClick={() => scrollTo("faq")}>{content.nav.faq}</button>
-        <button onClick={() => scrollTo("contact")}>{content.nav.contact}</button>
-        <button className="nav-book" onClick={() => { setBookingOpen(true); setMobileOpen(false); }}>{content.nav.book} <MoveUpRight size={15} /></button>
-      </nav>
-      <button className="mobile-menu" onClick={() => setMobileOpen(value => !value)} aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileOpen} aria-controls="home-mobile-nav">{mobileOpen ? <X size={23} /> : <Menu size={23} />}</button>
-      <div className="header-actions">
-        <button className="language-switch" onClick={() => setLanguage(value => value === "en" ? "ar" : "en")} aria-label={language === "en" ? "عرض الموقع بالعربية" : "View website in English"}><Languages size={15} /><span>{language === "en" ? "العربية" : "EN"}</span></button>
-        <button className="mode-toggle" onClick={() => setBrandMode(value => value === "blue" ? "white" : "blue")} aria-label={brandMode === "blue" ? "Switch to white mode" : "Switch to blue mode"}>{brandMode === "blue" ? <Sun size={15} /> : <Moon size={15} />}<span>{brandMode === "blue" ? content.mode.white : content.mode.blue}</span></button>
-        <button className="desktop-book" onClick={() => setBookingOpen(true)}>{content.nav.start} <MoveUpRight size={15} /></button>
-      </div>
-    </header>
+    <SiteHeader language={language} activeSection={activeSection} mobileOpen={mobileOpen} onToggleMobile={() => setMobileOpen(value => !value)} onNavigate={scrollTo} onToggleLanguage={() => setLanguage(value => value === "en" ? "ar" : "en")} onStart={() => { setBookingOpen(true); setMobileOpen(false); }} />
     {mobileOpen && <button className="mobile-nav-backdrop" aria-label="Close navigation menu" onClick={() => setMobileOpen(false)} />}
 
     <main>
-      <section id="home" className="hero container">
-        <div className="hero-copy">
-          <p className="eyebrow reveal">{content.heroEyebrow}</p>
-          <h1 className="reveal delay-1">{content.heroTitleA}<br /><em>{content.heroTitleB}</em><br />{content.heroTitleC}</h1>
-          <p className="hero-text reveal delay-2">{content.heroLine}<br />{content.heroText}</p>
-          <div className="hero-actions reveal delay-3"><Button className="primary-button" onClick={() => setBookingOpen(true)}>{content.discovery} <MoveUpRight size={17} /></Button><button className="text-link" onClick={() => scrollTo("services")}>{content.explore} <ChevronDown size={16} /></button></div>
-        </div>
-        <div className="hero-visual reveal delay-2"><div className="orbit orbit-one" /><div className="orbit orbit-two" /><div className="dashboard-card"><div className="dashboard-top"><span className="tiny-dot" /><span>TM / dashboard</span><span className="live-pill">LIVE</span></div><div className="dashboard-number">+38.4% <span>↗</span></div><p>business efficiency</p><div className="mini-bars"><i /><i /><i /><i /><i /><i /><i /></div><div className="dashboard-bottom"><span>ERP</span><span>POS</span><span>CRM</span></div></div><div className="floating-note"><span className="green-check"><Check size={13} /></span><div><strong>{language === "ar" ? "كل الأنظمة تعمل" : "All systems go"}</strong><small>{language === "ar" ? "كل شيء متصل" : "Everything connected"}</small></div></div><div className="hero-sticker">BUILT<br /><span>TO</span><br />GROW</div></div>
-      </section>
+      <HeroSection language={language} onTalk={() => setBookingOpen(true)} onExplore={() => scrollTo("services")} />
 
-      <section id="services" className="services-section container"><div className="section-intro"><div><p className="eyebrow">{content.servicesEyebrow}</p><h2>{content.servicesTitleA}<br /><em>{content.servicesTitleB}</em></h2></div><p>{content.servicesText}</p></div><div className="service-grid">{services.map(({ icon: Icon, eyebrow, title, description, bullets, tone }, index) => <article className={`service-card ${tone} scroll-reveal`} key={title}><div className="service-icon"><Icon size={22} /></div><p className="eyebrow">{eyebrow}</p><h3>{title}</h3><p className="service-description">{description}</p><ul>{bullets.map(item => <li key={item}><Check size={15} />{item}</li>)}</ul><button className="card-link" onClick={() => setBookingOpen(true)}>{content.cardCta} <MoveUpRight size={15} /></button><span className="card-number">0{index + 1}</span></article>)}</div></section>
+      <ServicesSection language={language} />
 
       <section id="work" className="showcase-section container scroll-reveal"><div className="section-intro"><div><p className="eyebrow">{trust.showcaseEyebrow}</p><h2>{trust.showcaseTitleA}<br /><em>{trust.showcaseTitleB}</em></h2></div><p>{trust.showcaseText}</p></div><div className="showcase-grid">{trust.showcaseItems.map(({ icon: Icon, number, title, text: description, tag }) => <article className="showcase-card" key={number}><div className="showcase-card-top"><span className="showcase-icon"><Icon size={22} /></span><span>{number}</span></div><p className="eyebrow">{tag}</p><h3>{title}</h3><p>{description}</p><span className="showcase-arrow"><MoveUpRight size={17} /></span></article>)}</div></section>
 
