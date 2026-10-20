@@ -1,7 +1,9 @@
 import { Resend } from "resend";
 import { ENV } from "./_core/env";
 
-export const BOOKING_RECIPIENT = "info@take-more.com";
+// Resend only delivers to the account owner's inbox until take-more.com is verified,
+// so alerts default there; set BOOKING_EMAIL_TO to switch to info@take-more.com later.
+export const BOOKING_RECIPIENT = "sallaheldin93@gmail.com";
 const DEFAULT_SENDER = "Take More <onboarding@resend.dev>";
 
 export type BookingEmailInput = {
@@ -56,7 +58,7 @@ export async function sendBookingEmail(input: BookingEmailInput): Promise<Bookin
   try {
     const result = await resend.emails.send({
       from: ENV.bookingEmailFrom || DEFAULT_SENDER,
-      to: [BOOKING_RECIPIENT],
+      to: [bookingEmailRecipient()],
       ...(replyTo ? { replyTo } : {}),
       subject: `New Take More booking — ${input.bookingCode}`,
       html: `<div style="font-family:Arial,sans-serif;line-height:1.7;color:#102a43">
@@ -86,7 +88,7 @@ export async function sendBookingEmail(input: BookingEmailInput): Promise<Bookin
 }
 
 export function bookingEmailRecipient() {
-  return BOOKING_RECIPIENT;
+  return ENV.bookingEmailTo.trim() || BOOKING_RECIPIENT;
 }
 
 export function bookingEmailSender() {

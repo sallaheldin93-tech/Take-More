@@ -4,7 +4,7 @@ import { COOKIE_NAME } from "@shared/const";
 import { getSessionCookieOptions } from "./_core/cookies";
 import { systemRouter } from "./_core/systemRouter";
 import { adminProcedure, protectedProcedure, publicProcedure, router } from "./_core/trpc";
-import { sendBookingEmail } from "./email";
+import { bookingEmailRecipient, sendBookingEmail } from "./email";
 import { and, desc, eq, gte, lt } from "drizzle-orm";
 import { availability, bookings, getDb, listAvailability, listBookings, listServices, services } from "./db";
 import { notifyBooking } from "./whatsapp";
@@ -97,7 +97,7 @@ export const appRouter = router({
       try {
         ownerNotified = await notifyOwner({
           title: `New Take More booking — ${bookingCode}`,
-          content: `New booking email sent to info@take-more.com: ${email.sent ? "Yes" : "No"}\n\nCustomer: ${input.customerName}\nPhone: ${input.customerPhone}\nEmail: ${input.customerEmail || "Not provided"}\nService: ${service[0].name}\nDate: ${dateLabel}\nTime: ${timeLabel}\nBooking code: ${bookingCode}\nWhatsApp notification sent: ${notification.ownerSent ? "Yes" : "Not configured"}`,
+          content: `New booking email sent to ${bookingEmailRecipient()}: ${email.sent ? "Yes" : "No"}\n\nCustomer: ${input.customerName}\nPhone: ${input.customerPhone}\nEmail: ${input.customerEmail || "Not provided"}\nService: ${service[0].name}\nDate: ${dateLabel}\nTime: ${timeLabel}\nBooking code: ${bookingCode}\nWhatsApp notification sent: ${notification.ownerSent ? "Yes" : "Not configured"}`,
         });
       } catch (error) {
         console.warn("[Booking] Owner notification failed", error);

@@ -2,8 +2,8 @@ import { describe, expect, it } from "vitest";
 import { BOOKING_RECIPIENT, bookingEmailRecipient } from "./email";
 
 describe("booking email recipient", () => {
-  it("uses only the Take More owner mailbox", () => {
-    expect(BOOKING_RECIPIENT).toBe("info@take-more.com");
-    expect(bookingEmailRecipient()).toBe("info@take-more.com");
+  it("defaults to the owner inbox Resend allows before domain verification", () => {
+    expect(BOOKING_RECIPIENT).toBe("sallaheldin93@gmail.com");
+    expect(bookingEmailRecipient()).toBe(process.env.BOOKING_EMAIL_TO?.trim() || "sallaheldin93@gmail.com");
   });
 });
