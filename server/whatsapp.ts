@@ -118,8 +118,8 @@ async function sendBookingTemplate(
 }
 
 async function sendOwnerText(to: string, body: string): Promise<WhatsAppResult> {
-  if (!process.env.WHATSAPP_OWNER_TEXT_ENABLED) {
-    return { sent: false, reason: "Owner WhatsApp text is disabled; owner receives the built-in project notification" };
+  if (process.env.WHATSAPP_OWNER_TEXT_ENABLED === "false") {
+    return { sent: false, reason: "Owner WhatsApp alerts are disabled" };
   }
   return postWhatsApp(to, {
     type: "text",
@@ -138,10 +138,15 @@ export async function notifyBooking(payload: {
 }): Promise<BookingNotificationResult> {
   const templatePayload = { ...payload, language: payload.language || "en" };
   const customer = await sendBookingTemplate(payload.customerPhone, templatePayload);
-  const owner = await sendOwnerText(
-    process.env.WHATSAPP_OWNER_PHONE || "+201153213270",
+  const ownerPhone = process.env.WHATSAPP_OWNER_PHONE || "+201153213270";
+  let owner = await sendOwnerText(
+    ownerPhone,
     `New booking ${payload.bookingCode}\n${payload.customerName} — ${payload.serviceName}\n${payload.dateLabel} at ${payload.timeLabel}\nPhone: ${payload.customerPhone}`,
   );
+  // Meta only delivers free-form text inside a 24h conversation window; fall back to the approved template so the owner is still alerted.
+  if (!owner.sent && process.env.WHATSAPP_OWNER_TEXT_ENABLED !== "false" && !owner.reason?.includes("credentials")) {
+    owner = await sendBookingTemplate(ownerPhone, { ...templatePayload, customerName: `${payload.customerName} (${payload.customerPhone})` });
+  }
 
   return {
     customerSent: customer.sent,
