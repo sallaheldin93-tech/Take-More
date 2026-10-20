@@ -1,37 +1,37 @@
 type Language = "en" | "ar";
 
-type Project = { src: string; client: string; title: string; category: string; summary: string; alt: string };
+type Showcase = { src: string; label: string; title: string; category: string; summary: string; alt: string };
 
-const projects: Record<Language, Project[]> = {
+const showcases: Record<Language, Showcase[]> = {
   ar: [
-    { src: "/assets/work/miraza-dashboard.jpg", client: "Miraza", title: "لوحة التحكم", category: "ERP", summary: "المبيعات والأرباح والأوردرات في شاشة واحدة، لحظة بلحظة.", alt: "لوحة تحكم Miraza بالعربي تعرض المبيعات والأرباح والأوردرات" },
-    { src: "/assets/work/beko-store.jpg", client: "مؤسسة بيكو التجارية", title: "متجر العدد والآلات", category: "متجر إلكتروني", summary: "متجر عربي سريع لعرض المنتجات وطلبها بسهولة.", alt: "الصفحة الرئيسية لمتجر بيكو للعدد والآلات" },
-    { src: "/assets/work/miraza-products.jpg", client: "Miraza", title: "إدارة المنتجات", category: "ERP", summary: "مخزون لكل مقاس ولون، مع استيراد وطباعة الباركود.", alt: "شاشة المنتجات في نظام Miraza مع المخزون لكل مقاس" },
-    { src: "/assets/work/miraza-settings.jpg", client: "Miraza", title: "الإعدادات والفروع", category: "ERP", summary: "إدارة المخازن والفروع وصلاحيات التشغيل من مكان واحد.", alt: "صفحة الإعدادات والفروع في نظام Miraza" },
+    { src: "/assets/work/service-erp.png", label: "أنظمة ERP", title: "لوحة تحكم لإدارة شغلك", category: "إدارة", summary: "المبيعات والمخزون والأرباح في شاشة واحدة، لحظة بلحظة.", alt: "لابتوب يعرض لوحة تحكم نظام ERP بالمبيعات والمخزون" },
+    { src: "/assets/work/service-ecommerce.png", label: "متاجر إلكترونية", title: "متجر يبيع من الموبايل", category: "تجارة", summary: "تجربة شراء سريعة من أول منتج لحد الدفع والشحن.", alt: "موبايل يعرض متجر إلكتروني بجانب طرد شحن" },
+    { src: "/assets/work/service-pos.png", label: "نقاط البيع POS", title: "كاشير ذكي لفرعك", category: "مبيعات", summary: "بيع ودفع وفواتير متربطة مباشرة بالمخزون.", alt: "جهاز نقطة بيع على كاونتر محل" },
+    { src: "/assets/work/service-website.png", label: "مواقع الشركات", title: "موقع يعبّر عن براندك", category: "مواقع", summary: "تصميم احترافي يحوّل الزوار لعملاء.", alt: "شاشة كمبيوتر تعرض موقع شركة احترافي" },
   ],
   en: [
-    { src: "/assets/work/miraza-dashboard.jpg", client: "Miraza", title: "Operations dashboard", category: "ERP", summary: "Sales, profit and orders on a single live screen.", alt: "Arabic Miraza dashboard showing sales, profit and orders" },
-    { src: "/assets/work/beko-store.jpg", client: "Beko Trading Est.", title: "Tools storefront", category: "E-commerce", summary: "A fast Arabic storefront built for browsing and ordering.", alt: "Beko tools store homepage" },
-    { src: "/assets/work/miraza-products.jpg", client: "Miraza", title: "Product management", category: "ERP", summary: "Variant-level stock with CSV import and barcode printing.", alt: "Miraza products screen with variant-level inventory" },
-    { src: "/assets/work/miraza-settings.jpg", client: "Miraza", title: "Settings & locations", category: "ERP", summary: "Warehouses, branches and permissions managed in one place.", alt: "Miraza settings and locations page" },
+    { src: "/assets/work/service-erp.png", label: "ERP systems", title: "A dashboard to run your business", category: "Operations", summary: "Sales, stock and profit on a single live screen.", alt: "Laptop showing an ERP dashboard with sales and inventory" },
+    { src: "/assets/work/service-ecommerce.png", label: "Online stores", title: "A store that sells on mobile", category: "Commerce", summary: "Fast buying from first product to checkout and shipping.", alt: "Phone showing an online store next to a shipping box" },
+    { src: "/assets/work/service-pos.png", label: "POS", title: "Smart checkout for your branch", category: "Sales", summary: "Sales, payments and invoices synced with inventory.", alt: "Point of sale tablet on a store counter" },
+    { src: "/assets/work/service-website.png", label: "Company websites", title: "A site that speaks your brand", category: "Web", summary: "Professional design that turns visitors into clients.", alt: "Desktop monitor showing a professional company website" },
   ],
 };
 
 export function WorkGallery({ language }: { language: Language }) {
   return (
-    <section id="work" className="sd-gallery" aria-label={language === "ar" ? "أعمالنا" : "Our work"}>
-      {projects[language].map(project => (
-        <article key={project.src} className="sd-project scroll-reveal">
+    <section id="work" className="sd-gallery" aria-label={language === "ar" ? "اللي بنعمله" : "What we build"}>
+      {showcases[language].map(item => (
+        <article key={item.src} className="sd-project scroll-reveal">
           <div className="sd-project-frame">
-            <img src={project.src} alt={project.alt} loading="lazy" />
+            <img src={item.src} alt={item.alt} loading="lazy" />
           </div>
           <div className="sd-project-info">
             <div className="sd-project-head">
-              <span className="sd-project-client">{project.client}</span>
-              <span className="sd-project-tag">{project.category}</span>
+              <span className="sd-project-client">{item.label}</span>
+              <span className="sd-project-tag">{item.category}</span>
             </div>
-            <h3>{project.title}</h3>
-            <p>{project.summary}</p>
+            <h3>{item.title}</h3>
+            <p>{item.summary}</p>
           </div>
         </article>
       ))}
