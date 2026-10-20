@@ -1,14 +1,14 @@
 import { z } from "zod";
 import { TRPCError } from "@trpc/server";
-import { COOKIE_NAME } from "@shared/const";
-import { getSessionCookieOptions } from "./_core/cookies";
-import { systemRouter } from "./_core/systemRouter";
-import { adminProcedure, protectedProcedure, publicProcedure, router } from "./_core/trpc";
-import { bookingEmailRecipient, sendBookingEmail } from "./email";
+import { COOKIE_NAME } from "../shared/const.js";
+import { getSessionCookieOptions } from "./_core/cookies.js";
+import { systemRouter } from "./_core/systemRouter.js";
+import { adminProcedure, protectedProcedure, publicProcedure, router } from "./_core/trpc.js";
+import { bookingEmailRecipient, sendBookingEmail } from "./email.js";
 import { and, desc, eq, gte, lt } from "drizzle-orm";
-import { availability, bookings, getDb, listAvailability, listBookings, listServices, services } from "./db";
-import { notifyBooking } from "./whatsapp";
-import { notifyOwner } from "./_core/notification";
+import { availability, bookings, getDb, listAvailability, listBookings, listServices, services } from "./db.js";
+import { notifyBooking } from "./whatsapp.js";
+import { notifyOwner } from "./_core/notification.js";
 
 const defaultSlots = ["10:00", "10:30", "11:00", "11:30", "12:00", "12:30", "13:00", "13:30", "14:00", "14:30", "15:00", "15:30", "16:00", "16:30"];
 

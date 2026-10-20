@@ -6,12 +6,16 @@
   "framework": "vite",
   "rewrites": [
     {
+      "source": "/api/(.*)",
+      "destination": "/api"
+    },
+    {
       "source": "/((?!api/).*)",
       "destination": "/index.html"
     }
   ],
   "functions": {
-    "api/[...path].ts": {
+    "api/index.ts": {
       "maxDuration": 60
     }
   }

@@ -1,5 +1,5 @@
 import { afterEach, describe, expect, it, vi } from "vitest";
-import { normalizeWhatsAppNumber, notifyBooking } from "./whatsapp";
+import { normalizeWhatsAppNumber, notifyBooking } from "./whatsapp.js";
 
 const originalEnv = { ...process.env };
 

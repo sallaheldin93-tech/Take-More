@@ -1,8 +1,8 @@
 import { and, asc, desc, eq, gte, lt } from "drizzle-orm";
 import { neon } from "@neondatabase/serverless";
 import { drizzle } from "drizzle-orm/neon-http";
-import { availability, bookings, InsertUser, services, users } from "../drizzle/schema";
-import { ENV } from "./_core/env";
+import { availability, bookings, InsertUser, services, users } from "../drizzle/schema.js";
+import { ENV } from "./_core/env.js";
 
 let _db: ReturnType<typeof drizzle> | null = null;
 

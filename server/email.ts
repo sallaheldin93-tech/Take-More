@@ -1,5 +1,5 @@
 import { Resend } from "resend";
-import { ENV } from "./_core/env";
+import { ENV } from "./_core/env.js";
 
 // Resend only delivers to the account owner's inbox until take-more.com is verified,
 // so alerts default there; set BOOKING_EMAIL_TO to switch to info@take-more.com later.
