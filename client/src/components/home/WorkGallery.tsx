@@ -1,44 +1,39 @@
 type Language = "en" | "ar";
 
-type Tile =
-  | { kind: "image"; src: string; ratio: string; title: string; meta: string; alt: string }
-  | { kind: "type"; tone: "lime" | "ink" | "soft"; ratio: string; title: string; meta: string; display: string };
+type Project = { src: string; client: string; title: string; category: string; summary: string; alt: string };
 
-const tiles: Record<Language, Tile[]> = {
+const projects: Record<Language, Project[]> = {
   ar: [
-    { kind: "image", src: "/assets/work/miraza-products.jpg", ratio: "2880 / 1558", title: "Miraza — إدارة المنتجات", meta: "ERP", alt: "شاشة المنتجات في نظام Miraza مع المخزون لكل مقاس" },
-    { kind: "image", src: "/assets/work/beko-store.jpg", ratio: "2000 / 900", title: "مؤسسة بيكو التجارية", meta: "متجر إلكتروني", alt: "الصفحة الرئيسية لمتجر بيكو للعدد والآلات" },
-    { kind: "type", tone: "lime", ratio: "1 / 1", title: "Take More", meta: "الاستوديو", display: "Take More" },
-    { kind: "image", src: "/assets/work/miraza-dashboard.jpg", ratio: "2880 / 1558", title: "Miraza — لوحة التحكم", meta: "ERP", alt: "لوحة تحكم Miraza بالعربي تعرض المبيعات والأرباح والأوردرات" },
-    { kind: "image", src: "/assets/work/miraza-settings.jpg", ratio: "1880 / 1110", title: "Miraza — الإعدادات والفروع", meta: "ERP", alt: "صفحة الإعدادات والفروع في نظام Miraza" },
-    { kind: "type", tone: "ink", ratio: "4 / 5", title: "من الفكرة إلى الإطلاق", meta: "منهجنا", display: "من الفكرة إلى الإطلاق." },
+    { src: "/assets/work/miraza-dashboard.jpg", client: "Miraza", title: "لوحة التحكم", category: "ERP", summary: "المبيعات والأرباح والأوردرات في شاشة واحدة، لحظة بلحظة.", alt: "لوحة تحكم Miraza بالعربي تعرض المبيعات والأرباح والأوردرات" },
+    { src: "/assets/work/beko-store.jpg", client: "مؤسسة بيكو التجارية", title: "متجر العدد والآلات", category: "متجر إلكتروني", summary: "متجر عربي سريع لعرض المنتجات وطلبها بسهولة.", alt: "الصفحة الرئيسية لمتجر بيكو للعدد والآلات" },
+    { src: "/assets/work/miraza-products.jpg", client: "Miraza", title: "إدارة المنتجات", category: "ERP", summary: "مخزون لكل مقاس ولون، مع استيراد وطباعة الباركود.", alt: "شاشة المنتجات في نظام Miraza مع المخزون لكل مقاس" },
+    { src: "/assets/work/miraza-settings.jpg", client: "Miraza", title: "الإعدادات والفروع", category: "ERP", summary: "إدارة المخازن والفروع وصلاحيات التشغيل من مكان واحد.", alt: "صفحة الإعدادات والفروع في نظام Miraza" },
   ],
   en: [
-    { kind: "image", src: "/assets/work/miraza-products.jpg", ratio: "2880 / 1558", title: "Miraza — Products", meta: "ERP", alt: "Miraza products screen with variant-level inventory" },
-    { kind: "image", src: "/assets/work/beko-store.jpg", ratio: "2000 / 900", title: "Beko Trading Est.", meta: "E-COMMERCE", alt: "Beko tools store homepage" },
-    { kind: "type", tone: "lime", ratio: "1 / 1", title: "Take More", meta: "STUDIO", display: "Take More" },
-    { kind: "image", src: "/assets/work/miraza-dashboard.jpg", ratio: "2880 / 1558", title: "Miraza — Dashboard", meta: "ERP", alt: "Arabic Miraza dashboard showing sales, profit and orders" },
-    { kind: "image", src: "/assets/work/miraza-settings.jpg", ratio: "1880 / 1110", title: "Miraza — Settings & locations", meta: "ERP", alt: "Miraza settings and locations page" },
-    { kind: "type", tone: "ink", ratio: "4 / 5", title: "Idea to launch", meta: "APPROACH", display: "From idea to launch." },
+    { src: "/assets/work/miraza-dashboard.jpg", client: "Miraza", title: "Operations dashboard", category: "ERP", summary: "Sales, profit and orders on a single live screen.", alt: "Arabic Miraza dashboard showing sales, profit and orders" },
+    { src: "/assets/work/beko-store.jpg", client: "Beko Trading Est.", title: "Tools storefront", category: "E-commerce", summary: "A fast Arabic storefront built for browsing and ordering.", alt: "Beko tools store homepage" },
+    { src: "/assets/work/miraza-products.jpg", client: "Miraza", title: "Product management", category: "ERP", summary: "Variant-level stock with CSV import and barcode printing.", alt: "Miraza products screen with variant-level inventory" },
+    { src: "/assets/work/miraza-settings.jpg", client: "Miraza", title: "Settings & locations", category: "ERP", summary: "Warehouses, branches and permissions managed in one place.", alt: "Miraza settings and locations page" },
   ],
 };
 
 export function WorkGallery({ language }: { language: Language }) {
   return (
     <section id="work" className="sd-gallery" aria-label={language === "ar" ? "أعمالنا" : "Our work"}>
-      {tiles[language].map(tile => (
-        <figure key={tile.title} className="sd-tile scroll-reveal">
-          {tile.kind === "image" ? (
-            <div className="sd-tile-media sd-tile-shot" style={{ aspectRatio: tile.ratio }}>
-              <img src={tile.src} alt={tile.alt} loading="lazy" />
+      {projects[language].map(project => (
+        <article key={project.src} className="sd-project scroll-reveal">
+          <div className="sd-project-frame">
+            <img src={project.src} alt={project.alt} loading="lazy" />
+          </div>
+          <div className="sd-project-info">
+            <div className="sd-project-head">
+              <span className="sd-project-client">{project.client}</span>
+              <span className="sd-project-tag">{project.category}</span>
             </div>
-          ) : (
-            <div className={`sd-tile-media sd-tile-type is-${tile.tone}`} style={{ aspectRatio: tile.ratio }}>
-              <span>{tile.display}</span>
-            </div>
-          )}
-          <figcaption><span>{tile.title}</span><span>{tile.meta}</span></figcaption>
-        </figure>
+            <h3>{project.title}</h3>
+            <p>{project.summary}</p>
+          </div>
+        </article>
       ))}
     </section>
   );

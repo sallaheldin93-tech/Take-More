@@ -46,7 +46,7 @@ export function HeroSection({ language, onTalk, onExplore }: Props) {
       <div className="sd-rule" aria-hidden="true">
         <span className="sd-live"><i />{copy.live}</span>
         <span className="sd-rule-line" />
-        <span className="sd-from">{copy.from}<img src="/assets/take-more-favicon.png" alt="" width={26} height={26} /></span>
+        <span className="sd-from">{copy.from}</span>
       </div>
     </section>
   );
