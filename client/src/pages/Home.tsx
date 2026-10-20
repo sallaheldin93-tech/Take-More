@@ -7,6 +7,12 @@ import { applySeo } from "@/lib/seo";
 import { Button } from "@/components/ui/button";
 import { Input } from "@/components/ui/input";
 import { Textarea } from "@/components/ui/textarea";
+import { SiteHeader } from "@/components/home/SiteHeader";
+import { HeroSection } from "@/components/home/HeroSection";
+import { ServicesSection } from "@/components/home/ServicesSection";
+import { WorkGallery } from "@/components/home/WorkGallery";
+import { CapabilitiesSection } from "@/components/home/CapabilitiesSection";
+import { ClosingSection, FaqSection, PlaceSection, StatementSection } from "@/components/home/StudioSections";
 
 const normalizePhone = (value: string) => value
   .replace(/[٠-٩]/g, digit => String("٠١٢٣٤٥٦٧٨٩".indexOf(digit)))
@@ -39,8 +45,8 @@ const serviceCopyAr = [
   { icon: Sparkles, eyebrow: "03 / الحضور الرقمي", title: "المواقع والمتاجر الإلكترونية", description: "ابنِ حضورًا رقميًا سريعًا واحترافيًا يشرح خدمتك بوضوح ويحوّل الزيارات إلى محادثات حقيقية.", bullets: ["مواقع الشركات", "المتاجر الإلكترونية", "تهيئة لمحركات البحث"], tone: "ice" },
   { icon: ShieldCheck, eyebrow: "04 / النمو", title: "CRM وأتمتة الأعمال", description: "نظّم العملاء المحتملين والمتابعات وسير العمل حتى يوفر فريقك الوقت ويركز على النمو.", bullets: ["إدارة العملاء المحتملين", "المتابعات الآلية", "خط سير المبيعات"], tone: "blue" },
   { icon: Layers3, eyebrow: "05 / البيانات", title: "لوحات البيانات والتقارير", description: "حوّل بيانات نشاطك المتفرقة إلى لوحات عملية تساعدك على فهم الأداء واتخاذ القرار أسرع.", bullets: ["مؤشرات الأداء", "تقارير الإدارة", "رؤية موحدة للبيانات"], tone: "lime" },
-  { icon: Sparkles, eyebrow: "06 / الهوية", title: "الهوية وتصميم UI/UX", description: "صمّم هوية متناسقة وتجربة استخدام سهلة تجعل نشاطك أكثر وضوحًا وثقة في عين العميل.", bullets: ["توجيه الهوية", "أنظمة واجهات", "صفحات تركز على التحويل"], tone: "ice" },
-  { icon: ShieldCheck, eyebrow: "07 / الدعم", title: "الاستضافة والصيانة", description: "حافظ على أدواتك الرقمية آمنة ومستقرة ومحدثة من خلال دعم عملي بعد الإطلاق.", bullets: ["متابعة الأداء", "تحديثات الأمان", "الدعم الفني"], tone: "blue" },
+  { icon: Sparkles, eyebrow: "06 / الهوية", title: "الهوية و��صميم UI/UX", description: "صمّم هوية متناسقة وتجربة استخدام سهلة تجعل نشاطك أكثر وضوحًا وثقة في عين العميل.", bullets: ["توجيه الهوية", "أنظمة واجهات", "صفحات تركز على التحويل"], tone: "ice" },
+  { icon: ShieldCheck, eyebrow: "07 / الدعم", title: "الاستضافة والصيانة", description: "حافظ على أدواتك الرقمية آمنة ومستقرة ومحدثة من خلال دعم عملي بعد الإطلاق.", bullets: ["متابعة الأداء", "تحديثات الأمان", "الدعم ��لفني"], tone: "blue" },
   { icon: Zap, eyebrow: "08 / الاستراتيجية", title: "استشارات الأعمال", description: "ابدأ بخارطة طريق واضحة تحدد التقنية المناسبة وتقلل الإنفاق غير الضروري وتدعم التقدم القابل للقياس.", bullets: ["تحليل الاحتياجات", "خارطة تقنية", "أولويات النمو"], tone: "sky" },
 ] as const;
 
@@ -100,7 +106,7 @@ const trustSections = {
     showcaseText: "نظرة على نوعية الأنظمة التي يمكن لـ Take More تصميمها حول عملياتك وعملائك وأهداف نموك.",
     showcaseItems: [
       { icon: Layers3, number: "01", title: "عمليات مترابطة", text: "اربط الحسابات والمخزون وسير العمل اليومي في صورة تشغيلية أوضح.", tag: "ERP / العمليات" },
-      { icon: Zap, number: "02", title: "معاملات أسرع", text: "أنشئ تجربة نقاط بيع موثوقة تحافظ على انسيابية المبيعات والفواتير والتقارير.", tag: "POS / التجزئة" },
+      { icon: Zap, number: "02", title: "��عاملات أسرع", text: "أنشئ تجربة نقاط بيع موثوقة تحافظ على انسيابية المبيعات والفواتير والتقارير.", tag: "POS / التجزئة" },
       { icon: Sparkles, number: "03", title: "حضور رقمي فعال", text: "حوّل موقعك إلى أصل تجاري مفيد يبني الثقة ويفتح حوارات جديدة.", tag: "المواقع / النمو" },
     ],
     processEyebrow: "كيف نعمل",
@@ -204,7 +210,7 @@ function BookingPanel({ onClose }: { onClose?: () => void }) {
   const [form, setForm] = useState({ customerName: "", customerPhone: "", customerEmail: "", notes: "" });
   const slots = trpc.booking.availableSlots.useQuery({ serviceId: serviceId || 1, date }, { enabled: Boolean(serviceId && date) });
   const copy = language === "ar" ? {
-    eyebrow: "احجز مكالمة استكشافية", title: "اختر الموعد المناسب لك.", service: "ما الخدمة التي تحتاجها؟", choose: "اختر خدمة", date: "التاريخ المفضل", available: "المواعيد المتاحة", session: "دقيقة للجلسة", checking: "جارٍ التحقق من المواعيد…", empty: "لا توجد مواعيد متاحة في هذا اليوم.", name: "الاسم بالكامل", phone: "رقم WhatsApp مع كود الدولة", email: "البريد الإلكتروني (اختياري)", notes: "حدثنا عن نشاطك التجاري (اختياري)", confirmation: "سيتم إرسال التأكيد إلى WhatsApp الخاص بك.", confirm: "تأكيد الحجز", confirming: "جارٍ التأكيد…", successTitle: "تم تأكيد حجزك بنجاح!", successText: "شكرًا لك. تم إرسال تفاصيل الحجز إلى WhatsApp وسنتواصل معك قريبًا.", successTextNoWhatsApp: "تم تسجيل الحجز بنجاح، لكن تعذر إرسال رسالة WhatsApp تلقائيًا. احتفظ برقم الحجز وسنتواصل معك.", code: "رقم الحجز", done: "تم", newBooking: "حجز موعد آخر", close: "إغلاق"
+    eyebrow: "احجز مكالمة استكشافية", title: "اختر الموعد المناسب لك.", service: "ما الخدمة التي تحتاجها؟", choose: "اختر خدمة", date: "التاريخ المفضل", available: "المواعيد المتاحة", session: "دقيقة للجلسة", checking: "جارٍ التحقق من المواعيد…", empty: "لا توجد مواعيد متاحة في هذا اليوم.", name: "الاسم بالكامل", phone: "رقم WhatsApp مع كود الدولة", email: "البريد الإلكترون�� (اختي��ري)", notes: "حدثنا عن نشاطك التجاري (اختياري)", confirmation: "سيتم إرسال التأكيد إلى WhatsApp الخاص بك.", confirm: "تأكيد الحجز", confirming: "جارٍ التأكيد…", successTitle: "تم تأكيد حجزك بنجاح!", successText: "شكرًا لك. تم إرسال تفاصيل الحجز إلى WhatsApp وسنتواصل معك قريبًا.", successTextNoWhatsApp: "تم تسجيل الحجز بنجاح، لكن تعذر إرسال رسالة WhatsApp تلقائيًا. احتفظ برقم الحجز وسنتواصل معك.", code: "رقم الحجز", done: "تم", newBooking: "حجز موعد آخر", close: "إغلاق"
   } : {
     eyebrow: "BOOK A DISCOVERY CALL", title: "Choose a time that works.", service: "What do you need?", choose: "Select a service", date: "Preferred date", available: "Available times", session: "minute session", checking: "Checking live availability…", empty: "No times left on this day. Try another date.", name: "Full name", phone: "WhatsApp number (with country code)", email: "Email (optional)", notes: "Tell us a little about your business (optional)", confirmation: "Confirmation is sent to your WhatsApp.", confirm: "Confirm booking", confirming: "Confirming…", successTitle: "Your booking is confirmed!", successText: "Thanks for booking with Take More. The details were sent to WhatsApp and we will be in touch shortly.", successTextNoWhatsApp: "Your booking was saved, but the automatic WhatsApp message could not be sent. Keep the booking code and we will contact you.", code: "Booking code", done: "Done", newBooking: "Book another time", close: "Close"
   };
@@ -233,6 +239,7 @@ function BookingPanel({ onClose }: { onClose?: () => void }) {
 export default function Home() {
   const [mobileOpen, setMobileOpen] = useState(false);
   const [bookingOpen, setBookingOpen] = useState(false);
+  const [activeSection, setActiveSection] = useState("home");
   const [language, setLanguage] = useState<"en" | "ar">(() => {
     const requested = new URLSearchParams(window.location.search).get("lang");
     if (requested === "ar" || requested === "en") return requested;
@@ -281,60 +288,28 @@ export default function Home() {
 
   const scrollTo = (id: string) => {
     setMobileOpen(false);
+    setActiveSection(id);
     document.getElementById(id)?.scrollIntoView({ behavior: "smooth" });
   };
 
-  return <div className="site-shell" dir={language === "ar" ? "rtl" : "ltr"}>
-    <header className="topbar dark-header">
-      <a className="brand" href="#home" onClick={() => scrollTo("home")}><img src={brandMode === "white" ? "/assets/take-more-logo-white.png" : "/assets/take-more-logo.png"} alt="Take More — Retail & Web, Made Smarter" /></a>
-      <nav id="home-mobile-nav" className={mobileOpen ? "main-nav mobile-open" : "main-nav"}>
-        <button onClick={() => scrollTo("home")}>{content.nav.home}</button>
-        <button onClick={() => scrollTo("services")}>{content.nav.services}</button>
-        <button onClick={() => scrollTo("work")}>{content.nav.work}</button>
-        <button onClick={() => scrollTo("process")}>{content.nav.process}</button>
-        <button onClick={() => scrollTo("why")}>{content.nav.why}</button>
-        <button onClick={() => scrollTo("faq")}>{content.nav.faq}</button>
-        <button onClick={() => scrollTo("contact")}>{content.nav.contact}</button>
-        <button className="nav-book" onClick={() => { setBookingOpen(true); setMobileOpen(false); }}>{content.nav.book} <MoveUpRight size={15} /></button>
-      </nav>
-      <button className="mobile-menu" onClick={() => setMobileOpen(value => !value)} aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileOpen} aria-controls="home-mobile-nav">{mobileOpen ? <X size={23} /> : <Menu size={23} />}</button>
-      <div className="header-actions">
-        <button className="language-switch" onClick={() => setLanguage(value => value === "en" ? "ar" : "en")} aria-label={language === "en" ? "عرض الموقع بالعربية" : "View website in English"}><Languages size={15} /><span>{language === "en" ? "العربية" : "EN"}</span></button>
-        <button className="mode-toggle" onClick={() => setBrandMode(value => value === "blue" ? "white" : "blue")} aria-label={brandMode === "blue" ? "Switch to white mode" : "Switch to blue mode"}>{brandMode === "blue" ? <Sun size={15} /> : <Moon size={15} />}<span>{brandMode === "blue" ? content.mode.white : content.mode.blue}</span></button>
-        <button className="desktop-book" onClick={() => setBookingOpen(true)}>{content.nav.start} <MoveUpRight size={15} /></button>
-      </div>
-    </header>
+  return <div className="site-shell sd-page" dir={language === "ar" ? "rtl" : "ltr"}>
+    <SiteHeader language={language} activeSection={activeSection} mobileOpen={mobileOpen} onToggleMobile={() => setMobileOpen(value => !value)} onNavigate={scrollTo} onToggleLanguage={() => setLanguage(value => value === "en" ? "ar" : "en")} onStart={() => { setBookingOpen(true); setMobileOpen(false); }} />
     {mobileOpen && <button className="mobile-nav-backdrop" aria-label="Close navigation menu" onClick={() => setMobileOpen(false)} />}
 
     <main>
-      <section id="home" className="hero container">
-        <div className="hero-copy">
-          <p className="eyebrow reveal">{content.heroEyebrow}</p>
-          <h1 className="reveal delay-1">{content.heroTitleA}<br /><em>{content.heroTitleB}</em><br />{content.heroTitleC}</h1>
-          <p className="hero-text reveal delay-2">{content.heroLine}<br />{content.heroText}</p>
-          <div className="hero-actions reveal delay-3"><Button className="primary-button" onClick={() => setBookingOpen(true)}>{content.discovery} <MoveUpRight size={17} /></Button><button className="text-link" onClick={() => scrollTo("services")}>{content.explore} <ChevronDown size={16} /></button></div>
-        </div>
-        <div className="hero-visual reveal delay-2"><div className="orbit orbit-one" /><div className="orbit orbit-two" /><div className="dashboard-card"><div className="dashboard-top"><span className="tiny-dot" /><span>TM / dashboard</span><span className="live-pill">LIVE</span></div><div className="dashboard-number">+38.4% <span>↗</span></div><p>business efficiency</p><div className="mini-bars"><i /><i /><i /><i /><i /><i /><i /></div><div className="dashboard-bottom"><span>ERP</span><span>POS</span><span>CRM</span></div></div><div className="floating-note"><span className="green-check"><Check size={13} /></span><div><strong>{language === "ar" ? "كل الأنظمة تعمل" : "All systems go"}</strong><small>{language === "ar" ? "كل شيء متصل" : "Everything connected"}</small></div></div><div className="hero-sticker">BUILT<br /><span>TO</span><br />GROW</div></div>
-      </section>
+      <HeroSection language={language} onTalk={() => setBookingOpen(true)} onExplore={() => scrollTo("services")} />
 
-      <section id="services" className="services-section container"><div className="section-intro"><div><p className="eyebrow">{content.servicesEyebrow}</p><h2>{content.servicesTitleA}<br /><em>{content.servicesTitleB}</em></h2></div><p>{content.servicesText}</p></div><div className="service-grid">{services.map(({ icon: Icon, eyebrow, title, description, bullets, tone }, index) => <article className={`service-card ${tone} scroll-reveal`} key={title}><div className="service-icon"><Icon size={22} /></div><p className="eyebrow">{eyebrow}</p><h3>{title}</h3><p className="service-description">{description}</p><ul>{bullets.map(item => <li key={item}><Check size={15} />{item}</li>)}</ul><button className="card-link" onClick={() => setBookingOpen(true)}>{content.cardCta} <MoveUpRight size={15} /></button><span className="card-number">0{index + 1}</span></article>)}</div></section>
-
-      <section id="work" className="showcase-section container scroll-reveal"><div className="section-intro"><div><p className="eyebrow">{trust.showcaseEyebrow}</p><h2>{trust.showcaseTitleA}<br /><em>{trust.showcaseTitleB}</em></h2></div><p>{trust.showcaseText}</p></div><div className="showcase-grid">{trust.showcaseItems.map(({ icon: Icon, number, title, text: description, tag }) => <article className="showcase-card" key={number}><div className="showcase-card-top"><span className="showcase-icon"><Icon size={22} /></span><span>{number}</span></div><p className="eyebrow">{tag}</p><h3>{title}</h3><p>{description}</p><span className="showcase-arrow"><MoveUpRight size={17} /></span></article>)}</div></section>
-
-      <section id="process" className="process-section container scroll-reveal"><div className="process-heading"><p className="eyebrow">{trust.processEyebrow}</p><h2>{trust.processTitleA}<br /><em>{trust.processTitleB}</em></h2><p>{trust.processText}</p></div><div className="process-grid">{trust.processItems.map(([number, title, description]) => <article className="process-step" key={number}><span>{number}</span><div><h3>{title}</h3><p>{description}</p></div></article>)}</div></section>
-
-      <section id="proof" className="proof-section container scroll-reveal"><div><p className="eyebrow">{trust.proofEyebrow}</p><h2>{trust.proofTitleA}<br /><em>{trust.proofTitleB}</em></h2></div><div className="proof-grid">{trust.proofItems.map(([title, description]) => <article className="proof-card" key={title}><ShieldCheck size={20} /><h3>{title}</h3><p>{description}</p></article>)}</div></section>
-
-      <section id="testimonials" className="testimonials-section container scroll-reveal"><div className="section-intro"><div><p className="eyebrow">{language === "ar" ? "لماذا يختارنا العملاء" : "WHY BUSINESSES CHOOSE US"}</p><h2>{language === "ar" ? <>شراكة عملية<br /><em>تبدأ من احتياجك.</em></> : <>A practical partner<br /><em>for your next move.</em></>}</h2></div><p>{language === "ar" ? "نركز على الوضوح والنتيجة وطريقة الاستخدام اليومية، حتى تكون التقنية إضافة حقيقية لنشاطك." : "We focus on clarity, outcomes and everyday usability so technology becomes a real advantage for your business."}</p></div><div className="testimonial-grid">{testimonialCopy[language].map(([title, quote], index) => <article className="testimonial-card" key={title}><span className="testimonial-mark">0{index + 1}</span><p>“{quote}”</p><h3>{title}</h3><small>{language === "ar" ? "انطباع من تجربة عميل" : "A client experience snapshot"}</small></article>)}</div></section>
-
-      <section id="faq" className="faq-section container scroll-reveal"><div className="section-intro"><div><p className="eyebrow">{language === "ar" ? "الأسئلة الشائعة" : "FAQ"}</p><h2>{language === "ar" ? <>كل ما تحتاج<br /><em>معرفته قبل البداية.</em></> : <>The answers<br /><em>before we begin.</em></>}</h2></div><p>{language === "ar" ? "أسئلة بسيطة تساعدك على فهم طريقة العمل والخطوة المناسبة لنشاطك." : "A few simple answers to help you understand the process and choose the right next step."}</p></div><div className="faq-list">{faqCopy[language].map(([question, answer], index) => <details className="faq-item" key={question}><summary><span>0{index + 1}</span><strong>{question}</strong><ChevronDown size={17} /></summary><p>{answer}</p></details>)}</div></section>
-
-      <section id="why" className="why-section why-section-copy container scroll-reveal"><div className="why-copy"><p className="eyebrow">{content.whyEyebrow}</p><h2>{content.whyTitleA}<br /><em>{content.whyTitleB}</em></h2><p>{content.whyText}</p><div className="trust-stats" aria-label="Take More business statistics"><div className="trust-stat"><strong>✓</strong><span>{content.stats[0]}</span></div><div className="trust-stat"><strong>✓</strong><span>{content.stats[1]}</span></div><div className="trust-stat"><strong>✓</strong><span>{content.stats[2]}</span></div><div className="trust-stat"><strong>✓</strong><span>{content.stats[3]}</span></div></div><div className="why-points"><div><span>01</span><strong>{content.clear}</strong><small>{content.clearText}</small></div><div><span>02</span><strong>{content.scale}</strong><small>{content.scaleText}</small></div></div></div></section>
-
-      <section id="contact" className="contact-section scroll-reveal"><div><p className="eyebrow">{content.contactEyebrow}</p><h2>{content.contactTitleA}<br /><em>{content.contactTitleB}</em></h2></div><div className="contact-card"><p>{content.contactText}</p><button className="primary-button" onClick={() => setBookingOpen(true)}>{content.tellUs} <MoveUpRight size={17} /></button><div className="contact-meta"><span><Phone size={14} /> {content.location}</span><a className="email-contact" href="mailto:Info@take-more.com"><Mail size={14} /> Info@take-more.com</a></div><div className="contact-socials"><span>{content.connect}</span><div><a className="contact-social facebook" href="https://www.facebook.com/share/1C6TU1C2ub/?mibextid=wwXIfr" target="_blank" rel="noreferrer" aria-label="Take More on Facebook"><BrandIcon brand="facebook" size={17} /></a><a className="contact-social whatsapp" href="https://wa.me/201153213270" target="_blank" rel="noreferrer" aria-label="Chat with Take More on WhatsApp" title="WhatsApp"><BrandIcon brand="whatsapp" size={17} /></a><a className="contact-social instagram" href="https://www.instagram.com/takemore.eg?stkn=YzJhYXNpYnJnZnFl&utm_source=qr" target="_blank" rel="noreferrer" aria-label="Take More on Instagram"><BrandIcon brand="instagram" size={17} /></a><a className="contact-social linkedin disabled" href="#contact" aria-label="LinkedIn link coming soon" onClick={event => event.preventDefault()}><BrandIcon brand="linkedin" size={17} /></a></div></div></div></section>
+      <WorkGallery language={language} />
+      <CapabilitiesSection language={language} />
+      <StatementSection language={language} />
+      <ServicesSection language={language} />
+      <PlaceSection language={language} />
+      <FaqSection language={language} items={faqCopy[language]} />
+      <ClosingSection language={language} onBook={() => setBookingOpen(true)} />
     </main>
 
-    <footer className="footer container"><a className="brand" href="#home"><img src={brandMode === "white" ? "/assets/take-more-logo-white.png" : "/assets/take-more-logo.png"} alt="Take More — Retail & Web, Made Smarter" /></a><p>{content.footer}</p><div className="footer-links"><a className="social-link facebook" href="https://www.facebook.com/share/1C6TU1C2ub/?mibextid=wwXIfr" target="_blank" rel="noreferrer"><BrandIcon brand="facebook" size={16} /><span>Facebook</span></a><a className="social-link instagram" href="https://www.instagram.com/takemore.eg?stkn=YzJhYXNpYnJnZnFl&utm_source=qr" target="_blank" rel="noreferrer"><BrandIcon brand="instagram" size={16} /><span>Instagram</span></a><a className="social-link linkedin" href="https://www.linkedin.com/" target="_blank" rel="noreferrer"><BrandIcon brand="linkedin" size={16} /><span>LinkedIn</span></a><Link href="/admin">Admin</Link></div></footer>
+
+    <footer className="footer container"><a className="brand" href="#home"><img src="/assets/take-more-logo.png" alt="Take More — Retail & Web, Made Smarter" /></a><p>{content.footer}</p><div className="footer-links"><a className="social-link facebook" href="https://www.facebook.com/share/1C6TU1C2ub/?mibextid=wwXIfr" target="_blank" rel="noreferrer"><BrandIcon brand="facebook" size={16} /><span>Facebook</span></a><a className="social-link instagram" href="https://www.instagram.com/takemore.eg?stkn=YzJhYXNpYnJnZnFl&utm_source=qr" target="_blank" rel="noreferrer"><BrandIcon brand="instagram" size={16} /><span>Instagram</span></a><a className="social-link linkedin" href="https://www.linkedin.com/" target="_blank" rel="noreferrer"><BrandIcon brand="linkedin" size={16} /><span>LinkedIn</span></a><Link href="/admin">Admin</Link></div></footer>
     <a className="floating-whatsapp" href="https://wa.me/201153213270" target="_blank" rel="noreferrer" aria-label="Chat with Take More on WhatsApp"><BrandIcon brand="whatsapp" size={25} /><span>{content.chat}</span></a>
     {bookingOpen && <div className="modal-backdrop" onClick={event => { if (event.target === event.currentTarget) setBookingOpen(false); }}><BookingPanel onClose={() => setBookingOpen(false)} /></div>}
   </div>;
