@@ -51,7 +51,16 @@ html[data-brand-mode] .site-shell.sd-page, .sd-page { min-height: 100vh; backgro
 .sd-rule-line { flex: 1; height: 1px; background: var(--sd-line); }
 
 /* Gallery */
-.sd-gallery { columns: 3; column-gap: 22px; padding: 32px 48px 40px; }
+.sd-gallery { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 40px 28px; padding: 40px 48px 56px; }
+.sd-project { display: flex; flex-direction: column; gap: 18px; }
+.sd-project-frame { aspect-ratio: 16 / 10; display: flex; align-items: center; justify-content: center; padding: 6%; border-radius: 20px; background: var(--sd-soft); overflow: hidden; }
+.sd-project-frame img { display: block; max-width: 100%; max-height: 100%; object-fit: contain; border-radius: 8px; box-shadow: 0 0 0 1px rgba(15, 23, 42, .08), 0 24px 48px -24px rgba(15, 23, 42, .5); transition: transform .8s var(--sd-ease); }
+.sd-project:hover .sd-project-frame img { transform: translateY(-4px) scale(1.015); }
+.sd-project-info { display: flex; flex-direction: column; gap: 6px; padding: 0 4px; }
+.sd-project-head { display: flex; align-items: center; justify-content: space-between; gap: 12px; font-family: "DM Mono", "Alexandria", monospace; font-size: 12px; letter-spacing: .06em; text-transform: uppercase; color: var(--sd-muted); }
+.sd-project-tag { padding: 4px 10px; border-radius: 999px; border: 1px solid currentColor; font-size: 11px; }
+.sd-project h3 { margin: 0; font-size: 22px; font-weight: 700; letter-spacing: -.02em; color: var(--sd-ink); }
+.sd-project p { margin: 0; font-size: 15px; line-height: 1.55; color: var(--sd-muted); text-wrap: pretty; }
 .sd-tile { break-inside: avoid; margin: 0 0 22px; }
 .sd-tile-media { overflow: hidden; border-radius: 22px; background: var(--sd-soft); }
 .sd-tile-media img { display: block; width: 100%; height: 100%; object-fit: cover; transition: transform .8s var(--sd-ease); }
@@ -181,7 +190,7 @@ html[data-brand-mode] .site-shell.sd-page, .sd-page { min-height: 100vh; backgro
   .sd-header { padding: 14px 20px; }
   .sd-hero { padding: 64px 20px 0; }
   .sd-rule { margin-top: 72px; font-size: 11px; }
-  .sd-gallery { columns: 2; column-gap: 14px; padding: 24px 20px; }
+  .sd-gallery { gap: 32px 16px; padding: 24px 20px 40px; }
   .sd-tile { margin-bottom: 14px; }
   .sd-section { padding: 96px 20px; }
   .sd-principles { grid-template-columns: 1fr; margin-top: 56px; }
@@ -195,7 +204,7 @@ html[data-brand-mode] .site-shell.sd-page, .sd-page { min-height: 100vh; backgro
 @media (max-width: 560px) {
   .sd-start { display: none; }
   .sd-logo img { width: 116px; }
-  .sd-gallery { columns: 1; }
+  .sd-gallery { grid-template-columns: 1fr; }
   .sd-from { display: none; }
   .sd-hero-text, .sd-lede { font-size: 16px; }
 }

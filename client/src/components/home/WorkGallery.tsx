@@ -1,44 +1,39 @@
 type Language = "en" | "ar";
 
-type Tile =
-  | { kind: "image"; src: string; ratio: string; title: string; meta: string; alt: string }
-  | { kind: "type"; tone: "lime" | "ink" | "soft"; ratio: string; title: string; meta: string; display: string };
+type Showcase = { src: string; label: string; title: string; category: string; summary: string; alt: string };
 
-const tiles: Record<Language, Tile[]> = {
+const showcases: Record<Language, Showcase[]> = {
   ar: [
-    { kind: "image", src: "/assets/work/miraza-products.jpg", ratio: "2880 / 1558", title: "Miraza — إدارة المنتجات", meta: "ERP", alt: "شاشة المنتجات في نظام Miraza مع المخزون لكل مقاس" },
-    { kind: "image", src: "/assets/work/beko-store.jpg", ratio: "2000 / 900", title: "مؤسسة بيكو التجارية", meta: "متجر إلكتروني", alt: "الصفحة الرئيسية لمتجر بيكو للعدد والآلات" },
-    { kind: "type", tone: "lime", ratio: "1 / 1", title: "Take More", meta: "الاستوديو", display: "Take More" },
-    { kind: "image", src: "/assets/work/miraza-dashboard.jpg", ratio: "2880 / 1558", title: "Miraza — لوحة التحكم", meta: "ERP", alt: "لوحة تحكم Miraza بالعربي تعرض المبيعات والأرباح والأوردرات" },
-    { kind: "image", src: "/assets/work/miraza-settings.jpg", ratio: "1880 / 1110", title: "Miraza — الإعدادات والفروع", meta: "ERP", alt: "صفحة الإعدادات والفروع في نظام Miraza" },
-    { kind: "type", tone: "ink", ratio: "4 / 5", title: "من الفكرة إلى الإطلاق", meta: "منهجنا", display: "من الفكرة إلى الإطلاق." },
+    { src: "/assets/work/service-erp.png", label: "أنظمة ERP", title: "لوحة تحكم لإدارة شغلك", category: "إدارة", summary: "المبيعات والمخزون والأرباح في شاشة واحدة، لحظة بلحظة.", alt: "لابتوب يعرض لوحة تحكم نظام ERP بالمبيعات والمخزون" },
+    { src: "/assets/work/service-ecommerce.png", label: "متاجر إلكترونية", title: "متجر يبيع من الموبايل", category: "تجارة", summary: "تجربة شراء سريعة من أول منتج لحد الدفع والشحن.", alt: "موبايل يعرض متجر إلكتروني بجانب طرد شحن" },
+    { src: "/assets/work/service-pos.png", label: "نقاط البيع POS", title: "كاشير ذكي لفرعك", category: "مبيعات", summary: "بيع ودفع وفواتير متربطة مباشرة بالمخزون.", alt: "جهاز نقطة بيع على كاونتر محل" },
+    { src: "/assets/work/service-website.png", label: "مواقع الشركات", title: "موقع يعبّر عن براندك", category: "مواقع", summary: "تصميم احترافي يحوّل الزوار لعملاء.", alt: "شاشة كمبيوتر تعرض موقع شركة احترافي" },
   ],
   en: [
-    { kind: "image", src: "/assets/work/miraza-products.jpg", ratio: "2880 / 1558", title: "Miraza — Products", meta: "ERP", alt: "Miraza products screen with variant-level inventory" },
-    { kind: "image", src: "/assets/work/beko-store.jpg", ratio: "2000 / 900", title: "Beko Trading Est.", meta: "E-COMMERCE", alt: "Beko tools store homepage" },
-    { kind: "type", tone: "lime", ratio: "1 / 1", title: "Take More", meta: "STUDIO", display: "Take More" },
-    { kind: "image", src: "/assets/work/miraza-dashboard.jpg", ratio: "2880 / 1558", title: "Miraza — Dashboard", meta: "ERP", alt: "Arabic Miraza dashboard showing sales, profit and orders" },
-    { kind: "image", src: "/assets/work/miraza-settings.jpg", ratio: "1880 / 1110", title: "Miraza — Settings & locations", meta: "ERP", alt: "Miraza settings and locations page" },
-    { kind: "type", tone: "ink", ratio: "4 / 5", title: "Idea to launch", meta: "APPROACH", display: "From idea to launch." },
+    { src: "/assets/work/service-erp.png", label: "ERP systems", title: "A dashboard to run your business", category: "Operations", summary: "Sales, stock and profit on a single live screen.", alt: "Laptop showing an ERP dashboard with sales and inventory" },
+    { src: "/assets/work/service-ecommerce.png", label: "Online stores", title: "A store that sells on mobile", category: "Commerce", summary: "Fast buying from first product to checkout and shipping.", alt: "Phone showing an online store next to a shipping box" },
+    { src: "/assets/work/service-pos.png", label: "POS", title: "Smart checkout for your branch", category: "Sales", summary: "Sales, payments and invoices synced with inventory.", alt: "Point of sale tablet on a store counter" },
+    { src: "/assets/work/service-website.png", label: "Company websites", title: "A site that speaks your brand", category: "Web", summary: "Professional design that turns visitors into clients.", alt: "Desktop monitor showing a professional company website" },
   ],
 };
 
 export function WorkGallery({ language }: { language: Language }) {
   return (
-    <section id="work" className="sd-gallery" aria-label={language === "ar" ? "أعمالنا" : "Our work"}>
-      {tiles[language].map(tile => (
-        <figure key={tile.title} className="sd-tile scroll-reveal">
-          {tile.kind === "image" ? (
-            <div className="sd-tile-media sd-tile-shot" style={{ aspectRatio: tile.ratio }}>
-              <img src={tile.src} alt={tile.alt} loading="lazy" />
+    <section id="work" className="sd-gallery" aria-label={language === "ar" ? "اللي بنعمله" : "What we build"}>
+      {showcases[language].map(item => (
+        <article key={item.src} className="sd-project scroll-reveal">
+          <div className="sd-project-frame">
+            <img src={item.src} alt={item.alt} loading="lazy" />
+          </div>
+          <div className="sd-project-info">
+            <div className="sd-project-head">
+              <span className="sd-project-client">{item.label}</span>
+              <span className="sd-project-tag">{item.category}</span>
             </div>
-          ) : (
-            <div className={`sd-tile-media sd-tile-type is-${tile.tone}`} style={{ aspectRatio: tile.ratio }}>
-              <span>{tile.display}</span>
-            </div>
-          )}
-          <figcaption><span>{tile.title}</span><span>{tile.meta}</span></figcaption>
-        </figure>
+            <h3>{item.title}</h3>
+            <p>{item.summary}</p>
+          </div>
+        </article>
       ))}
     </section>
   );
