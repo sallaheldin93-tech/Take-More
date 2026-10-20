@@ -57,7 +57,11 @@ describe("WhatsApp booking notifications", () => {
     });
 
     expect(result.customerSent).toBe(true);
-    expect(fetchMock).toHaveBeenCalledTimes(1);
+    expect(result.ownerSent).toBe(true);
+    expect(fetchMock).toHaveBeenCalledTimes(2);
+    const ownerBody = JSON.parse(String(fetchMock.mock.calls[1]?.[1]?.body));
+    expect(ownerBody.type).toBe("text");
+    expect(ownerBody.text.body).toContain("TM-TEST01");
     const request = fetchMock.mock.calls[0];
     const body = JSON.parse(String(request?.[1]?.body));
     expect(body.to).toBe("201153213270");
