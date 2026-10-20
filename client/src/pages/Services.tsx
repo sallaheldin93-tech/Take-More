@@ -1,80 +1,44 @@
 import { useEffect, useState } from "react";
-import {
-  ArrowUpRight,
-  BarChart3,
-  Check,
-  Globe2,
-  Languages,
-  Layers3,
-  Menu,
-  MessageCircle,
-  Moon,
-  ShoppingCart,
-  Sparkles,
-  Sun,
-  X,
-  Zap,
-} from "lucide-react";
+import { ArrowUpLeft, ArrowUpRight, Check, MessageCircle } from "lucide-react";
 import { Link } from "wouter";
 import { applySeo } from "@/lib/seo";
+import { SiteHeader } from "@/components/home/SiteHeader";
+
+type Language = "en" | "ar";
 
 const servicesEn = [
-  { icon: Layers3, image: "/assets/erp-illustration.webp", serviceId: 1, number: "01", kicker: "OPERATIONS", title: "ERP Solutions", intro: "Bring finance, inventory and daily operations into one clear, connected system.", bullets: ["Finance and accounting workflows", "Inventory control and stock visibility", "Reports that help you act faster"], tone: "service-detail-cyan" },
-  { icon: ShoppingCart, image: "/assets/pos-illustration.webp", serviceId: 2, number: "02", kicker: "SALES", title: "POS Systems", intro: "Keep every transaction moving with a reliable point-of-sale experience built around your business.", bullets: ["Fast sales and billing", "Multi-branch support", "Daily reconciliation and insights"], tone: "service-detail-ice" },
-  { icon: Globe2, image: "/assets/website-illustration.webp", serviceId: 3, number: "03", kicker: "PRESENCE", title: "Websites", intro: "Turn your digital presence into a practical business asset that builds trust and converts visitors.", bullets: ["Responsive, premium design", "Business and e-commerce builds", "SEO-friendly foundations"], tone: "service-detail-sky" },
-  { icon: Zap, image: "/assets/crm-illustration.webp", serviceId: 4, number: "04", kicker: "GROWTH", title: "Business & CRM Automation", intro: "Make follow-ups, lead tracking and internal workflows simpler for your whole team.", bullets: ["Contact and lead tracking", "Task and follow-up automation", "Clear sales pipeline visibility"], tone: "service-detail-navy" },
+  { id: "erp", serviceId: 1, image: "/assets/erp-illustration.webp", tag: "01 / OPERATIONS", title: "ERP Solutions", intro: "Bring finance, inventory and daily operations into one clear, connected system.", bullets: ["Finance and accounting workflows", "Inventory control and stock visibility", "Reports that help you act faster"] },
+  { id: "pos", serviceId: 2, image: "/assets/pos-illustration.webp", tag: "02 / SALES", title: "POS Systems", intro: "Keep every transaction moving with a reliable point-of-sale experience built around your business.", bullets: ["Fast sales and billing", "Multi-branch support", "Daily reconciliation and insights"] },
+  { id: "websites", serviceId: 3, image: "/assets/website-illustration.webp", tag: "03 / PRESENCE", title: "Websites", intro: "Turn your digital presence into a practical business asset that builds trust and converts visitors.", bullets: ["Responsive, premium design", "Business and e-commerce builds", "SEO-friendly foundations"] },
+  { id: "crm", serviceId: 4, image: "/assets/crm-illustration.webp", tag: "04 / GROWTH", title: "Business & CRM Automation", intro: "Make follow-ups, lead tracking and internal workflows simpler for your whole team.", bullets: ["Contact and lead tracking", "Task and follow-up automation", "Clear sales pipeline visibility"] },
 ];
 
 const servicesAr = [
-  { icon: Layers3, image: "/assets/erp-illustration.webp", serviceId: 1, number: "01", kicker: "العمليات", title: "حلول ERP", intro: "اربط الحسابات والمخزون والعمليات اليومية داخل نظام واحد واضح ومتكامل.", bullets: ["إدارة الحسابات والمالية", "مراقبة المخزون وتوفر المنتجات", "تقارير تساعدك على اتخاذ القرار"], tone: "service-detail-cyan" },
-  { icon: ShoppingCart, image: "/assets/pos-illustration.webp", serviceId: 2, number: "02", kicker: "المبيعات", title: "أنظمة نقاط البيع", intro: "حافظ على سرعة كل عملية بيع من خلال تجربة نقاط بيع موثوقة ومصممة لنشاطك.", bullets: ["مبيعات وفواتير سريعة", "دعم الفروع المتعددة", "تسويات وتقارير يومية"], tone: "service-detail-ice" },
-  { icon: Globe2, image: "/assets/website-illustration.webp", serviceId: 3, number: "03", kicker: "الحضور الرقمي", title: "تصميم وتطوير المواقع", intro: "حوّل حضورك الرقمي إلى أصل تجاري يعزز الثقة ويحول الزوار إلى عملاء.", bullets: ["تصميم احترافي ومتجاوب", "مواقع أعمال ومتاجر إلكترونية", "أساس قوي لمحركات البحث"], tone: "service-detail-sky" },
-  { icon: Zap, image: "/assets/crm-illustration.webp", serviceId: 4, number: "04", kicker: "النمو", title: "أتمتة الأعمال وCRM", intro: "بسّط المتابعات وإدارة العملاء وسير العمل الداخلي لفريقك بالكامل.", bullets: ["إدارة جهات الاتصال والعملاء", "أتمتة المهام والمتابعات", "رؤية واضحة لخط سير المبيعات"], tone: "service-detail-navy" },
+  { id: "erp", serviceId: 1, image: "/assets/erp-illustration.webp", tag: "01 / العمليات", title: "حلول ERP", intro: "اربط الحسابات والمخزون والعمليات اليومية داخل نظام واحد واضح ومتكامل.", bullets: ["إدارة الحسابات والمالية", "مراقبة المخزون وتوفر المنتجات", "تقارير تساعدك على اتخاذ القرار"] },
+  { id: "pos", serviceId: 2, image: "/assets/pos-illustration.webp", tag: "02 / المبيعات", title: "أنظمة نقاط البيع", intro: "حافظ على سرعة كل عملية بيع من خلال تجربة نقاط بيع موثوقة ومصممة لنشاطك.", bullets: ["مبيعات وفواتير سريعة", "دعم الفروع المتعددة", "تسويات وتقارير يومية"] },
+  { id: "websites", serviceId: 3, image: "/assets/website-illustration.webp", tag: "03 / الحضور الرقمي", title: "تصميم وتطوير المواقع", intro: "حوّل حضورك الرقمي إلى أصل تجاري يعزز الثقة ويحول الزوار إلى عملاء.", bullets: ["تصميم احترافي ومتجاوب", "مواقع أعمال ومتاجر إلكترونية", "أساس قوي لمحركات البحث"] },
+  { id: "crm", serviceId: 4, image: "/assets/crm-illustration.webp", tag: "04 / النمو", title: "أتمتة الأعمال وCRM", intro: "بسّط المتابعات وإدارة العملاء وسير العمل الداخلي لفريقك بالكامل.", bullets: ["إدارة جهات الاتصال والعملاء", "أتمتة المهام والمتابعات", "رؤية واضحة لخط سير المبيعات"] },
 ];
 
-const serviceSeo = {
-  en: [
-    { name: "ERP Solutions", description: "Custom ERP solutions in Egypt that connect finance, inventory, purchasing and daily business operations.", slug: "/services#service-erp" },
-    { name: "POS Systems", description: "Reliable POS systems for retail, restaurants and growing businesses with sales, billing and branch control.", slug: "/services#service-pos" },
-    { name: "Websites and E-commerce", description: "Fast, responsive business websites and e-commerce stores designed to build trust, improve visibility and convert visitors.", slug: "/services#service-websites" },
-    { name: "Business and CRM Automation", description: "CRM and business automation solutions that organize leads, follow-ups, customer data and internal workflows.", slug: "/services#service-crm" },
-  ],
-  ar: [
-    { name: "حلول ERP", description: "حلول ERP مخصصة في مصر لربط الحسابات والمخزون والمشتريات والعمليات اليومية داخل نظام واحد.", slug: "/services#service-erp" },
-    { name: "أنظمة نقاط البيع", description: "أنظمة نقاط بيع موثوقة للمتاجر والمطاعم والأعمال المتنامية لإدارة المبيعات والفواتير والفروع.", slug: "/services#service-pos" },
-    { name: "تصميم وتطوير المواقع والمتاجر", description: "مواقع شركات ومتاجر إلكترونية سريعة ومتجاوبة تعزز الظهور والثقة وتحول الزوار إلى عملاء.", slug: "/services#service-websites" },
-    { name: "أتمتة الأعمال وCRM", description: "حلول CRM وأتمتة أعمال لتنظيم العملاء المحتملين والمتابعات وبيانات العملاء وسير العمل الداخلي.", slug: "/services#service-crm" },
-  ],
+const pageCopy = {
+  en: { eyebrow: "WHAT WE DO / SERVICES", titleA: "Systems that make", titleB: "business feel lighter.", text: "From operations to customer growth, we design and deliver the technology your business needs to move with more clarity.", explore: "See the services", book: "Book a call", bookService: "Book this service", bottomEyebrow: "NOT SURE WHERE TO START?", bottomTitle: "Let's find the right next step together.", bottomText: "Tell us what is slowing the business down and we will recommend the simplest, most useful place to begin.", discovery: "Book a discovery call", footer: "Smart Business Solutions — Helping businesses simplify operations and grow smarter.", chat: "Chat with us" },
+  ar: { eyebrow: "ماذا نقدم / خدماتنا", titleA: "أنظمة تجعل", titleB: "إدارة أعمالك أسهل.", text: "من إدارة العمليات إلى تنمية العملاء، نصمم وننفذ التقنية التي يحتاجها نشاطك للعمل بوضوح وكفاءة.", explore: "استعرض الخدمات", book: "احجز مكالمة", bookService: "احجز هذه الخدمة", bottomEyebrow: "لا تعرف من أين تبدأ؟", bottomTitle: "سنحدد معًا الخطوة المناسبة.", bottomText: "حدثنا عما يبطئ نشاطك وسنرشح لك أبسط نقطة بداية وأكثرها فائدة.", discovery: "احجز مكالمة استكشافية", footer: "حلول أعمال ذكية تساعد الشركات على تبسيط عملياتها والنمو بكفاءة.", chat: "تواصل معنا" },
 } as const;
 
-const pageCopy = {
-  en: {
-    nav: { home: "Home", services: "Services", why: "Why us", contact: "Contact", book: "Book a call", start: "Get started" },
-    whiteMode: "White", blueMode: "Blue", heroEyebrow: "WHAT WE DO / SERVICES", heroTitleA: "Systems that make", heroTitleB: "business feel lighter.", heroText: "From operations to customer growth, we design and deliver the technology your business needs to move with more clarity.", reality: "Built around your reality", scale: "Ready to scale", conversation: "Book a conversation", bookNow: "Book now", bottomEyebrow: "NOT SURE WHERE TO START?", bottomTitleA: "Let's find the right", bottomTitleB: "next step together.", bottomText: "Tell us what is slowing the business down and we will recommend the simplest, most useful place to begin.", discovery: "Book a discovery call", footer: "Smart Business Solutions — Helping businesses simplify operations and grow smarter.", chat: "Chat with us"
-  },
-  ar: {
-    nav: { home: "الرئيسية", services: "خدماتنا", why: "لماذا نحن", contact: "تواصل معنا", book: "احجز مكالمة", start: "ابدأ الآن" },
-    whiteMode: "أبيض", blueMode: "أزرق", heroEyebrow: "ماذا نقدم / خدماتنا", heroTitleA: "أنظمة تجعل", heroTitleB: "إدارة أعمالك أسهل.", heroText: "من إدارة العمليات إلى تنمية العملاء، نصمم وننفذ التقنية التي يحتاجها نشاطك للعمل بوضوح وكفاءة.", reality: "مصمم وفق احتياجاتك", scale: "جاهز للتوسع", conversation: "ناقش احتياجك معنا", bookNow: "احجز الآن", bottomEyebrow: "لا تعرف من أين تبدأ؟", bottomTitleA: "سنحدد معًا", bottomTitleB: "الخطوة المناسبة.", bottomText: "حدثنا عما يبطئ نشاطك وسنرشح لك أبسط نقطة بداية وأكثرها فائدة.", discovery: "احجز مكالمة استكشافية", footer: "حلول أعمال ذكية تساعد الشركات على تبسيط عملياتها والنمو بكفاءة.", chat: "تواصل معنا"
-  }
-} as const;
+const seoServices = (language: Language) => (language === "ar" ? servicesAr : servicesEn).map(service => ({ name: service.title, description: service.intro, slug: `/services#service-${service.id}` }));
 
 export default function Services() {
   const [mobileOpen, setMobileOpen] = useState(false);
-  const [language, setLanguage] = useState<"en" | "ar">(() => {
+  const [language, setLanguage] = useState<Language>(() => {
     const requested = new URLSearchParams(window.location.search).get("lang");
     if (requested === "ar" || requested === "en") return requested;
     const saved = localStorage.getItem("take-more-language");
     if (saved === "ar" || saved === "en") return saved;
     return navigator.language.toLowerCase().startsWith("ar") ? "ar" : "en";
   });
-  const [brandMode, setBrandMode] = useState<"blue" | "white">(() => (localStorage.getItem("take-more-mode") as "blue" | "white") || "blue");
-  const content = pageCopy[language];
+  const copy = pageCopy[language];
   const services = language === "ar" ? servicesAr : servicesEn;
-
-  useEffect(() => {
-    document.documentElement.dataset.brandMode = brandMode;
-    localStorage.setItem("take-more-mode", brandMode);
-  }, [brandMode]);
+  const Arrow = language === "ar" ? ArrowUpLeft : ArrowUpRight;
 
   useEffect(() => {
     document.documentElement.lang = language;
@@ -83,7 +47,7 @@ export default function Services() {
     const seo = language === "ar"
       ? { title: "خدمات Take More | ERP ونقاط البيع والمواقع وأتمتة الأعمال", description: "اكتشف خدمات Take More في مصر: حلول ERP، أنظمة نقاط البيع، تصميم المواقع والمتاجر الإلكترونية، وCRM وأتمتة الأعمال.", keywords: "ERP مصر, نقاط البيع, تصميم مواقع, متجر إلكتروني, CRM, أتمتة الأعمال" }
       : { title: "Take More Services | ERP, POS, Websites and Automation", description: "Explore Take More business technology services in Egypt: ERP, POS systems, websites, e-commerce and CRM automation.", keywords: "ERP Egypt, POS systems, website development, e-commerce, CRM automation" };
-    applySeo({ ...seo, lang: language, path: "/services", services: serviceSeo[language] });
+    applySeo({ ...seo, lang: language, path: "/services", services: seoServices(language) });
   }, [language]);
 
   useEffect(() => {
@@ -100,41 +64,86 @@ export default function Services() {
 
   useEffect(() => {
     if (!mobileOpen) return;
-    const closeOnEscape = (event: KeyboardEvent) => {
-      if (event.key === "Escape") setMobileOpen(false);
-    };
+    const closeOnEscape = (event: KeyboardEvent) => { if (event.key === "Escape") setMobileOpen(false); };
     document.addEventListener("keydown", closeOnEscape);
     return () => document.removeEventListener("keydown", closeOnEscape);
   }, [mobileOpen]);
 
+  const navigate = (id: string) => {
+    setMobileOpen(false);
+    if (id === "services") {
+      document.getElementById("service-list")?.scrollIntoView({ behavior: "smooth" });
+      return;
+    }
+    window.location.href = id === "home" ? "/" : `/#${id}`;
+  };
+
   return (
-    <div className="services-page" dir={language === "ar" ? "rtl" : "ltr"}>
-      <header className="topbar dark-header">
-        <Link className="brand" href="/" onClick={() => setMobileOpen(false)}><img className="logo-on-dark" src="/assets/take-more-logo-light.png" alt="Take More — Retail & Web, Made Smarter" width={1889} height={330} /><img className="logo-on-light" src="/assets/take-more-logo-dark.png" alt="" aria-hidden="true" width={1889} height={330} /></Link>
-        <nav id="services-mobile-nav" className={mobileOpen ? "main-nav mobile-open" : "main-nav"}>
-          <Link href="/" onClick={() => setMobileOpen(false)}>{content.nav.home}</Link>
-          <Link className="active-nav" href="/services" onClick={() => setMobileOpen(false)}>{content.nav.services}</Link>
-          <a href="/#why" onClick={() => setMobileOpen(false)}>{content.nav.why}</a>
-          <a href="/#contact" onClick={() => setMobileOpen(false)}>{content.nav.contact}</a>
-          <Link className="nav-book" href="/?book=1" onClick={() => setMobileOpen(false)}>{content.nav.book} <ArrowUpRight size={15} /></Link>
-        </nav>
-        <button className="mobile-menu" onClick={() => setMobileOpen(value => !value)} aria-label={mobileOpen ? "Close navigation menu" : "Open navigation menu"} aria-expanded={mobileOpen} aria-controls="services-mobile-nav">{mobileOpen ? <X size={23} /> : <Menu size={23} />}</button>
-        <div className="header-actions">
-          <button className="language-switch" onClick={() => setLanguage(value => value === "en" ? "ar" : "en")} aria-label={language === "en" ? "عرض الموقع بالعربية" : "View website in English"}><Languages size={15} /><span>{language === "en" ? "العربية" : "EN"}</span></button>
-          <button className="mode-toggle" onClick={() => setBrandMode(value => value === "blue" ? "white" : "blue")} aria-label={brandMode === "blue" ? "Switch to white mode" : "Switch to blue mode"}>{brandMode === "blue" ? <Sun size={15} /> : <Moon size={15} />}<span>{brandMode === "blue" ? content.whiteMode : content.blueMode}</span></button>
-          <Link className="desktop-book" href="/?book=1">{content.nav.start} <ArrowUpRight size={15} /></Link>
-        </div>
-      </header>
+    <div className="site-shell sd-page" dir={language === "ar" ? "rtl" : "ltr"}>
+      <SiteHeader
+        language={language}
+        activeSection="services"
+        mobileOpen={mobileOpen}
+        onToggleMobile={() => setMobileOpen(value => !value)}
+        onNavigate={navigate}
+        onToggleLanguage={() => setLanguage(value => value === "en" ? "ar" : "en")}
+        onStart={() => { window.location.href = "/?book=1"; }}
+      />
       {mobileOpen && <button className="mobile-nav-backdrop" aria-label="Close navigation menu" onClick={() => setMobileOpen(false)} />}
 
       <main>
-        <section className="services-hero scroll-reveal"><p className="eyebrow">{content.heroEyebrow}</p><h1>{content.heroTitleA}<br /><em>{content.heroTitleB}</em></h1><p>{content.heroText}</p><div className="services-hero-meta"><span><Sparkles size={16} /> {content.reality}</span><span><BarChart3 size={16} /> {content.scale}</span></div></section>
-        <section className="services-details">{services.map(({ icon: Icon, image, serviceId, number, kicker, title, intro, bullets, tone }) => <article id={`service-${serviceId === 1 ? "erp" : serviceId === 2 ? "pos" : serviceId === 3 ? "websites" : "crm"}`} className={`service-detail-card ${tone} scroll-reveal`} key={title}><div className="service-detail-top"><span className="service-detail-number">{number}</span><Icon size={27} /></div><div className="service-detail-illustration"><img src={image} alt={title} loading="lazy" /></div><p className="eyebrow">{kicker}</p><h2>{title}</h2><p className="service-detail-intro">{intro}</p><ul>{bullets.map(bullet => <li key={bullet}><Check size={16} />{bullet}</li>)}</ul><Link className="detail-cta" href={`/?book=1&service=${serviceId}`}>{content.conversation} <ArrowUpRight size={16} /></Link><Link className="detail-book" href={`/?book=1&service=${serviceId}`}>{content.bookNow} <ArrowUpRight size={15} /></Link></article>)}</section>
-        <section className="services-bottom scroll-reveal"><div><p className="eyebrow">{content.bottomEyebrow}</p><h2>{content.bottomTitleA}<br /><em>{content.bottomTitleB}</em></h2></div><div><p>{content.bottomText}</p><Link className="primary-button" href="/?book=1">{content.discovery} <ArrowUpRight size={17} /></Link></div></section>
+        <section className="sd-hero sd-subhero">
+          <p className="sd-eyebrow">{copy.eyebrow}</p>
+          <h1 className="sd-display sd-display-xl">{copy.titleA}<br /><span className="sd-mark">{copy.titleB}</span></h1>
+          <p className="sd-hero-text">{copy.text}</p>
+          <div className="sd-hero-actions">
+            <Link className="sd-pill sd-pill-dark" href="/?book=1">{copy.book}</Link>
+            <button type="button" className="sd-pill" onClick={() => navigate("services")}>{copy.explore}</button>
+          </div>
+        </section>
+
+        <section id="service-list" className="sd-section sd-detail-list" aria-label={copy.explore}>
+          {services.map(service => (
+            <article id={`service-${service.id}`} className="sd-detail scroll-reveal" key={service.id}>
+              <div className="sd-detail-media">
+                <img src={service.image} alt={service.title} loading="lazy" />
+              </div>
+              <div className="sd-detail-body">
+                <p className="sd-service-tag">{service.tag}</p>
+                <h2>{service.title}</h2>
+                <p className="sd-detail-intro">{service.intro}</p>
+                <ul className="sd-detail-points">
+                  {service.bullets.map(bullet => <li key={bullet}><Check size={16} aria-hidden="true" />{bullet}</li>)}
+                </ul>
+                <Link className="sd-pill sd-pill-dark sd-detail-cta" href={`/?book=1&service=${service.serviceId}`}>
+                  {copy.bookService} <Arrow size={16} aria-hidden="true" />
+                </Link>
+              </div>
+            </article>
+          ))}
+        </section>
+
+        <section className="sd-section sd-closing scroll-reveal">
+          <p className="sd-eyebrow">{copy.bottomEyebrow}</p>
+          <h2 className="sd-display">{copy.bottomTitle}</h2>
+          <p className="sd-lede">{copy.bottomText}</p>
+          <div className="sd-hero-actions">
+            <Link className="sd-pill sd-pill-dark" href="/?book=1">{copy.discovery}</Link>
+          </div>
+        </section>
       </main>
 
-      <footer className="footer"><Link className="brand" href="/"><img className="logo-on-dark" src="/assets/take-more-logo-light.png" alt="Take More — Retail & Web, Made Smarter" width={1889} height={330} /><img className="logo-on-light" src="/assets/take-more-logo-dark.png" alt="" aria-hidden="true" width={1889} height={330} /></Link><p>{content.footer}</p><div className="footer-links"><a href="https://www.facebook.com/share/1C6TU1C2ub/?mibextid=wwXIfr" target="_blank" rel="noreferrer">Facebook</a><a href="https://www.instagram.com/takemore.eg?stkn=YzJhYXNpYnJnZnFl&utm_source=qr" target="_blank" rel="noreferrer">Instagram</a><Link href="/admin">Admin</Link></div></footer>
-      <a className="floating-whatsapp" href="https://wa.me/201153213270" target="_blank" rel="noreferrer" aria-label="Chat with Take More on WhatsApp"><MessageCircle size={25} /><span>{content.chat}</span></a>
+      <footer className="footer">
+        <Link className="brand" href="/"><img src="/assets/take-more-logo.png" alt="Take More" /></Link>
+        <p>{copy.footer}</p>
+        <div className="footer-links">
+          <a href="https://www.facebook.com/share/1C6TU1C2ub/?mibextid=wwXIfr" target="_blank" rel="noreferrer">Facebook</a>
+          <a href="https://www.instagram.com/takemore.eg?stkn=YzJhYXNpYnJnZnFl&utm_source=qr" target="_blank" rel="noreferrer">Instagram</a>
+          <a href="https://www.linkedin.com/" target="_blank" rel="noreferrer">LinkedIn</a>
+          <Link href="/admin">Admin</Link>
+        </div>
+      </footer>
+      <a className="floating-whatsapp" href="https://wa.me/201153213270" target="_blank" rel="noreferrer" aria-label="Chat with Take More on WhatsApp"><MessageCircle size={25} /><span>{copy.chat}</span></a>
     </div>
   );
 }
