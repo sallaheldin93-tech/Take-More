@@ -130,7 +130,8 @@ html[data-brand-mode] .site-shell.sd-page, .sd-page { min-height: 100vh; backgro
 /* Footer */
 .sd-page .footer { display: flex; flex-wrap: wrap; align-items: center; justify-content: space-between; gap: 20px; width: auto; margin: 0; padding: 32px 48px; border-top: 1px solid var(--sd-line); background: var(--sd-bg); color: var(--sd-muted); }
 .sd-page .footer p { margin: 0; font-size: 14px; }
-.sd-page .footer .brand img { width: 120px; height: auto; }
+.sd-page .footer .brand img { width: 140px; height: auto; }
+.brand img[src$="/take-more-logo.png"] { height: auto; aspect-ratio: 5.5 / 1; object-fit: cover; object-position: center; filter: none; }
 .sd-page .footer-links { display: flex; flex-wrap: wrap; gap: 16px; }
 .sd-page .footer-links a { display: inline-flex; align-items: center; gap: 6px; color: var(--sd-ink); font-size: 14px; text-decoration: none; }
 

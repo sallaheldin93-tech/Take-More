@@ -110,7 +110,7 @@ export default function Services() {
   return (
     <div className="services-page" dir={language === "ar" ? "rtl" : "ltr"}>
       <header className="topbar dark-header">
-        <Link className="brand" href="/" onClick={() => setMobileOpen(false)}><img src={brandMode === "white" ? "/assets/take-more-logo-white.png" : "/assets/take-more-logo.png"} alt="Take More — Retail & Web, Made Smarter" /></Link>
+        <Link className="brand" href="/" onClick={() => setMobileOpen(false)}><img src="/assets/take-more-logo.png" alt="Take More — Retail & Web, Made Smarter" /></Link>
         <nav id="services-mobile-nav" className={mobileOpen ? "main-nav mobile-open" : "main-nav"}>
           <Link href="/" onClick={() => setMobileOpen(false)}>{content.nav.home}</Link>
           <Link className="active-nav" href="/services" onClick={() => setMobileOpen(false)}>{content.nav.services}</Link>
@@ -133,7 +133,7 @@ export default function Services() {
         <section className="services-bottom scroll-reveal"><div><p className="eyebrow">{content.bottomEyebrow}</p><h2>{content.bottomTitleA}<br /><em>{content.bottomTitleB}</em></h2></div><div><p>{content.bottomText}</p><Link className="primary-button" href="/?book=1">{content.discovery} <ArrowUpRight size={17} /></Link></div></section>
       </main>
 
-      <footer className="footer"><Link className="brand" href="/"><img src={brandMode === "white" ? "/assets/take-more-logo-white.png" : "/assets/take-more-logo.png"} alt="Take More — Retail & Web, Made Smarter" /></Link><p>{content.footer}</p><div className="footer-links"><a href="https://www.facebook.com/share/1C6TU1C2ub/?mibextid=wwXIfr" target="_blank" rel="noreferrer">Facebook</a><a href="https://www.instagram.com/takemore.eg?stkn=YzJhYXNpYnJnZnFl&utm_source=qr" target="_blank" rel="noreferrer">Instagram</a><Link href="/admin">Admin</Link></div></footer>
+      <footer className="footer"><Link className="brand" href="/"><img src="/assets/take-more-logo.png" alt="Take More — Retail & Web, Made Smarter" /></Link><p>{content.footer}</p><div className="footer-links"><a href="https://www.facebook.com/share/1C6TU1C2ub/?mibextid=wwXIfr" target="_blank" rel="noreferrer">Facebook</a><a href="https://www.instagram.com/takemore.eg?stkn=YzJhYXNpYnJnZnFl&utm_source=qr" target="_blank" rel="noreferrer">Instagram</a><Link href="/admin">Admin</Link></div></footer>
       <a className="floating-whatsapp" href="https://wa.me/201153213270" target="_blank" rel="noreferrer" aria-label="Chat with Take More on WhatsApp"><MessageCircle size={25} /><span>{content.chat}</span></a>
     </div>
   );
