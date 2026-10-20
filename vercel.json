@@ -6,16 +6,16 @@
   "framework": "vite",
   "rewrites": [
     {
-      "source": "/api/:path*",
-      "destination": "https://3000-idbofz1hdmodabc1i0ts5-c95de389.sg2.manus.computer/api/:path*"
+      "source": "/api/(.*)",
+      "destination": "/api"
     },
     {
-      "source": "/(.*)",
+      "source": "/((?!api/).*)",
       "destination": "/index.html"
     }
   ],
   "functions": {
-    "api/[...path].ts": {
+    "api/index.ts": {
       "maxDuration": 60
     }
   }

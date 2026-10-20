@@ -1,5 +1,5 @@
 import { describe, expect, it } from "vitest";
-import { BOOKING_RECIPIENT, bookingEmailRecipient } from "./email";
+import { BOOKING_RECIPIENT, bookingEmailRecipient } from "./email.js";
 
 describe("booking email recipient", () => {
   it("defaults to the owner inbox Resend allows before domain verification", () => {
