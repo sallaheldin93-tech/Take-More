@@ -30,7 +30,7 @@ export function SiteHeader({ language, activeSection, mobileOpen, onToggleMobile
   return (
     <header className="sd-header">
       <a className="sd-logo" href="#home" onClick={event => { event.preventDefault(); onNavigate("home"); }}>
-        <img src="/assets/take-more-logo-white.png" alt="Take More" width={150} height={42} />
+        <img src="/assets/take-more-logo.png" alt="Take More" width={160} height={100} />
       </a>
 
       <div className="sd-header-actions">

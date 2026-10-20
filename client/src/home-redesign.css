@@ -1,11 +1,11 @@
 /* Home redesign: minimal white studio layout (shopify.design inspired). */
 :root {
   --sd-bg: #ffffff;
-  --sd-ink: #0b0b0c;
-  --sd-muted: #6e6e73;
-  --sd-soft: #f2f2f0;
-  --sd-lime: #c6f432;
-  --sd-line: rgba(11, 11, 12, .1);
+  --sd-ink: #07112a;
+  --sd-muted: #5f6577;
+  --sd-soft: #f2f4f1;
+  --sd-lime: #bdfc00;
+  --sd-line: rgba(7, 17, 42, .1);
   --sd-ease: cubic-bezier(.23, 1, .32, 1);
 }
 
@@ -15,18 +15,18 @@ html[data-brand-mode] .site-shell.sd-page, .sd-page { min-height: 100vh; backgro
 .sd-page button { font-family: inherit; cursor: pointer; }
 
 /* Pills & round buttons */
-.sd-pill { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 20px; border: 1px solid var(--sd-line); border-radius: 999px; background: var(--sd-bg); color: var(--sd-ink); font-size: 15px; font-weight: 600; text-decoration: none; white-space: nowrap; box-shadow: 0 2px 10px rgba(11,11,12,.05); transition: transform .2s var(--sd-ease), background .2s ease, color .2s ease; }
+.sd-pill { display: inline-flex; align-items: center; justify-content: center; height: 44px; padding: 0 20px; border: 1px solid var(--sd-line); border-radius: 999px; background: var(--sd-bg); color: var(--sd-ink); font-size: 15px; font-weight: 600; text-decoration: none; white-space: nowrap; box-shadow: 0 2px 10px rgba(7,17,42,.05); transition: transform .2s var(--sd-ease), background .2s ease, color .2s ease; }
 .sd-pill:hover { transform: translateY(-2px); }
 .sd-pill:focus-visible, .sd-round:focus-visible, .sd-nav-link:focus-visible, .sd-service-row:focus-visible { outline: 2px solid var(--sd-ink); outline-offset: 3px; }
 .sd-pill-dark { border-color: var(--sd-ink); background: var(--sd-ink); color: var(--sd-bg); }
 .sd-pill-quiet { box-shadow: none; }
-.sd-round { display: inline-grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; border: 1px solid var(--sd-line); border-radius: 50%; background: var(--sd-bg); color: var(--sd-ink); box-shadow: 0 2px 10px rgba(11,11,12,.05); transition: transform .2s var(--sd-ease), background .2s ease, color .2s ease; }
+.sd-round { display: inline-grid; place-items: center; flex-shrink: 0; width: 44px; height: 44px; border: 1px solid var(--sd-line); border-radius: 50%; background: var(--sd-bg); color: var(--sd-ink); box-shadow: 0 2px 10px rgba(7,17,42,.05); transition: transform .2s var(--sd-ease), background .2s ease, color .2s ease; }
 .sd-round:hover { transform: translateY(-2px); }
 
 /* Header */
 .sd-header { position: sticky; top: 0; z-index: 40; display: flex; align-items: center; justify-content: space-between; gap: 16px; padding: 18px 48px; background: rgba(255,255,255,.86); backdrop-filter: blur(14px); }
 .sd-logo { display: inline-flex; flex-shrink: 0; }
-.sd-logo img { display: block; width: 140px; height: auto; }
+.sd-logo img { display: block; width: 156px; height: auto; aspect-ratio: 5.5 / 1; object-fit: cover; object-position: center; }
 .sd-header-actions { display: flex; align-items: center; gap: 8px; }
 .sd-nav { display: flex; align-items: center; gap: 2px; padding: 4px; margin-inline-end: 6px; border: 1px solid var(--sd-line); border-radius: 999px; }
 .sd-nav-link { height: 36px; padding: 0 14px; border: 0; border-radius: 999px; background: none; color: var(--sd-muted); font-size: 14px; font-weight: 600; transition: background .2s ease, color .2s ease; }
@@ -46,7 +46,7 @@ html[data-brand-mode] .site-shell.sd-page, .sd-page { min-height: 100vh; backgro
 
 .sd-rule { display: flex; align-items: center; gap: 16px; width: 100%; margin-top: 112px; font-family: 'DM Mono', 'Alexandria', monospace; font-size: 13px; letter-spacing: .08em; text-transform: uppercase; }
 .sd-live, .sd-from { display: inline-flex; align-items: center; gap: 10px; white-space: nowrap; }
-.sd-live i { width: 7px; height: 7px; border-radius: 50%; background: var(--sd-lime); box-shadow: 0 0 0 4px rgba(198,244,50,.25); }
+.sd-live i { width: 7px; height: 7px; border-radius: 50%; background: var(--sd-lime); box-shadow: 0 0 0 4px rgba(189,252,0,.25); }
 .sd-from img { border-radius: 6px; }
 .sd-rule-line { flex: 1; height: 1px; background: var(--sd-line); }
 
@@ -146,7 +146,7 @@ html[data-brand-mode] .site-shell.sd-page, .sd-page { min-height: 100vh; backgro
 @media (max-width: 1080px) {
   .sd-nav { display: none; }
   .sd-menu-btn { display: inline-grid; }
-  .sd-nav.is-open { position: absolute; top: calc(100% + 4px); inset-inline: 16px; display: flex; flex-direction: column; align-items: stretch; gap: 4px; margin: 0; padding: 8px; border-radius: 22px; background: var(--sd-bg); box-shadow: 0 20px 50px rgba(11,11,12,.12); }
+  .sd-nav.is-open { position: absolute; top: calc(100% + 4px); inset-inline: 16px; display: flex; flex-direction: column; align-items: stretch; gap: 4px; margin: 0; padding: 8px; border-radius: 22px; background: var(--sd-bg); box-shadow: 0 20px 50px rgba(7,17,42,.12); }
   .sd-nav.is-open .sd-nav-link { height: 48px; text-align: start; font-size: 16px; }
 }
 
